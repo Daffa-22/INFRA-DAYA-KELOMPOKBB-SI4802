@@ -11,7 +11,7 @@ Terakhir diperbarui: 2026-10-12 (Fase 1)
 | :--- | :--- | :---: | :--- |
 | **0** | **Setup Project, Breeze, Tailwind, Layout, Dusk** | **DONE** | Laravel 11, Tailwind Tokens, Layout Warga & Admin, Dusk terkonfigurasi |
 | **1** | **Master Data Wilayah (Kecamatan & Kelurahan)** | **DONE** | CRUD Kecamatan & Kelurahan, API chained dropdown, 11/11 Dusk test PASS |
-| 2 | User & Role Management | TODO | CRUD User, Aktivasi, Profil |
+| **2** | **User & Role Management** | **DONE** | CRUD User, Aktivasi status akun, Avatar upload aman, Demo 4 Role seeder, 5/5 Dusk test PASS |
 | 3 | Master Kategori Infrastruktur | TODO | CRUD Kategori + Bobot Prioritas |
 | 4 | Pengajuan Laporan oleh Warga | TODO | Form, Leaflet Geotagging, Tiket Unik, Foto Bukti Sebelum |
 | 5 | Verifikasi & Penilaian Prioritas (Admin) | TODO | Antrean, Setujui/Tolak + Alasan, Riwayat Status |
@@ -46,13 +46,13 @@ Terakhir diperbarui: 2026-10-12 (Fase 1)
 - [x] Endpoint AJAX chained dropdown `GET /api/wilayah/kecamatan/{id}/kelurahan`.
 - [x] Pengujian Dusk E2E Wilayah — **11/11 PASS**.
 
-### Fase 2: User & Role (STATUS: TODO)
-- [ ] Migration kolom `users` (`role`, `phone`, `avatar`, `is_active`).
-- [ ] Middleware `EnsureUserRole` untuk routing group per role.
-- [ ] CRUD User (Admin): Tambah admin/petugas/pimpinan, aktivasi, reset password.
-- [ ] Foto profil & update profil pengguna.
-- [ ] Demo users seeder (1 admin, 2 petugas, 1 pimpinan, 3 warga).
-- [ ] Pengujian Dusk E2E User & Role.
+### Fase 2: User & Role (STATUS: DONE ✅)
+- [x] Migration kolom `users` (`role`, `phone`, `avatar`, `is_active`).
+- [x] Middleware `EnsureUserRole` untuk routing group per role (`admin`, `petugas`, `pimpinan`, `warga`).
+- [x] CRUD User (Admin): Tambah admin/petugas/pimpinan/warga, aktivasi/toggle status akun, edit data.
+- [x] Unggah foto profil avatar aman (nama acak, mime spesifik JPG/JPEG/PNG).
+- [x] Demo users seeder (1 admin, 2 petugas, 1 pimpinan, 3 warga).
+- [x] Pengujian Dusk E2E User & Role (`UserTest.php`) — **5/5 PASS** (Total suite Dusk **19/19 PASS**).
 
 ### Fase 3: Master Kategori Infrastruktur (STATUS: TODO)
 - [ ] Migration & Model `kategori_infrastruktur` (`bobot_prioritas` 1-3).
