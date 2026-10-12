@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\KelurahanController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Api\WilayahController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Warga\LaporanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,8 +44,13 @@ Route::middleware('auth')->group(function () {
 
     // Route Warga
     Route::middleware('role:warga')->prefix('warga')->name('warga.')->group(function () {
-        Route::get('/lapor', fn () => redirect()->route('dashboard'))->name('laporan.create');
-        Route::get('/laporan-saya', fn () => redirect()->route('dashboard'))->name('laporan.saya');
+        Route::get('/laporan-saya', [LaporanController::class, 'index'])->name('laporan.saya');
+        Route::get('/lapor', [LaporanController::class, 'create'])->name('laporan.create');
+        Route::post('/lapor', [LaporanController::class, 'store'])->name('laporan.store');
+        Route::get('/laporan/{laporan}', [LaporanController::class, 'show'])->name('laporan.show');
+        Route::get('/laporan/{laporan}/edit', [LaporanController::class, 'edit'])->name('laporan.edit');
+        Route::put('/laporan/{laporan}', [LaporanController::class, 'update'])->name('laporan.update');
+        Route::delete('/laporan/{laporan}', [LaporanController::class, 'destroy'])->name('laporan.destroy');
     });
 
     // Route Admin DSDABM
