@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\KecamatanController;
 use App\Http\Controllers\Admin\KelurahanController;
 use App\Http\Controllers\Admin\UserController;
@@ -52,7 +53,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('kelurahan', KelurahanController::class)->except(['show']);
         Route::patch('users/{user}/toggle-active', [UserController::class, 'toggleActive'])->name('users.toggle-active');
         Route::resource('users', UserController::class)->except(['show']);
-        Route::get('/kategori', fn () => redirect()->route('dashboard'))->name('kategori.index');
+        Route::resource('kategori', KategoriController::class)->except(['show']);
         Route::get('/verifikasi', fn () => redirect()->route('dashboard'))->name('verifikasi.index');
         Route::get('/disposisi', fn () => redirect()->route('dashboard'))->name('disposisi.index');
         Route::get('/rekap', fn () => redirect()->route('dashboard'))->name('rekap.index');
