@@ -13,7 +13,7 @@ Terakhir diperbarui: 2026-10-12 (Fase 1)
 | **1** | **Master Data Wilayah (Kecamatan & Kelurahan)** | **DONE** | CRUD Kecamatan & Kelurahan, API chained dropdown, 11/11 Dusk test PASS |
 | **2** | **User & Role Management** | **DONE** | CRUD User, Aktivasi status akun, Avatar upload aman, Demo 4 Role seeder, 5/5 Dusk test PASS |
 | **3** | **Master Kategori Infrastruktur** | **DONE** | CRUD Kategori + Bobot Prioritas (1-3), Seeder 4 Kategori default, 5/5 Dusk test PASS |
-| 4 | Pengajuan Laporan oleh Warga | TODO | Form, Leaflet Geotagging, Tiket Unik, Foto Bukti Sebelum |
+| **4** | **Pengajuan Laporan oleh Warga** | **DONE** | Form Leaflet.js Geotagging, Tiket Unik harian, Riwayat status log, IDOR Policy, 5/5 Dusk test PASS |
 | 5 | Verifikasi & Penilaian Prioritas (Admin) | TODO | Antrean, Setujui/Tolak + Alasan, Riwayat Status |
 | 6 | Disposisi Penugasan & Dokumen PDF | TODO | Surat Tugas Digital & PDF DomPDF |
 | 7 | Pelaksanaan Lapangan oleh Petugas | TODO | Navigasi Koordinat, Foto Bukti Sesudah, Penutupan Tugas |
@@ -60,13 +60,14 @@ Terakhir diperbarui: 2026-10-12 (Fase 1)
 - [x] CRUD Kategori (Admin) dengan modal konfirmasi aman.
 - [x] Pengujian Dusk E2E Kategori (`KategoriTest.php`) — **5/5 PASS** (Total Dusk **24/24 PASS**).
 
-### Fase 4: Pengajuan Laporan Warga (STATUS: TODO)
-- [ ] Migration & Model `laporan_kerusakan` dan `riwayat_status`.
-- [ ] Generator nomor tiket unik (`INFRA-YYYYMMDD-XXXX`).
-- [ ] Form pengajuan laporan: Dropdown berjenjang + Leaflet interactive picker (draggable marker) + upload foto sebelum (maks 5MB).
-- [ ] Validasi batas wilayah Kota Bandung (Latitude & Longitude).
-- [ ] Fitur ubah & batalkan laporan selama status `menunggu_verifikasi`.
-- [ ] Pengujian Dusk E2E Lapor Warga.
+### Fase 4: Pengajuan Laporan Warga (STATUS: DONE ✅)
+- [x] Migration & Model `laporan_kerusakan` dan `riwayat_status`.
+- [x] Generator nomor tiket unik harian (`INFRA-YYYYMMDD-XXXX`).
+- [x] Form pengajuan laporan: Dropdown berjenjang + Leaflet interactive picker (draggable marker) + upload foto sebelum (maks 5MB).
+- [x] Validasi batas wilayah Kota Bandung (Latitude -7.05 s/d -6.80 & Longitude 107.50 s/d 107.80).
+- [x] Fitur ubah & batalkan laporan selama status `menunggu_verifikasi`.
+- [x] Proteksi otorisasi Policy (`LaporanPolicy`) pencegah IDOR.
+- [x] Pengujian Dusk E2E Lapor Warga (`LaporanWargaTest.php`) — **5/5 PASS** (Total Dusk **29/29 PASS**).
 
 ### Fase 5: Verifikasi Admin DSDABM (STATUS: TODO)
 - [ ] Antrean verifikasi laporan (filter status, kategori, kecamatan).
