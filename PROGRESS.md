@@ -12,7 +12,7 @@ Terakhir diperbarui: 2026-10-12 (Fase 1)
 | **0** | **Setup Project, Breeze, Tailwind, Layout, Dusk** | **DONE** | Laravel 11, Tailwind Tokens, Layout Warga & Admin, Dusk terkonfigurasi |
 | **1** | **Master Data Wilayah (Kecamatan & Kelurahan)** | **DONE** | CRUD Kecamatan & Kelurahan, API chained dropdown, 11/11 Dusk test PASS |
 | **2** | **User & Role Management** | **DONE** | CRUD User, Aktivasi status akun, Avatar upload aman, Demo 4 Role seeder, 5/5 Dusk test PASS |
-| 3 | Master Kategori Infrastruktur | TODO | CRUD Kategori + Bobot Prioritas |
+| **3** | **Master Kategori Infrastruktur** | **DONE** | CRUD Kategori + Bobot Prioritas (1-3), Seeder 4 Kategori default, 5/5 Dusk test PASS |
 | 4 | Pengajuan Laporan oleh Warga | TODO | Form, Leaflet Geotagging, Tiket Unik, Foto Bukti Sebelum |
 | 5 | Verifikasi & Penilaian Prioritas (Admin) | TODO | Antrean, Setujui/Tolak + Alasan, Riwayat Status |
 | 6 | Disposisi Penugasan & Dokumen PDF | TODO | Surat Tugas Digital & PDF DomPDF |
@@ -54,11 +54,11 @@ Terakhir diperbarui: 2026-10-12 (Fase 1)
 - [x] Demo users seeder (1 admin, 2 petugas, 1 pimpinan, 3 warga).
 - [x] Pengujian Dusk E2E User & Role (`UserTest.php`) — **5/5 PASS** (Total suite Dusk **19/19 PASS**).
 
-### Fase 3: Master Kategori Infrastruktur (STATUS: TODO)
-- [ ] Migration & Model `kategori_infrastruktur` (`bobot_prioritas` 1-3).
-- [ ] Seeder 4 kategori default (Jalan Raya, Drainase, PJU, Jembatan).
-- [ ] CRUD Kategori (Admin) dengan modal konfirmasi aman.
-- [ ] Pengujian Dusk E2E Kategori.
+### Fase 3: Master Kategori Infrastruktur (STATUS: DONE ✅)
+- [x] Migration & Model `kategori_infrastruktur` (`bobot_prioritas` 1-3).
+- [x] Seeder 4 kategori default (Jalan Raya, Drainase, PJU, Jembatan).
+- [x] CRUD Kategori (Admin) dengan modal konfirmasi aman.
+- [x] Pengujian Dusk E2E Kategori (`KategoriTest.php`) — **5/5 PASS** (Total Dusk **24/24 PASS**).
 
 ### Fase 4: Pengajuan Laporan Warga (STATUS: TODO)
 - [ ] Migration & Model `laporan_kerusakan` dan `riwayat_status`.
