@@ -27,20 +27,25 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// API Endpoint Publik / Web
+Route::get('/api/wilayah/kecamatan/{id}/kelurahan', [\App\Http\Controllers\Api\WilayahController::class, 'kelurahanByKecamatan'])->name('api.wilayah.kelurahan');
+
 // Profil Pengguna
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Route Rute Placeholder Fase Lanjutan (Dilindungi middleware)
-    Route::prefix('warga')->name('warga.')->group(function () {
+    // Route Warga
+    Route::middleware('role:warga')->prefix('warga')->name('warga.')->group(function () {
         Route::get('/lapor', fn () => redirect()->route('dashboard'))->name('laporan.create');
         Route::get('/laporan-saya', fn () => redirect()->route('dashboard'))->name('laporan.saya');
     });
 
-    Route::prefix('admin')->name('admin.')->group(function () {
-        Route::get('/kecamatan', fn () => redirect()->route('dashboard'))->name('kecamatan.index');
+    // Route Admin DSDABM
+    Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
+        Route::resource('kecamatan', \App\Http\Controllers\Admin\KecamatanController::class);
+        Route::resource('kelurahan', \App\Http\Controllers\Admin\KelurahanController::class);
         Route::get('/users', fn () => redirect()->route('dashboard'))->name('users.index');
         Route::get('/kategori', fn () => redirect()->route('dashboard'))->name('kategori.index');
         Route::get('/verifikasi', fn () => redirect()->route('dashboard'))->name('verifikasi.index');

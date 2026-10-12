@@ -1,7 +1,7 @@
 # PROGRESS KERJA PROYEK INFRA-DAYA
 **Sistem Pelaporan Kerusakan Infrastruktur Kota Bandung (SDG 9)**
 
-Terakhir diperbarui: 2026-10-12 (Fase 0)
+Terakhir diperbarui: 2026-10-12 (Fase 1)
 
 ---
 
@@ -10,7 +10,7 @@ Terakhir diperbarui: 2026-10-12 (Fase 0)
 | Fase | Nama Fase | Status | Keterangan |
 | :--- | :--- | :---: | :--- |
 | **0** | **Setup Project, Breeze, Tailwind, Layout, Dusk** | **DONE** | Laravel 11, Tailwind Tokens, Layout Warga & Admin, Dusk terkonfigurasi |
-| 1 | Master Data Wilayah (Kecamatan & Kelurahan) | TODO | Siap dikerjakan setelah konfirmasi Fase 0 |
+| **1** | **Master Data Wilayah (Kecamatan & Kelurahan)** | **DONE** | CRUD Kecamatan & Kelurahan, API chained dropdown, 11/11 Dusk test PASS |
 | 2 | User & Role Management | TODO | CRUD User, Aktivasi, Profil |
 | 3 | Master Kategori Infrastruktur | TODO | CRUD Kategori + Bobot Prioritas |
 | 4 | Pengajuan Laporan oleh Warga | TODO | Form, Leaflet Geotagging, Tiket Unik, Foto Bukti Sebelum |
@@ -38,13 +38,13 @@ Terakhir diperbarui: 2026-10-12 (Fase 0)
 - [x] Konfigurasi Laravel Dusk dengan database terpisah `.env.dusk.local` (`infradaya_dusk`).
 - [x] Pengujian Dusk awal (`tests/Browser/SetupTest.php`) lulus 100%.
 
-### Fase 1: Master Data Wilayah (STATUS: TODO)
-- [ ] Migration & Model `kecamatan` dan `kelurahan`.
-- [ ] Seeder wilayah dari `database/data/wilayah_kota_bandung.csv` (dengan fallback/TODO bila belum lengkap).
-- [ ] CRUD Kecamatan (List, Search, Tambah, Edit, Hapus dengan modal konfirmasi).
-- [ ] CRUD Kelurahan (List, Filter Kecamatan, Tambah, Edit, Hapus).
-- [ ] Endpoint AJAX chained dropdown `GET /api/wilayah/kecamatan/{id}/kelurahan`.
-- [ ] Pengujian Dusk E2E Wilayah.
+### Fase 1: Master Data Wilayah (STATUS: DONE ✅)
+- [x] Migration & Model `kecamatan` dan `kelurahan`.
+- [x] Seeder wilayah dari `database/data/wilayah_kota_bandung.csv` (dengan fallback/TODO bila belum lengkap).
+- [x] CRUD Kecamatan (List, Search, Tambah, Edit, Hapus dengan modal konfirmasi).
+- [x] CRUD Kelurahan (List, Filter Kecamatan, Tambah, Edit, Hapus).
+- [x] Endpoint AJAX chained dropdown `GET /api/wilayah/kecamatan/{id}/kelurahan`.
+- [x] Pengujian Dusk E2E Wilayah — **11/11 PASS**.
 
 ### Fase 2: User & Role (STATUS: TODO)
 - [ ] Migration kolom `users` (`role`, `phone`, `avatar`, `is_active`).
