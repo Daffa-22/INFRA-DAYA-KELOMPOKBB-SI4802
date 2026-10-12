@@ -1,0 +1,120 @@
+# PROGRESS KERJA PROYEK INFRA-DAYA
+**Sistem Pelaporan Kerusakan Infrastruktur Kota Bandung (SDG 9)**
+
+Terakhir diperbarui: 2026-10-12 (Fase 0)
+
+---
+
+## Ringkasan Progres Fase
+
+| Fase | Nama Fase | Status | Keterangan |
+| :--- | :--- | :---: | :--- |
+| **0** | **Setup Project, Breeze, Tailwind, Layout, Dusk** | **DONE** | Laravel 11, Tailwind Tokens, Layout Warga & Admin, Dusk terkonfigurasi |
+| 1 | Master Data Wilayah (Kecamatan & Kelurahan) | TODO | Siap dikerjakan setelah konfirmasi Fase 0 |
+| 2 | User & Role Management | TODO | CRUD User, Aktivasi, Profil |
+| 3 | Master Kategori Infrastruktur | TODO | CRUD Kategori + Bobot Prioritas |
+| 4 | Pengajuan Laporan oleh Warga | TODO | Form, Leaflet Geotagging, Tiket Unik, Foto Bukti Sebelum |
+| 5 | Verifikasi & Penilaian Prioritas (Admin) | TODO | Antrean, Setujui/Tolak + Alasan, Riwayat Status |
+| 6 | Disposisi Penugasan & Dokumen PDF | TODO | Surat Tugas Digital & PDF DomPDF |
+| 7 | Pelaksanaan Lapangan oleh Petugas | TODO | Navigasi Koordinat, Foto Bukti Sesudah, Penutupan Tugas |
+| 8 | Tracking Timeline & Peta Publik | TODO | Pelacakan Nomor Tiket & Leaflet Sebaran Terbuka |
+| 9 | Umpan Balik & Rating Warga | TODO | Bintang 1-5 & Ulasan Pasca Perbaikan |
+| 10 | Dashboard Eksekutif & Monitoring SLA | TODO | Metrik SLA, Tren Laporan Chart.js, Heatmap |
+| 11 | Rekapitulasi Data & Ekspor (Excel & PDF) | TODO | Filter Multi-Parameter, Ekspor Excel & PDF |
+| 12 | Hardening, Optimasi & Pengujian Menyeluruh | TODO | Keamanan, Eager Loading, Rangkaian Dusk 100% |
+
+---
+
+## Rincian Item PBI per Fase
+
+### Fase 0: Setup & Fondasi Sistem (STATUS: DONE)
+- [x] Inisialisasi Git repository dan branch `fase-00-setup`.
+- [x] Setup proyek Laravel 11 dengan PHP 8.2+ dan MariaDB/MySQL.
+- [x] Setup Laravel Breeze (Blade stack), Tailwind CSS 3, Vite, Alpine.js.
+- [x] Konfigurasi Token Warna Tailwind (`navy #1F3A5F`, `teal #0E7C86`, `amber #F2A93B`, `bg #EEF3F6`).
+- [x] Blade Components reusable: `card`, `button`, `badge-status`, `modal-confirm`, `flash`, `form-input`, `empty-state`.
+- [x] Layout dasar per role: `x-admin-layout` (sidebar responsif) & `x-warga-layout` (top navbar publik).
+- [x] Konfigurasi `.env.example` & `.env` dev (`infradaya_dev`).
+- [x] Konfigurasi Laravel Dusk dengan database terpisah `.env.dusk.local` (`infradaya_dusk`).
+- [x] Pengujian Dusk awal (`tests/Browser/SetupTest.php`) lulus 100%.
+
+### Fase 1: Master Data Wilayah (STATUS: TODO)
+- [ ] Migration & Model `kecamatan` dan `kelurahan`.
+- [ ] Seeder wilayah dari `database/data/wilayah_kota_bandung.csv` (dengan fallback/TODO bila belum lengkap).
+- [ ] CRUD Kecamatan (List, Search, Tambah, Edit, Hapus dengan modal konfirmasi).
+- [ ] CRUD Kelurahan (List, Filter Kecamatan, Tambah, Edit, Hapus).
+- [ ] Endpoint AJAX chained dropdown `GET /api/wilayah/kecamatan/{id}/kelurahan`.
+- [ ] Pengujian Dusk E2E Wilayah.
+
+### Fase 2: User & Role (STATUS: TODO)
+- [ ] Migration kolom `users` (`role`, `phone`, `avatar`, `is_active`).
+- [ ] Middleware `EnsureUserRole` untuk routing group per role.
+- [ ] CRUD User (Admin): Tambah admin/petugas/pimpinan, aktivasi, reset password.
+- [ ] Foto profil & update profil pengguna.
+- [ ] Demo users seeder (1 admin, 2 petugas, 1 pimpinan, 3 warga).
+- [ ] Pengujian Dusk E2E User & Role.
+
+### Fase 3: Master Kategori Infrastruktur (STATUS: TODO)
+- [ ] Migration & Model `kategori_infrastruktur` (`bobot_prioritas` 1-3).
+- [ ] Seeder 4 kategori default (Jalan Raya, Drainase, PJU, Jembatan).
+- [ ] CRUD Kategori (Admin) dengan modal konfirmasi aman.
+- [ ] Pengujian Dusk E2E Kategori.
+
+### Fase 4: Pengajuan Laporan Warga (STATUS: TODO)
+- [ ] Migration & Model `laporan_kerusakan` dan `riwayat_status`.
+- [ ] Generator nomor tiket unik (`INFRA-YYYYMMDD-XXXX`).
+- [ ] Form pengajuan laporan: Dropdown berjenjang + Leaflet interactive picker (draggable marker) + upload foto sebelum (maks 5MB).
+- [ ] Validasi batas wilayah Kota Bandung (Latitude & Longitude).
+- [ ] Fitur ubah & batalkan laporan selama status `menunggu_verifikasi`.
+- [ ] Pengujian Dusk E2E Lapor Warga.
+
+### Fase 5: Verifikasi Admin DSDABM (STATUS: TODO)
+- [ ] Antrean verifikasi laporan (filter status, kategori, kecamatan).
+- [ ] Setujui laporan & tentukan prioritas (`rendah`, `sedang`, `tinggi`).
+- [ ] Tolak laporan dengan modal wajib input alasan penolakan.
+- [ ] Pencatatan otomatis ke `riwayat_status`.
+- [ ] Pengujian Dusk E2E Verifikasi.
+
+### Fase 6: Disposisi Penugasan & Surat Tugas PDF (STATUS: TODO)
+- [ ] Migration & Model `disposisi_penugasan`.
+- [ ] Form disposisi admin: Pilih petugas aktif, instruksi teknis, tenggat waktu.
+- [ ] Cetak Surat Perintah Tugas (SPT) format PDF via `barryvdh/laravel-dompdf`.
+- [ ] Pengujian Dusk E2E Disposisi & PDF.
+
+### Fase 7: Pengerjaan Petugas Lapangan (STATUS: TODO)
+- [ ] Dashboard mobile-first petugas: Daftar tugas aktif.
+- [ ] Tautan navigasi GPS ke koordinat lokasi kerusakan.
+- [ ] Form penyelesaian: Unggah foto bukti sesudah + catatan perbaikan.
+- [ ] Penutupan tugas -> status laporan `selesai` & audit riwayat status.
+- [ ] Pengujian Dusk E2E Petugas.
+
+### Fase 8: Tracking Timeline & Peta Publik (STATUS: TODO)
+- [ ] Halaman publik lacak nomor tiket tanpa login.
+- [ ] Visual timeline audit & perbandingan foto sebelum vs sesudah (Before/After).
+- [ ] Peta publik sebaran Leaflet interaktif dengan filter kategori & status.
+- [ ] Pengujian Dusk E2E Tracking & Peta.
+
+### Fase 9: Umpan Balik & Evaluasi Warga (STATUS: TODO)
+- [ ] Migration & Model `umpan_balik`.
+- [ ] Form rating (1-5 bintang) & ulasan warga untuk laporan berstatus selesai.
+- [ ] Proteksi 1 kali rating per laporan & Policy otorisasi warga pelapor.
+- [ ] Pengujian Dusk E2E Umpan Balik.
+
+### Fase 10: Dashboard Eksekutif & SLA (STATUS: TODO)
+- [ ] Perhitungan metrik SLA via Service Class.
+- [ ] Grafik tren & statistik Chart.js per kecamatan & kategori.
+- [ ] Peta/Heatmap sebaran kepadatan kerusakan untuk pimpinan.
+- [ ] Pengujian Dusk E2E Dashboard.
+
+### Fase 11: Rekapitulasi Data & Ekspor (STATUS: TODO)
+- [ ] Filter laporan multi-kriteria (tanggal, kecamatan, kategori, status).
+- [ ] Ekspor Excel (`maatwebsite/excel`).
+- [ ] Ekspor Laporan Resmi PDF (`barryvdh/laravel-dompdf`).
+- [ ] Pengujian Dusk E2E Ekspor.
+
+### Fase 12: Hardening & Finalisasi (STATUS: TODO)
+- [ ] Audit keamanan (CSRF, Rate Limiting, MIME sanitize, Policy audit).
+- [ ] Optimasi query (Eager loading, index composite).
+- [ ] Halaman error ramah pengguna (403, 404, 500).
+- [ ] Dokumentasi lengkap `README.md`.
+- [ ] Seluruh rangkaian Dusk test 100% lulus & merge ke `main`.
