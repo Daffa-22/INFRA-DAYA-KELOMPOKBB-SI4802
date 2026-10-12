@@ -14,8 +14,8 @@ class KelurahanFactory extends Factory
     {
         return [
             'kecamatan_id' => Kecamatan::factory(),
-            'kode_kelurahan' => 'KEL-' . strtoupper(fake()->unique()->lexify('???-###')),
-            'nama_kelurahan' => 'Kelurahan ' . fake()->streetName(),
+            'kode_kelurahan' => 'KEL-'.strtoupper(fake()->unique()->lexify('???-###')),
+            'nama_kelurahan' => 'Kelurahan '.fake()->streetName(),
         ];
     }
 }

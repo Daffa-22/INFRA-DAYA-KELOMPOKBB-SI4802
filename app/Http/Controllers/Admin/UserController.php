@@ -1,0 +1,88 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UserCreateRequest;
+use App\Http\Requests\Admin\UserUpdateRequest;
+use App\Services\UserService;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+
+class UserController extends Controller
+{
+    public function __construct(protected UserService $userService) {}
+
+    public function index(Request $request): View
+    {
+        $search = $request->query('search');
+        $role = $request->query('role');
+
+        $users = $this->userService->getPaginatedUsers($search, $role);
+
+        return view('admin.users.index', compact('users', 'search', 'role'));
+    }
+
+    public function create(): View
+    {
+        return view('admin.users.create');
+    }
+
+    public function store(UserCreateRequest $request): RedirectResponse
+    {
+        $this->userService->createUser(
+            $request->validated(),
+            $request->file('avatar')
+        );
+
+        return redirect()
+            ->route('admin.users.index')
+            ->with('success', 'Pengguna baru berhasil ditambahkan.');
+    }
+
+    public function edit(int $id): View
+    {
+        $user = $this->userService->findUser($id);
+
+        return view('admin.users.edit', compact('user'));
+    }
+
+    public function update(UserUpdateRequest $request, int $id): RedirectResponse
+    {
+        $this->userService->updateUser(
+            $id,
+            $request->validated(),
+            $request->file('avatar')
+        );
+
+        return redirect()
+            ->route('admin.users.index')
+            ->with('success', 'Data pengguna berhasil diperbarui.');
+    }
+
+    public function toggleActive(int $id): RedirectResponse
+    {
+        $user = $this->userService->toggleUserStatus($id);
+        $statusText = $user->is_active ? 'diaktifkan' : 'dinonaktifkan';
+
+        return redirect()
+            ->route('admin.users.index')
+            ->with('success', "Status akun pengguna {$user->name} berhasil {$statusText}.");
+    }
+
+    public function destroy(int $id): RedirectResponse
+    {
+        if (auth()->id() === $id) {
+            return redirect()
+                ->route('admin.users.index')
+                ->with('error', 'Anda tidak dapat menghapus akun Anda sendiri saat sedang masuk.');
+        }
+
+        $this->userService->deleteUser($id);
+
+        return redirect()
+            ->route('admin.users.index')
+            ->with('success', 'Pengguna berhasil dihapus.');
+    }
+}

@@ -17,13 +17,14 @@ class WilayahSeeder extends Seeder
         $csvPath = database_path('data/wilayah_kota_bandung.csv');
         $examplePath = database_path('data/wilayah_kota_bandung.csv.example');
 
-        if (!File::exists($csvPath)) {
+        if (! File::exists($csvPath)) {
             $this->command?->warn('PERINGATAN: File database/data/wilayah_kota_bandung.csv belum ditemukan.');
             $this->command?->info('Menggunakan data sampel resmi dari database/data/wilayah_kota_bandung.csv.example.');
             // TODO: Pengguna akan menyediakan file database/data/wilayah_kota_bandung.csv lengkap (30 kecamatan, 151 kelurahan).
             if (File::exists($examplePath)) {
                 $this->importFromCsv($examplePath);
             }
+
             return;
         }
 
@@ -33,7 +34,7 @@ class WilayahSeeder extends Seeder
     protected function importFromCsv(string $path): void
     {
         $handle = fopen($path, 'r');
-        if (!$handle) {
+        if (! $handle) {
             return;
         }
 
@@ -44,8 +45,9 @@ class WilayahSeeder extends Seeder
                 continue;
             }
 
-            if (!$header) {
+            if (! $header) {
                 $header = array_map('trim', $row);
+
                 continue;
             }
 
@@ -77,6 +79,6 @@ class WilayahSeeder extends Seeder
         }
 
         fclose($handle);
-        $this->command?->info('Seeding data wilayah selesai. Total Kecamatan: ' . Kecamatan::count() . ', Kelurahan: ' . Kelurahan::count());
+        $this->command?->info('Seeding data wilayah selesai. Total Kecamatan: '.Kecamatan::count().', Kelurahan: '.Kelurahan::count());
     }
 }

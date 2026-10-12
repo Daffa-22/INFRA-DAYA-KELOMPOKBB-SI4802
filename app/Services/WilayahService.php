@@ -18,7 +18,7 @@ class WilayahService
             ->when($search, function ($query, $search) {
                 $query->where(function ($q) use ($search) {
                     $q->where('nama_kecamatan', 'like', "%{$search}%")
-                      ->orWhere('kode_kecamatan', 'like', "%{$search}%");
+                        ->orWhere('kode_kecamatan', 'like', "%{$search}%");
                 });
             })
             ->orderBy('nama_kecamatan')
@@ -48,12 +48,14 @@ class WilayahService
     {
         $kecamatan = Kecamatan::findOrFail($id);
         $kecamatan->update($data);
+
         return $kecamatan;
     }
 
     public function deleteKecamatan(int $id): bool
     {
         $kecamatan = Kecamatan::findOrFail($id);
+
         return $kecamatan->delete();
     }
 
@@ -69,7 +71,7 @@ class WilayahService
             ->when($search, function ($query, $search) {
                 $query->where(function ($q) use ($search) {
                     $q->where('nama_kelurahan', 'like', "%{$search}%")
-                      ->orWhere('kode_kelurahan', 'like', "%{$search}%");
+                        ->orWhere('kode_kelurahan', 'like', "%{$search}%");
                 });
             })
             ->orderBy('nama_kelurahan')
@@ -91,12 +93,14 @@ class WilayahService
     {
         $kelurahan = Kelurahan::findOrFail($id);
         $kelurahan->update($data);
+
         return $kelurahan;
     }
 
     public function deleteKelurahan(int $id): bool
     {
         $kelurahan = Kelurahan::findOrFail($id);
+
         return $kelurahan->delete();
     }
 

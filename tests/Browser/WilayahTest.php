@@ -20,8 +20,8 @@ class WilayahTest extends DuskTestCase
     private function loginAsAdmin(Browser $browser): User
     {
         $admin = User::factory()->create([
-            'email' => 'admin.' . uniqid() . '@dsdabm.bandung.go.id',
-            'role'  => 'admin',
+            'email' => 'admin.'.uniqid().'@dsdabm.bandung.go.id',
+            'role' => 'admin',
         ]);
         $browser->loginAs($admin);
 
@@ -145,8 +145,8 @@ class WilayahTest extends DuskTestCase
             $this->loginAsAdmin($browser);
 
             $browser->visit(route('admin.kecamatan.index'))
-                ->type('search', 'Barat')
-                ->press('Cari')
+                ->type('input[name="search"]', 'Barat')
+                ->click('button[type="submit"]')
                 ->assertSee('Bandung Barat')
                 ->assertDontSee('Bandung Timur');
         });
@@ -167,7 +167,7 @@ class WilayahTest extends DuskTestCase
             'nama_kecamatan' => 'Kecamatan Lihat',
         ]);
         Kelurahan::factory()->create([
-            'kecamatan_id'   => $kec->id,
+            'kecamatan_id' => $kec->id,
             'kode_kelurahan' => 'KEL-VIEW-01',
             'nama_kelurahan' => 'Kelurahan Tampil',
         ]);
@@ -215,7 +215,7 @@ class WilayahTest extends DuskTestCase
             'nama_kecamatan' => 'Kecamatan Edit Kelurahan',
         ]);
         $kelurahan = Kelurahan::factory()->create([
-            'kecamatan_id'   => $kecamatan->id,
+            'kecamatan_id' => $kecamatan->id,
             'kode_kelurahan' => 'KEL-EDIT-01',
             'nama_kelurahan' => 'Kelurahan Lama',
         ]);
@@ -255,8 +255,8 @@ class WilayahTest extends DuskTestCase
     public function test_non_admin_cannot_access_wilayah_admin(): void
     {
         $warga = User::factory()->create([
-            'email' => 'warga.wilayah.' . uniqid() . '@test.com',
-            'role'  => 'warga',
+            'email' => 'warga.wilayah.'.uniqid().'@test.com',
+            'role' => 'warga',
         ]);
 
         $this->browse(function (Browser $browser) use ($warga) {

@@ -12,8 +12,8 @@ class KecamatanFactory extends Factory
     public function definition(): array
     {
         return [
-            'kode_kecamatan' => 'KEC-' . strtoupper(fake()->unique()->lexify('???-###')),
-            'nama_kecamatan' => 'Kecamatan ' . fake()->city(),
+            'kode_kecamatan' => 'KEC-'.strtoupper(fake()->unique()->lexify('???-###')),
+            'nama_kecamatan' => 'Kecamatan '.fake()->city(),
         ];
     }
 }

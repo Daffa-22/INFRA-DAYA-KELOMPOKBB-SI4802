@@ -3,11 +3,14 @@
 namespace Tests\Browser;
 
 use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
 class SetupTest extends DuskTestCase
 {
+    use DatabaseMigrations;
+
     /**
      * Uji halaman beranda publik INFRA-DAYA menampilkan elemen branding SDG 9 dan instansi DSDABM.
      */
@@ -43,7 +46,7 @@ class SetupTest extends DuskTestCase
      */
     public function test_authenticated_user_can_access_dashboard(): void
     {
-        $uniqueEmail = 'warga.' . uniqid() . '@bandung.go.id';
+        $uniqueEmail = 'warga.'.uniqid().'@bandung.go.id';
         $user = User::factory()->create([
             'name' => 'Warga Uji Bandung',
             'email' => $uniqueEmail,
