@@ -56,7 +56,8 @@ class LaporanService
     public function createLaporan(int $wargaId, array $data, UploadedFile $foto): LaporanKerusakan
     {
         return DB::transaction(function () use ($wargaId, $data, $foto) {
-            $filename = Str::random(40).'.'.$foto->getClientOriginalExtension();
+            $extension = $foto->guessExtension() ?: 'jpg';
+            $filename = Str::random(40).'.'.$extension;
             $path = $foto->storeAs('laporan/sebelum', $filename, 'public');
 
             $laporan = LaporanKerusakan::create([
@@ -91,7 +92,8 @@ class LaporanService
                 if ($laporan->foto_bukti_sebelum) {
                     Storage::disk('public')->delete($laporan->foto_bukti_sebelum);
                 }
-                $filename = Str::random(40).'.'.$foto->getClientOriginalExtension();
+                $extension = $foto->guessExtension() ?: 'jpg';
+                $filename = Str::random(40).'.'.$extension;
                 $data['foto_bukti_sebelum'] = $foto->storeAs('laporan/sebelum', $filename, 'public');
             }
 
@@ -124,6 +126,106 @@ class LaporanService
             }
 
             return $laporan->delete();
+        });
+    }
+
+    /**
+     * Mengambil daftar laporan untuk antrean verifikasi admin dengan filter.
+     */
+    public function getPaginatedLaporanAdmin(
+        ?string $search = null,
+        ?string $status = null,
+        ?int $kategoriId = null,
+        ?int $kecamatanId = null,
+        int $perPage = 10
+    ): LengthAwarePaginator {
+        return LaporanKerusakan::with(['warga', 'kategori', 'kelurahan.kecamatan'])
+            ->when($search, function ($query, $search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('nomor_tiket', 'like', "%{$search}%")
+                        ->orWhere('judul', 'like', "%{$search}%")
+                        ->orWhereHas('warga', fn ($uq) => $uq->where('name', 'like', "%{$search}%"));
+                });
+            })
+            ->when($status, function ($query, $status) {
+                $query->where('status', $status);
+            })
+            ->when($kategoriId, function ($query, $kategoriId) {
+                $query->where('kategori_id', $kategoriId);
+            })
+            ->when($kecamatanId, function ($query, $kecamatanId) {
+                $query->whereHas('kelurahan', fn ($kq) => $kq->where('kecamatan_id', $kecamatanId));
+            })
+            ->orderByRaw("CASE WHEN status = 'menunggu_verifikasi' THEN 0 ELSE 1 END")
+            ->orderBy('created_at', 'desc')
+            ->paginate($perPage)
+            ->withQueryString();
+    }
+
+    public function findLaporan(int $id): LaporanKerusakan
+    {
+        return LaporanKerusakan::with(['warga', 'kategori', 'kelurahan.kecamatan', 'riwayatStatus.user'])->findOrFail($id);
+    }
+
+    /**
+     * Menyetujui laporan kerusakan oleh Admin DSDABM.
+     */
+    public function setujuiLaporan(int $id, int $adminId, string $prioritas, ?string $catatan = null): LaporanKerusakan
+    {
+        return DB::transaction(function () use ($id, $adminId, $prioritas, $catatan) {
+            $laporan = LaporanKerusakan::lockForUpdate()->findOrFail($id);
+
+            if ($laporan->status !== 'menunggu_verifikasi') {
+                throw new \InvalidArgumentException('Hanya laporan dengan status Menunggu Verifikasi yang dapat disetujui.');
+            }
+
+            $laporan->update([
+                'status' => 'diproses',
+                'prioritas' => $prioritas,
+                'alasan_penolakan' => null,
+            ]);
+
+            $keterangan = 'Laporan disetujui oleh Admin DSDABM dengan prioritas: '.ucfirst($prioritas).'.';
+            if ($catatan) {
+                $keterangan .= " Catatan verifikator: {$catatan}";
+            }
+
+            RiwayatStatus::create([
+                'laporan_id' => $laporan->id,
+                'user_id' => $adminId,
+                'status' => 'diproses',
+                'keterangan' => $keterangan,
+            ]);
+
+            return $laporan;
+        });
+    }
+
+    /**
+     * Menolak laporan kerusakan oleh Admin DSDABM dengan alasan konkret.
+     */
+    public function tolakLaporan(int $id, int $adminId, string $alasan): LaporanKerusakan
+    {
+        return DB::transaction(function () use ($id, $adminId, $alasan) {
+            $laporan = LaporanKerusakan::lockForUpdate()->findOrFail($id);
+
+            if ($laporan->status !== 'menunggu_verifikasi') {
+                throw new \InvalidArgumentException('Hanya laporan dengan status Menunggu Verifikasi yang dapat ditolak.');
+            }
+
+            $laporan->update([
+                'status' => 'ditolak',
+                'alasan_penolakan' => $alasan,
+            ]);
+
+            RiwayatStatus::create([
+                'laporan_id' => $laporan->id,
+                'user_id' => $adminId,
+                'status' => 'ditolak',
+                'keterangan' => "Laporan ditolak oleh Admin DSDABM. Alasan: {$alasan}",
+            ]);
+
+            return $laporan;
         });
     }
 }

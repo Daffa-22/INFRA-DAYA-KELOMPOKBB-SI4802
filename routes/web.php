@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\KecamatanController;
 use App\Http\Controllers\Admin\KelurahanController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\VerifikasiController;
 use App\Http\Controllers\Api\WilayahController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Warga\LaporanController;
@@ -46,7 +47,9 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:warga')->prefix('warga')->name('warga.')->group(function () {
         Route::get('/laporan-saya', [LaporanController::class, 'index'])->name('laporan.saya');
         Route::get('/lapor', [LaporanController::class, 'create'])->name('laporan.create');
-        Route::post('/lapor', [LaporanController::class, 'store'])->name('laporan.store');
+        Route::post('/lapor', [LaporanController::class, 'store'])
+            ->middleware('throttle:10,1')
+            ->name('laporan.store');
         Route::get('/laporan/{laporan}', [LaporanController::class, 'show'])->name('laporan.show');
         Route::get('/laporan/{laporan}/edit', [LaporanController::class, 'edit'])->name('laporan.edit');
         Route::put('/laporan/{laporan}', [LaporanController::class, 'update'])->name('laporan.update');
@@ -60,7 +63,11 @@ Route::middleware('auth')->group(function () {
         Route::patch('users/{user}/toggle-active', [UserController::class, 'toggleActive'])->name('users.toggle-active');
         Route::resource('users', UserController::class)->except(['show']);
         Route::resource('kategori', KategoriController::class)->except(['show']);
-        Route::get('/verifikasi', fn () => redirect()->route('dashboard'))->name('verifikasi.index');
+        // Fase 5: Verifikasi & Penilaian Prioritas
+        Route::get('/verifikasi', [VerifikasiController::class, 'index'])->name('verifikasi.index');
+        Route::get('/verifikasi/{id}', [VerifikasiController::class, 'show'])->name('verifikasi.show');
+        Route::post('/verifikasi/{id}/setujui', [VerifikasiController::class, 'setujui'])->name('verifikasi.setujui');
+        Route::post('/verifikasi/{id}/tolak', [VerifikasiController::class, 'tolak'])->name('verifikasi.tolak');
         Route::get('/disposisi', fn () => redirect()->route('dashboard'))->name('disposisi.index');
         Route::get('/rekap', fn () => redirect()->route('dashboard'))->name('rekap.index');
     });

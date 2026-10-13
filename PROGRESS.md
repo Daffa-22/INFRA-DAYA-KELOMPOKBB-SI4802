@@ -1,7 +1,7 @@
 # PROGRESS KERJA PROYEK INFRA-DAYA
 **Sistem Pelaporan Kerusakan Infrastruktur Kota Bandung (SDG 9)**
 
-Terakhir diperbarui: 2026-10-12 (Fase 1)
+Terakhir diperbarui: 2026-10-13 (Fase 5)
 
 ---
 
@@ -14,7 +14,7 @@ Terakhir diperbarui: 2026-10-12 (Fase 1)
 | **2** | **User & Role Management** | **DONE** | CRUD User, Aktivasi status akun, Avatar upload aman, Demo 4 Role seeder, 5/5 Dusk test PASS |
 | **3** | **Master Kategori Infrastruktur** | **DONE** | CRUD Kategori + Bobot Prioritas (1-3), Seeder 4 Kategori default, 5/5 Dusk test PASS |
 | **4** | **Pengajuan Laporan oleh Warga** | **DONE** | Form Leaflet.js Geotagging, Tiket Unik harian, Riwayat status log, IDOR Policy, 5/5 Dusk test PASS |
-| 5 | Verifikasi & Penilaian Prioritas (Admin) | TODO | Antrean, Setujui/Tolak + Alasan, Riwayat Status |
+| **5** | **Verifikasi & Penilaian Prioritas (Admin)** | **DONE** | Antrean filter multi-param, Setujui+Prioritas, Tolak+Alasan, Riwayat Status log, 13/13 Feature Test PASS |
 | 6 | Disposisi Penugasan & Dokumen PDF | TODO | Surat Tugas Digital & PDF DomPDF |
 | 7 | Pelaksanaan Lapangan oleh Petugas | TODO | Navigasi Koordinat, Foto Bukti Sesudah, Penutupan Tugas |
 | 8 | Tracking Timeline & Peta Publik | TODO | Pelacakan Nomor Tiket & Leaflet Sebaran Terbuka |
@@ -69,12 +69,22 @@ Terakhir diperbarui: 2026-10-12 (Fase 1)
 - [x] Proteksi otorisasi Policy (`LaporanPolicy`) pencegah IDOR.
 - [x] Pengujian Dusk E2E Lapor Warga (`LaporanWargaTest.php`) — **5/5 PASS** (Total Dusk **29/29 PASS**).
 
-### Fase 5: Verifikasi Admin DSDABM (STATUS: TODO)
-- [ ] Antrean verifikasi laporan (filter status, kategori, kecamatan).
-- [ ] Setujui laporan & tentukan prioritas (`rendah`, `sedang`, `tinggi`).
-- [ ] Tolak laporan dengan modal wajib input alasan penolakan.
-- [ ] Pencatatan otomatis ke `riwayat_status`.
-- [ ] Pengujian Dusk E2E Verifikasi.
+### Fase 5: Verifikasi Admin DSDABM (STATUS: DONE ✅)
+- [x] Antrean verifikasi laporan dengan filter: status, kategori, kecamatan, dan pencarian teks bebas.
+- [x] Halaman detail laporan: peta Leaflet lokasi, foto bukti, riwayat status timeline.
+- [x] Setujui laporan & tetapkan prioritas (`rendah`, `sedang`, `tinggi`) + catatan verifikator opsional.
+- [x] Tolak laporan dengan modal input alasan wajib (min 10 karakter) + pencatatan `riwayat_status`.
+- [x] Guard middleware `role:admin` pada semua route verifikasi.
+- [x] Pengujian Feature E2E Verifikasi (`VerifikasiAdminTest.php`) — **13/13 PASS**.
+- [x] **Audit & Hardening Keamanan (fix/audit-20261014):**
+  - SEC-01 (Critical): Cegah login akun nonaktif & terminasi sesi aktif di middleware.
+  - SEC-02 (High): Cegah spoofing ekstensi upload via `guessExtension()` server MIME.
+  - SEC-03 (High): Rate limiting registrasi (5 req/min) & lapor warga (10 req/min).
+  - SEC-04 (High): Sanitasi XSS & quote break pada marker popup Leaflet.
+  - SEC-05 (Medium): Cegah self-lockout admin saat kelola user.
+  - SLP-01 (Medium): Hapus request class tidak terpakai & bersihkan dead imports.
+  - SLP-02 (Low): Formatter PSR Laravel Pint lulus tanpa peringatan.
+  - Total test suite Feature/Unit: **47/47 PASS** (125 assertions).
 
 ### Fase 6: Disposisi Penugasan & Surat Tugas PDF (STATUS: TODO)
 - [ ] Migration & Model `disposisi_penugasan`.
