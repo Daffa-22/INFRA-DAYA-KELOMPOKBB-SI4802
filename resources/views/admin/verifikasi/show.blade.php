@@ -286,9 +286,18 @@
                 iconAnchor: [8, 8],
             });
 
+            const popupContent = document.createElement('div');
+            const strong = document.createElement('strong');
+            strong.textContent = @js($laporan->judul);
+            popupContent.appendChild(strong);
+            popupContent.appendChild(document.createElement('br'));
+            const small = document.createElement('small');
+            small.textContent = @js(($laporan->kelurahan->nama_kelurahan ?? '') . ', ' . ($laporan->kelurahan->kecamatan->nama_kecamatan ?? ''));
+            popupContent.appendChild(small);
+
             L.marker([lat, lng], { icon: redIcon })
                 .addTo(map)
-                .bindPopup('<strong>{{ addslashes($laporan->judul) }}</strong><br><small>{{ addslashes($laporan->kelurahan->nama_kelurahan ?? '') }}, {{ addslashes($laporan->kelurahan->kecamatan->nama_kecamatan ?? '') }}</small>')
+                .bindPopup(popupContent)
                 .openPopup();
         });
     </script>
