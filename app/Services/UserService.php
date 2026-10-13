@@ -92,7 +92,8 @@ class UserService
 
     protected function uploadAvatar(UploadedFile $file): string
     {
-        $filename = Str::random(40).'.'.$file->getClientOriginalExtension();
+        $extension = $file->guessExtension() ?: 'jpg';
+        $filename = Str::random(40).'.'.$extension;
 
         return $file->storeAs('avatars', $filename, 'public');
     }
