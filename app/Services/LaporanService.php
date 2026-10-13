@@ -56,7 +56,8 @@ class LaporanService
     public function createLaporan(int $wargaId, array $data, UploadedFile $foto): LaporanKerusakan
     {
         return DB::transaction(function () use ($wargaId, $data, $foto) {
-            $filename = Str::random(40).'.'.$foto->getClientOriginalExtension();
+            $extension = $foto->guessExtension() ?: 'jpg';
+            $filename = Str::random(40).'.'.$extension;
             $path = $foto->storeAs('laporan/sebelum', $filename, 'public');
 
             $laporan = LaporanKerusakan::create([
@@ -91,7 +92,8 @@ class LaporanService
                 if ($laporan->foto_bukti_sebelum) {
                     Storage::disk('public')->delete($laporan->foto_bukti_sebelum);
                 }
-                $filename = Str::random(40).'.'.$foto->getClientOriginalExtension();
+                $extension = $foto->guessExtension() ?: 'jpg';
+                $filename = Str::random(40).'.'.$extension;
                 $data['foto_bukti_sebelum'] = $foto->storeAs('laporan/sebelum', $filename, 'public');
             }
 
@@ -141,8 +143,8 @@ class LaporanService
             ->when($search, function ($query, $search) {
                 $query->where(function ($q) use ($search) {
                     $q->where('nomor_tiket', 'like', "%{$search}%")
-                      ->orWhere('judul', 'like', "%{$search}%")
-                      ->orWhereHas('warga', fn ($uq) => $uq->where('name', 'like', "%{$search}%"));
+                        ->orWhere('judul', 'like', "%{$search}%")
+                        ->orWhereHas('warga', fn ($uq) => $uq->where('name', 'like', "%{$search}%"));
                 });
             })
             ->when($status, function ($query, $status) {
@@ -178,20 +180,20 @@ class LaporanService
             }
 
             $laporan->update([
-                'status'           => 'diproses',
-                'prioritas'        => $prioritas,
+                'status' => 'diproses',
+                'prioritas' => $prioritas,
                 'alasan_penolakan' => null,
             ]);
 
-            $keterangan = "Laporan disetujui oleh Admin DSDABM dengan prioritas: " . ucfirst($prioritas) . ".";
+            $keterangan = 'Laporan disetujui oleh Admin DSDABM dengan prioritas: '.ucfirst($prioritas).'.';
             if ($catatan) {
                 $keterangan .= " Catatan verifikator: {$catatan}";
             }
 
             RiwayatStatus::create([
                 'laporan_id' => $laporan->id,
-                'user_id'    => $adminId,
-                'status'     => 'diproses',
+                'user_id' => $adminId,
+                'status' => 'diproses',
                 'keterangan' => $keterangan,
             ]);
 
@@ -212,14 +214,14 @@ class LaporanService
             }
 
             $laporan->update([
-                'status'           => 'ditolak',
+                'status' => 'ditolak',
                 'alasan_penolakan' => $alasan,
             ]);
 
             RiwayatStatus::create([
                 'laporan_id' => $laporan->id,
-                'user_id'    => $adminId,
-                'status'     => 'ditolak',
+                'user_id' => $adminId,
+                'status' => 'ditolak',
                 'keterangan' => "Laporan ditolak oleh Admin DSDABM. Alasan: {$alasan}",
             ]);
 

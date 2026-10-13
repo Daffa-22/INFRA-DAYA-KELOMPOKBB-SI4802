@@ -75,7 +75,16 @@ Terakhir diperbarui: 2026-10-13 (Fase 5)
 - [x] Setujui laporan & tetapkan prioritas (`rendah`, `sedang`, `tinggi`) + catatan verifikator opsional.
 - [x] Tolak laporan dengan modal input alasan wajib (min 10 karakter) + pencatatan `riwayat_status`.
 - [x] Guard middleware `role:admin` pada semua route verifikasi.
-- [x] Pengujian Feature E2E Verifikasi (`VerifikasiAdminTest.php`) — **13/13 PASS** (Total suite **38/38 PASS**).
+- [x] Pengujian Feature E2E Verifikasi (`VerifikasiAdminTest.php`) — **13/13 PASS**.
+- [x] **Audit & Hardening Keamanan (fix/audit-20261014):**
+  - SEC-01 (Critical): Cegah login akun nonaktif & terminasi sesi aktif di middleware.
+  - SEC-02 (High): Cegah spoofing ekstensi upload via `guessExtension()` server MIME.
+  - SEC-03 (High): Rate limiting registrasi (5 req/min) & lapor warga (10 req/min).
+  - SEC-04 (High): Sanitasi XSS & quote break pada marker popup Leaflet.
+  - SEC-05 (Medium): Cegah self-lockout admin saat kelola user.
+  - SLP-01 (Medium): Hapus request class tidak terpakai & bersihkan dead imports.
+  - SLP-02 (Low): Formatter PSR Laravel Pint lulus tanpa peringatan.
+  - Total test suite Feature/Unit: **47/47 PASS** (125 assertions).
 
 ### Fase 6: Disposisi Penugasan & Surat Tugas PDF (STATUS: TODO)
 - [ ] Migration & Model `disposisi_penugasan`.

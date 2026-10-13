@@ -16,7 +16,9 @@ class VerifikasiAdminTest extends TestCase
     use RefreshDatabase;
 
     private User $admin;
+
     private User $warga;
+
     private LaporanKerusakan $laporan;
 
     protected function setUp(): void
@@ -31,34 +33,34 @@ class VerifikasiAdminTest extends TestCase
             'nama_kecamatan' => 'Coblong',
         ]);
         $kelurahan = Kelurahan::create([
-            'kecamatan_id'   => $kecamatan->id,
+            'kecamatan_id' => $kecamatan->id,
             'kode_kelurahan' => 'BDG-001-01',
             'nama_kelurahan' => 'Dago',
         ]);
         $kategori = KategoriInfrastruktur::create([
-            'nama_kategori'   => 'Jalan Raya',
-            'deskripsi'       => 'Kerusakan pada jalan raya',
+            'nama_kategori' => 'Jalan Raya',
+            'deskripsi' => 'Kerusakan pada jalan raya',
             'bobot_prioritas' => 2,
         ]);
 
         $this->laporan = LaporanKerusakan::create([
-            'nomor_tiket'       => 'INFRA-20261013-0001',
-            'warga_id'          => $this->warga->id,
-            'kelurahan_id'      => $kelurahan->id,
-            'kategori_id'       => $kategori->id,
-            'judul'             => 'Lubang Jalan Dalam di Depan SMP 5',
+            'nomor_tiket' => 'INFRA-20261013-0001',
+            'warga_id' => $this->warga->id,
+            'kelurahan_id' => $kelurahan->id,
+            'kategori_id' => $kategori->id,
+            'judul' => 'Lubang Jalan Dalam di Depan SMP 5',
             'deskripsi_kondisi' => 'Lubang berdiameter sekitar 80cm dan kedalaman 20cm.',
-            'latitude'          => -6.8975,
-            'longitude'         => 107.6103,
+            'latitude' => -6.8975,
+            'longitude' => 107.6103,
             'foto_bukti_sebelum' => 'laporan/sebelum/test.jpg',
-            'status'            => 'menunggu_verifikasi',
-            'prioritas'         => 'sedang',
+            'status' => 'menunggu_verifikasi',
+            'prioritas' => 'sedang',
         ]);
 
         RiwayatStatus::create([
             'laporan_id' => $this->laporan->id,
-            'user_id'    => $this->warga->id,
-            'status'     => 'menunggu_verifikasi',
+            'user_id' => $this->warga->id,
+            'status' => 'menunggu_verifikasi',
             'keterangan' => 'Laporan diajukan oleh pelapor.',
         ]);
     }
@@ -132,7 +134,7 @@ class VerifikasiAdminTest extends TestCase
     {
         $response = $this->actingAs($this->admin)
             ->post(route('admin.verifikasi.setujui', $this->laporan->id), [
-                'prioritas'           => 'tinggi',
+                'prioritas' => 'tinggi',
                 'catatan_verifikator' => 'Segera ditangani karena berpotensi kecelakaan.',
             ]);
 
@@ -140,16 +142,16 @@ class VerifikasiAdminTest extends TestCase
         $response->assertSessionHas('success');
 
         $this->assertDatabaseHas('laporan_kerusakan', [
-            'id'       => $this->laporan->id,
-            'status'   => 'diproses',
+            'id' => $this->laporan->id,
+            'status' => 'diproses',
             'prioritas' => 'tinggi',
         ]);
 
         // Cek riwayat status tercatat
         $this->assertDatabaseHas('riwayat_status', [
             'laporan_id' => $this->laporan->id,
-            'user_id'    => $this->admin->id,
-            'status'     => 'diproses',
+            'user_id' => $this->admin->id,
+            'status' => 'diproses',
         ]);
     }
 
@@ -163,7 +165,7 @@ class VerifikasiAdminTest extends TestCase
         $response->assertSessionHasErrors('prioritas');
 
         $this->assertDatabaseHas('laporan_kerusakan', [
-            'id'     => $this->laporan->id,
+            'id' => $this->laporan->id,
             'status' => 'menunggu_verifikasi', // belum berubah
         ]);
     }
@@ -197,15 +199,15 @@ class VerifikasiAdminTest extends TestCase
         $response->assertSessionHas('success');
 
         $this->assertDatabaseHas('laporan_kerusakan', [
-            'id'               => $this->laporan->id,
-            'status'           => 'ditolak',
+            'id' => $this->laporan->id,
+            'status' => 'ditolak',
             'alasan_penolakan' => 'Foto bukti tidak menunjukkan lokasi yang jelas dan berulang.',
         ]);
 
         $this->assertDatabaseHas('riwayat_status', [
             'laporan_id' => $this->laporan->id,
-            'user_id'    => $this->admin->id,
-            'status'     => 'ditolak',
+            'user_id' => $this->admin->id,
+            'status' => 'ditolak',
         ]);
     }
 
@@ -219,7 +221,7 @@ class VerifikasiAdminTest extends TestCase
         $response->assertSessionHasErrors('alasan_penolakan');
 
         $this->assertDatabaseHas('laporan_kerusakan', [
-            'id'     => $this->laporan->id,
+            'id' => $this->laporan->id,
             'status' => 'menunggu_verifikasi',
         ]);
     }

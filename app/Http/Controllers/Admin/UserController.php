@@ -50,6 +50,12 @@ class UserController extends Controller
 
     public function update(UserUpdateRequest $request, int $id): RedirectResponse
     {
+        if (auth()->id() === $id && $request->has('is_active') && ! $request->boolean('is_active')) {
+            return redirect()
+                ->route('admin.users.edit', $id)
+                ->with('error', 'Anda tidak dapat menonaktifkan akun Anda sendiri.');
+        }
+
         $this->userService->updateUser(
             $id,
             $request->validated(),
@@ -63,6 +69,12 @@ class UserController extends Controller
 
     public function toggleActive(int $id): RedirectResponse
     {
+        if (auth()->id() === $id) {
+            return redirect()
+                ->route('admin.users.index')
+                ->with('error', 'Anda tidak dapat menonaktifkan akun Anda sendiri saat sedang masuk.');
+        }
+
         $user = $this->userService->toggleUserStatus($id);
         $statusText = $user->is_active ? 'diaktifkan' : 'dinonaktifkan';
 
