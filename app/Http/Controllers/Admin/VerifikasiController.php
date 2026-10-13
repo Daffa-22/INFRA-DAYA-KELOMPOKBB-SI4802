@@ -23,12 +23,12 @@ class VerifikasiController extends Controller
      */
     public function index(Request $request): View
     {
-        $search     = $request->query('search');
-        $status     = $request->query('status');
+        $search = $request->query('search');
+        $status = $request->query('status');
         $kategoriId = $request->query('kategori_id');
         $kecamatanId = $request->query('kecamatan_id');
 
-        $laporanList  = $this->laporanService->getPaginatedLaporanAdmin($search, $status, $kategoriId, $kecamatanId);
+        $laporanList = $this->laporanService->getPaginatedLaporanAdmin($search, $status, $kategoriId, $kecamatanId);
         $kategoriList = KategoriInfrastruktur::orderBy('nama_kategori')->get();
         $kecamatanList = $this->wilayahService->getAllKecamatan();
 
@@ -63,7 +63,7 @@ class VerifikasiController extends Controller
 
             return redirect()
                 ->route('admin.verifikasi.show', $id)
-                ->with('success', "Laporan {$laporan->nomor_tiket} berhasil disetujui dengan prioritas " . ucfirst($request->validated('prioritas')) . '.');
+                ->with('success', "Laporan {$laporan->nomor_tiket} berhasil disetujui dengan prioritas ".ucfirst($request->validated('prioritas')).'.');
         } catch (\InvalidArgumentException $e) {
             return back()->with('error', $e->getMessage());
         }

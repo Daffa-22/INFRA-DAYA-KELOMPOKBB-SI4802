@@ -16,7 +16,7 @@ class VerifikasiRequest extends FormRequest
         // Setujui: butuh prioritas. Tolak: butuh alasan_penolakan.
         if ($this->routeIs('admin.verifikasi.setujui')) {
             return [
-                'prioritas'           => ['required', 'in:rendah,sedang,tinggi'],
+                'prioritas' => ['required', 'in:rendah,sedang,tinggi'],
                 'catatan_verifikator' => ['nullable', 'string', 'max:1000'],
             ];
         }
@@ -30,12 +30,12 @@ class VerifikasiRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'prioritas.required'          => 'Tingkat prioritas penanganan wajib dipilih.',
-            'prioritas.in'                => 'Prioritas harus salah satu dari: rendah, sedang, atau tinggi.',
-            'catatan_verifikator.max'     => 'Catatan verifikator maksimal 1000 karakter.',
-            'alasan_penolakan.required'   => 'Alasan penolakan wajib diisi agar warga dapat memahami.',
-            'alasan_penolakan.min'        => 'Alasan penolakan minimal 10 karakter agar informatif.',
-            'alasan_penolakan.max'        => 'Alasan penolakan maksimal 1000 karakter.',
+            'prioritas.required' => 'Tingkat prioritas penanganan wajib dipilih.',
+            'prioritas.in' => 'Prioritas harus salah satu dari: rendah, sedang, atau tinggi.',
+            'catatan_verifikator.max' => 'Catatan verifikator maksimal 1000 karakter.',
+            'alasan_penolakan.required' => 'Alasan penolakan wajib diisi agar warga dapat memahami.',
+            'alasan_penolakan.min' => 'Alasan penolakan minimal 10 karakter agar informatif.',
+            'alasan_penolakan.max' => 'Alasan penolakan maksimal 1000 karakter.',
         ];
     }
 }
