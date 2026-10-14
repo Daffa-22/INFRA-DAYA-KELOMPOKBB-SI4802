@@ -17,10 +17,10 @@ Terakhir diperbarui: 2026-10-13 (Fase 5)
 | **5** | **Verifikasi & Penilaian Prioritas (Admin)** | **DONE** | Antrean filter multi-param, Setujui+Prioritas, Tolak+Alasan, Riwayat Status log, 13/13 Feature Test PASS |
 | **6** | **Disposisi Penugasan & Dokumen PDF** | **DONE** | Surat Perintah Tugas (SPT), DomPDF generator & stream/download, 13/13 Feature + 4/4 Dusk PASS |
 | **7** | **Pelaksanaan Lapangan oleh Petugas** | **DONE** | Navigasi GPS (Gmaps & Waze), Bukti Foto Sesudah, Tutup Tugas, 13/13 Feature + 4/4 Dusk PASS |
-| 8 | Tracking Timeline & Peta Publik | TODO | Pelacakan Nomor Tiket & Leaflet Sebaran Terbuka |
-| 9 | Umpan Balik & Rating Warga | TODO | Bintang 1-5 & Ulasan Pasca Perbaikan |
-| 10 | Dashboard Eksekutif & Monitoring SLA | TODO | Metrik SLA, Tren Laporan Chart.js, Heatmap |
-| 11 | Rekapitulasi Data & Ekspor (Excel & PDF) | TODO | Filter Multi-Parameter, Ekspor Excel & PDF |
+| **8** | **Tracking Timeline & Peta Publik** | **DONE** | Lacak Nomor Tiket Publik, Visual Before-After, Peta Sebaran Leaflet, 12/12 Feature + 3/3 Dusk PASS |
+| **9** | **Umpan Balik & Rating Warga** | **DONE** | Rating 1-5 Bintang & Ulasan Pasca Perbaikan, IDOR Guard, 6/6 Feature + 2/2 Dusk PASS |
+| 10 | Dashboard Eksekutif & Monitoring SLA | TODO | Metrik SLA, Tren Laporan Chart.js, Heatmap Kepadatan |
+| 11 | Rekapitulasi Data & Ekspor (Excel & PDF) | TODO | Filter Multi-Parameter, Ekspor Excel & PDF Resmi |
 | 12 | Hardening, Optimasi & Pengujian Menyeluruh | TODO | Keamanan, Eager Loading, Rangkaian Dusk 100% |
 
 ---
