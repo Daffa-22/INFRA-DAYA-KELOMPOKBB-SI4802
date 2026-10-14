@@ -141,50 +141,100 @@
         @endif
     </main>
 
-    <!-- Civic Footer -->
-    <footer class="mt-auto bg-brand-navy text-white pt-12 pb-8 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-white/10">
-                <div>
-                    <div class="mb-4">
-                        <div class="inline-flex items-center bg-white px-3 py-1.5 rounded-lg shadow-sm border border-slate-200">
-                            <x-application-logo variant="full" class="h-8 w-auto max-w-[170px]" />
-                        </div>
-                        <div class="mt-2 text-xs text-slate-300 font-semibold tracking-wide">
-                            Pemerintah Kota Bandung &bull; DSDABM
-                        </div>
+    <!-- Civic Footer (Clean Command Deck Style) -->
+    <footer class="mt-auto relative bg-[#070B14] text-white pt-14 pb-8 border-t border-white/10 overflow-hidden">
+        <!-- Subtle Ambient Lighting -->
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-white/10">
+                <!-- Col 1: Brand & Instansi -->
+                <div class="md:col-span-5 space-y-4">
+                    <div class="inline-flex items-center bg-white px-3 py-1.5 rounded-xl shadow-xs border border-white/10">
+                        <x-application-logo variant="full" class="h-8 w-auto max-w-[170px]" />
                     </div>
-                    <p class="text-xs text-slate-300 leading-relaxed">
+                    <div class="text-xs font-semibold text-slate-300 tracking-wide">
+                        Pemerintah Kota Bandung &bull; DSDABM
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
                         Sistem pelaporan dan respons cepat perbaikan infrastruktur publik (jalan, drainase, penerangan, dan jembatan) untuk mewujudkan Bandung yang nyaman dan tanggap (SDG 9).
                     </p>
+                    <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-[11px] font-mono text-slate-300">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <span>Sistem Siaga 24/7 &bull; URC DSDABM</span>
+                    </div>
                 </div>
 
-                <div>
-                    <h4 class="text-sm font-bold text-brand-amber uppercase tracking-wider mb-4">Layanan Publik</h4>
-                    <ul class="space-y-2 text-xs text-slate-300">
-                        <li><a href="{{ route('warga.laporan.create', [], false) }}" class="hover:text-white transition-colors">&rarr; Pengajuan Laporan Baru</a></li>
-                        <li><a href="{{ route('tracking.publik', [], false) }}" class="hover:text-white transition-colors">&rarr; Pelacakan Status Nomor Tiket</a></li>
-                        <li><a href="{{ route('peta.publik', [], false) }}" class="hover:text-white transition-colors">&rarr; Peta Sebaran Masalah Terbuka</a></li>
-                        <li><a href="{{ route('login') }}" class="hover:text-white transition-colors">&rarr; Portal Petugas & Admin DSDABM</a></li>
+                <!-- Col 2: Layanan Publik -->
+                <div class="md:col-span-3">
+                    <h4 class="text-xs font-bold text-slate-200 uppercase tracking-widest font-mono mb-4 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                        Layanan Publik
+                    </h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li>
+                            <a href="{{ route('warga.laporan.create', [], false) }}" class="group flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
+                                <svg class="w-3.5 h-3.5 text-slate-500 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                <span>Pengajuan Laporan Baru</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('tracking.publik', [], false) }}" class="group flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
+                                <svg class="w-3.5 h-3.5 text-slate-500 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                <span>Pelacakan Status Nomor Tiket</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('peta.publik', [], false) }}" class="group flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
+                                <svg class="w-3.5 h-3.5 text-slate-500 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                <span>Peta Sebaran Masalah Terbuka</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('login') }}" class="group flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
+                                <svg class="w-3.5 h-3.5 text-slate-500 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                <span>Portal Petugas &amp; Admin DSDABM</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
-                <div>
-                    <h4 class="text-sm font-bold text-brand-amber uppercase tracking-wider mb-4">Kontak Instansi</h4>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        <strong>Dinas Sumber Daya Air dan Bina Marga (DSDABM)</strong><br>
-                        Jl. Cianjur No. 34, Kota Bandung, Jawa Barat 40271<br>
-                        Email: dsdabm@bandung.go.id<br>
-                        Call Center Darurat: 112
-                    </p>
+                <!-- Col 3: Kontak Instansi -->
+                <div class="md:col-span-4">
+                    <h4 class="text-xs font-bold text-slate-200 uppercase tracking-widest font-mono mb-4 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                        Kontak Instansi
+                    </h4>
+                    <div class="space-y-3 text-xs text-slate-400">
+                        <div class="text-white font-semibold leading-snug">
+                            Dinas Sumber Daya Air dan Bina Marga (DSDABM)
+                        </div>
+                        <div class="flex items-start gap-2.5">
+                            <svg class="w-4 h-4 text-slate-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            <span>Jl. Cianjur No. 34, Kota Bandung, Jawa Barat 40271</span>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <svg class="w-4 h-4 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <a href="mailto:dsdabm@bandung.go.id" class="hover:text-blue-400 transition-colors">dsdabm@bandung.go.id</a>
+                        </div>
+                        <div class="flex items-center gap-2.5 pt-1">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            <span class="font-mono text-slate-300">Call Center Darurat: <strong class="text-amber-400 font-bold">112</strong> / (022) 7278835</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+            <!-- Bottom Subfooter -->
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
                 <p>&copy; {{ date('Y') }} INFRA-DAYA Kota Bandung. Seluruh hak cipta dilindungi.</p>
-                <p class="flex items-center gap-2">
-                    <span>Mendukung SDG 9: Industri, Inovasi, & Infrastruktur</span>
-                </p>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-slate-400">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                    <span>Mendukung SDG 9: Industri, Inovasi, &amp; Infrastruktur</span>
+                </div>
             </div>
         </div>
     </footer>
