@@ -1,9 +1,22 @@
 <x-warga-layout title="Portal Pelaporan Kerusakan Infrastruktur Kota Bandung">
-    <!-- HERO SECTION (Sentry / Roobinium Style - Screenshot 1) -->
+    <!-- HERO SECTION (Gedung Sate Bandung Landmark Background) -->
     <div class="relative bg-[#070B14] text-white border-b border-white/10 overflow-hidden">
+        <!-- Background Image: Gedung Sate Bandung -->
+        <div class="absolute inset-0 z-0 overflow-hidden">
+            <img 
+                src="{{ asset('images/gedung-sate-bandung.jpg') }}" 
+                alt="Ikon Gedung Sate Bandung" 
+                class="w-full h-full object-cover object-[center_35%] filter contrast-105 brightness-95"
+            >
+            <!-- Intelligent Directional Gradient Overlays: Deep contrast on the left for text, clear view of Gedung Sate on the right -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[#070B14] via-[#070B14]/80 via-45% to-[#070B14]/25"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#070B14] via-transparent via-60% to-[#070B14]/70"></div>
+            <div class="absolute inset-0 bg-radial-[at_80%_40%] from-blue-600/10 via-transparent to-transparent"></div>
+        </div>
+
         <!-- Radial Ambient Glow on the right side -->
-        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/15 rounded-full blur-[140px] pointer-events-none"></div>
-        <div class="absolute -left-40 -top-40 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/20 rounded-full blur-[140px] pointer-events-none z-1"></div>
+        <div class="absolute -left-40 -top-40 w-[500px] h-[500px] bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none z-1"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
