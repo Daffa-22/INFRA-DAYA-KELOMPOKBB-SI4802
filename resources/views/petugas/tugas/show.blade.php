@@ -108,12 +108,14 @@
                             Foto Bukti Kerusakan Awal (Sebelum Perbaikan)
                         </p>
                         @if($disposisi->laporan->foto_bukti_sebelum)
-                            <div class="rounded-xl overflow-hidden border border-slate-200 bg-slate-50 max-h-96">
-                                <img
-                                    src="{{ asset('storage/' . $disposisi->laporan->foto_bukti_sebelum) }}"
-                                    alt="Foto Sebelum Perbaikan"
-                                    class="w-full h-auto object-cover max-h-96"
-                                >
+                            <div class="rounded-xl overflow-hidden border border-slate-200 bg-slate-50 max-h-96 relative group cursor-zoom-in">
+                                <a href="{{ asset('storage/' . $disposisi->laporan->foto_bukti_sebelum) }}" target="_blank" rel="noopener noreferrer" class="block w-full">
+                                    <img
+                                        src="{{ asset('storage/' . $disposisi->laporan->foto_bukti_sebelum) }}"
+                                        alt="Foto Sebelum Perbaikan"
+                                        class="w-full h-auto object-cover max-h-96 hover:scale-101 transition-transform duration-200"
+                                    >
+                                </a>
                             </div>
                         @else
                             <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 text-center text-xs text-slate-400 italic">

@@ -78,16 +78,30 @@
                 <!-- Foto Bukti -->
                 @if($laporan->foto_bukti_sebelum)
                     <x-card class="p-5">
-                        <h3 class="text-sm font-bold text-slate-700 mb-3">Foto Bukti Kondisi Kerusakan</h3>
-                        <div class="rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
-                            <img
-                                src="{{ asset('storage/' . $laporan->foto_bukti_sebelum) }}"
-                                alt="Foto bukti kerusakan laporan {{ $laporan->nomor_tiket }}"
-                                class="w-full object-cover max-h-80"
-                                dusk="foto-bukti"
-                            >
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-sm font-bold text-slate-700">Foto Bukti Kondisi Kerusakan</h3>
+                            <a href="{{ asset('storage/' . $laporan->foto_bukti_sebelum) }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800">
+                                <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                <span>Buka Ukuran Penuh</span>
+                            </a>
                         </div>
-                        <p class="text-[11px] text-slate-400 mt-2">Foto kondisi sebelum penanganan diunggah oleh pelapor.</p>
+                        <div class="rounded-xl overflow-hidden border border-slate-200 bg-slate-100 relative group cursor-zoom-in">
+                            <a href="{{ asset('storage/' . $laporan->foto_bukti_sebelum) }}" target="_blank" rel="noopener noreferrer" class="block">
+                                <img
+                                    src="{{ asset('storage/' . $laporan->foto_bukti_sebelum) }}"
+                                    alt="Foto bukti kerusakan laporan {{ $laporan->nomor_tiket }}"
+                                    class="w-full object-cover max-h-96 transition-transform duration-300 group-hover:scale-102"
+                                    dusk="foto-bukti"
+                                >
+                                <div class="absolute inset-0 bg-slate-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black/75 text-white text-xs font-semibold backdrop-blur-sm shadow-md">
+                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                                        Klik untuk Perbesar Foto
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-2">Foto kondisi sebelum penanganan diunggah oleh pelapor. Klik untuk melihat dalam resolusi asli.</p>
                     </x-card>
                 @endif
 

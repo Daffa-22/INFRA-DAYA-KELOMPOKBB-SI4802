@@ -164,11 +164,19 @@
                                 </div>
                                 <div class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 h-64 sm:h-72">
                                     @if ($laporan->foto_bukti_sebelum)
-                                        <img
-                                            src="{{ asset('storage/' . $laporan->foto_bukti_sebelum) }}"
-                                            alt="Foto Kerusakan Awal"
-                                            class="w-full h-full object-cover"
-                                        >
+                                        <a href="{{ asset('storage/' . $laporan->foto_bukti_sebelum) }}" target="_blank" rel="noopener noreferrer" class="block w-full h-full relative group cursor-zoom-in">
+                                            <img
+                                                src="{{ asset('storage/' . $laporan->foto_bukti_sebelum) }}"
+                                                alt="Foto Kerusakan Awal"
+                                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                            >
+                                            <div class="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black/75 text-white text-xs font-semibold backdrop-blur-sm shadow-md">
+                                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                                                    Lihat Foto Penuh
+                                                </span>
+                                            </div>
+                                        </a>
                                     @else
                                         <div class="h-full flex items-center justify-center text-xs text-slate-400">
                                             Tidak ada foto awal
@@ -192,11 +200,19 @@
                                 </div>
                                 <div class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 h-64 sm:h-72">
                                     @if ($laporan->foto_bukti_sesudah)
-                                        <img
-                                            src="{{ asset('storage/' . $laporan->foto_bukti_sesudah) }}"
-                                            alt="Foto Setelah Perbaikan"
-                                            class="w-full h-full object-cover"
-                                        >
+                                        <a href="{{ asset('storage/' . $laporan->foto_bukti_sesudah) }}" target="_blank" rel="noopener noreferrer" class="block w-full h-full relative group cursor-zoom-in">
+                                            <img
+                                                src="{{ asset('storage/' . $laporan->foto_bukti_sesudah) }}"
+                                                alt="Foto Setelah Perbaikan"
+                                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                            >
+                                            <div class="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black/75 text-white text-xs font-semibold backdrop-blur-sm shadow-md">
+                                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                                                    Lihat Foto Penuh
+                                                </span>
+                                            </div>
+                                        </a>
                                     @else
                                         <div class="h-full flex flex-col items-center justify-center text-center p-6 bg-slate-50">
                                             <div class="h-12 w-12 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mb-2">

@@ -41,9 +41,23 @@
             <!-- Kolom Kiri: Rincian & Foto Bukti -->
             <div class="lg:col-span-2 space-y-6">
                 <x-card class="p-6 space-y-5">
-                    <h2 class="text-base font-bold text-slate-800 border-b border-slate-100 pb-2">Foto Bukti Kerusakan</h2>
-                    <div class="rounded-xl overflow-hidden border border-slate-200 bg-slate-900 flex items-center justify-center max-h-96">
-                        <img src="{{ asset('storage/' . $laporan->foto_bukti_sebelum) }}" alt="{{ $laporan->judul }}" class="w-full h-auto object-contain">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <h2 class="text-base font-bold text-slate-800">Foto Bukti Kerusakan</h2>
+                        @if($laporan->foto_bukti_sebelum)
+                            <a href="{{ asset('storage/' . $laporan->foto_bukti_sebelum) }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800">
+                                <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                <span>Buka Ukuran Asli</span>
+                            </a>
+                        @endif
+                    </div>
+                    <div class="rounded-xl overflow-hidden border border-slate-200 bg-slate-900 flex items-center justify-center max-h-96 relative group cursor-zoom-in">
+                        @if($laporan->foto_bukti_sebelum)
+                            <a href="{{ asset('storage/' . $laporan->foto_bukti_sebelum) }}" target="_blank" rel="noopener noreferrer" class="block w-full">
+                                <img src="{{ asset('storage/' . $laporan->foto_bukti_sebelum) }}" alt="{{ $laporan->judul }}" class="w-full h-auto object-contain max-h-96 transition-transform duration-300 group-hover:scale-101">
+                            </a>
+                        @else
+                            <div class="py-12 text-slate-400 text-xs">Tidak ada foto bukti</div>
+                        @endif
                     </div>
 
                     <div>
@@ -79,7 +93,9 @@
                                 <span class="text-xs font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200 block mb-1.5 w-fit">Sebelum</span>
                                 <div class="rounded-xl overflow-hidden border border-slate-200 bg-slate-100 h-48">
                                     @if($laporan->foto_bukti_sebelum)
-                                        <img src="{{ asset('storage/' . $laporan->foto_bukti_sebelum) }}" alt="Foto Sebelum" class="w-full h-full object-cover">
+                                        <a href="{{ asset('storage/' . $laporan->foto_bukti_sebelum) }}" target="_blank" rel="noopener noreferrer" class="block w-full h-full cursor-zoom-in">
+                                            <img src="{{ asset('storage/' . $laporan->foto_bukti_sebelum) }}" alt="Foto Sebelum" class="w-full h-full object-cover hover:scale-105 transition-transform duration-200">
+                                        </a>
                                     @endif
                                 </div>
                             </div>
@@ -87,7 +103,9 @@
                                 <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 block mb-1.5 w-fit">Setelah Perbaikan</span>
                                 <div class="rounded-xl overflow-hidden border border-slate-200 bg-slate-100 h-48">
                                     @if($laporan->foto_bukti_sesudah)
-                                        <img src="{{ asset('storage/' . $laporan->foto_bukti_sesudah) }}" alt="Foto Sesudah" class="w-full h-full object-cover">
+                                        <a href="{{ asset('storage/' . $laporan->foto_bukti_sesudah) }}" target="_blank" rel="noopener noreferrer" class="block w-full h-full cursor-zoom-in">
+                                            <img src="{{ asset('storage/' . $laporan->foto_bukti_sesudah) }}" alt="Foto Sesudah" class="w-full h-full object-cover hover:scale-105 transition-transform duration-200">
+                                        </a>
                                     @else
                                         <div class="h-full flex items-center justify-center text-xs text-slate-400">Belum ada foto sesudah</div>
                                     @endif
