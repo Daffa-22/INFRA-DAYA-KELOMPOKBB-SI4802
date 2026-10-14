@@ -10,10 +10,10 @@
     <!-- Favicon Resmi INFRA-DAYA -->
     <link rel="icon" type="image/png" href="{{ asset('images/logo-icon.png') }}">
 
-    <!-- Google Fonts Inter -->
+    <!-- Google Fonts Plus Jakarta Sans & Playfair Display -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@1,400;1,600;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -37,50 +37,56 @@
         </div>
     </div>
 
-    <!-- Main Navigation Bar (Sentry / Roobinium Style) -->
-    <header class="sticky top-0 z-40 bg-[#070B14]/95 backdrop-blur-md border-b border-white/10 text-white shadow-md">
+    <!-- Main Navigation Bar (Sustainable Infrastructure Dribbble Theme) -->
+    <header class="sticky top-0 z-40 bg-[#0A1628]/95 backdrop-blur-md border-b border-white/10 text-white shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex h-20 items-center justify-between">
-                <!-- Brand Logo (White Badge for crisp high-contrast presentation) -->
+                <!-- Brand Logo (Crisp Badge Presentation) -->
                 <a href="{{ url('/') }}" class="flex items-center gap-3 group">
-                    <div class="bg-white px-2.5 py-1.5 rounded-xl shadow-sm inline-flex items-center transition-transform group-hover:scale-102">
+                    <div class="bg-white px-3 py-1.5 rounded-2xl shadow-sm inline-flex items-center transition-transform group-hover:scale-102">
                         <x-application-logo variant="full" class="h-8 sm:h-9 w-auto max-w-[175px] object-contain" />
                     </div>
                     <span class="sr-only">INFRA-DAYA Kota Bandung</span>
                 </a>
 
-                <!-- Desktop Nav Items (Segmented Capsule Bar) -->
-                <nav class="hidden md:flex items-center p-1 rounded-xl bg-white/[0.04] border border-white/10 font-semibold text-xs tracking-wide">
-                    <a href="{{ url('/') }}" class="px-4 py-2 rounded-lg transition-all {{ request()->is('/') ? 'text-white bg-white/10 font-bold shadow-xs' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                <!-- Desktop Nav Items -->
+                <nav class="hidden md:flex items-center gap-1 font-semibold text-xs tracking-wide">
+                    <a href="{{ url('/') }}" class="px-3.5 py-2 rounded-full transition-all {{ request()->is('/') ? 'text-white bg-white/15 font-bold shadow-xs' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                         Beranda
                     </a>
-                    <a href="{{ route('peta.publik', [], false) }}" class="px-4 py-2 rounded-lg transition-all {{ request()->routeIs('peta.publik*') ? 'text-white bg-white/10 font-bold shadow-xs' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                    <a href="{{ url('/#tentang') }}" class="px-3.5 py-2 rounded-full transition-all text-slate-300 hover:text-white hover:bg-white/5">
+                        Tentang
+                    </a>
+                    <a href="{{ url('/#layanan') }}" class="px-3.5 py-2 rounded-full transition-all text-slate-300 hover:text-white hover:bg-white/5">
+                        Layanan
+                    </a>
+                    <a href="{{ route('peta.publik', [], false) }}" class="px-3.5 py-2 rounded-full transition-all {{ request()->routeIs('peta.publik*') ? 'text-white bg-white/15 font-bold shadow-xs' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                         Peta Publik
                     </a>
-                    <a href="{{ route('tracking.publik', [], false) }}" class="px-4 py-2 rounded-lg transition-all {{ request()->routeIs('tracking.publik*') ? 'text-white bg-white/10 font-bold shadow-xs' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                    <a href="{{ route('tracking.publik', [], false) }}" class="px-3.5 py-2 rounded-full transition-all {{ request()->routeIs('tracking.publik*') ? 'text-white bg-white/15 font-bold shadow-xs' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                         Lacak Tiket
                     </a>
 
                     @auth
                         @if (auth()->user()->isWarga())
-                            <a href="{{ route('warga.laporan.saya', [], false) }}" class="px-4 py-2 rounded-lg transition-all {{ request()->routeIs('warga.laporan.*') ? 'text-white bg-white/10 font-bold shadow-xs' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                            <a href="{{ route('warga.laporan.saya', [], false) }}" class="px-3.5 py-2 rounded-full transition-all {{ request()->routeIs('warga.laporan.*') ? 'text-white bg-white/15 font-bold shadow-xs' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                                 Laporan Saya
                             </a>
                         @else
-                            <a href="{{ route('dashboard') }}" class="px-4 py-2 rounded-lg text-blue-400 hover:bg-blue-500/10 font-bold">
+                            <a href="{{ route('dashboard') }}" class="px-3.5 py-2 rounded-full text-amber-400 hover:bg-amber-400/10 font-bold">
                                 Panel Petugas &rarr;
                             </a>
                         @endif
                     @endauth
                 </nav>
 
-                <!-- Right Action Buttons (Sign in + High-contrast Pill Button) -->
+                <!-- Right Action Buttons (Sign in + Vibrant Amber Pill Button like Dribbble) -->
                 <div class="hidden md:flex items-center gap-4">
                     @auth
                         <!-- User Menu -->
                         <div class="relative" x-data="{ open: false }" @click.outside="open = false">
-                            <button @click="open = !open" class="flex items-center gap-2 rounded-xl p-1.5 hover:bg-white/10 transition-colors text-white">
-                                <div class="h-8 w-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow">
+                            <button @click="open = !open" class="flex items-center gap-2 rounded-full px-3 py-1.5 hover:bg-white/10 transition-colors text-white">
+                                <div class="h-8 w-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow">
                                     {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                                 </div>
                                 <span class="text-xs font-semibold text-slate-200">{{ auth()->user()->name }}</span>
@@ -104,10 +110,10 @@
                         </a>
                     @endauth
 
-                    <!-- High-contrast Action Button (like "Get demo" in Sentry) -->
-                    <a href="{{ route('warga.laporan.create', [], false) }}" class="inline-flex items-center gap-2 rounded-xl bg-white text-slate-950 px-4 py-2.5 text-xs font-bold shadow-sm transition-all hover:bg-slate-100 hover:shadow-md focus:outline-none">
-                        <svg class="h-3.5 w-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    <!-- Vibrant Amber Pill Button matching Dribbble Let's Collaborate -->
+                    <a href="{{ route('warga.laporan.create', [], false) }}" class="inline-flex items-center gap-2 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 px-5 py-2.5 text-xs font-bold shadow-md shadow-amber-500/20 transition-all hover:scale-102 focus:outline-none">
                         <span>Lapor Kerusakan</span>
+                        <span class="text-sm">&nearr;</span>
                     </a>
                 </div>
 

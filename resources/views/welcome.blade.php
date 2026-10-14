@@ -1,426 +1,364 @@
 <x-warga-layout title="Portal Pelaporan Kerusakan Infrastruktur Kota Bandung">
-    <!-- HERO SECTION (Sentry / Roobinium Style - Screenshot 1) -->
-    <div class="relative bg-[#070B14] text-white border-b border-white/10 overflow-hidden">
-        <!-- Radial Ambient Glow on the right side -->
-        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/15 rounded-full blur-[140px] pointer-events-none"></div>
-        <div class="absolute -left-40 -top-40 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <!-- HERO SECTION (Sustainable Infrastructure Dribbble Theme - Screenshot 1) -->
+    <div class="relative bg-[#0A1628] text-white overflow-hidden min-h-[620px] lg:min-h-[720px] flex items-center">
+        <!-- Background Hero Panoramic Image with Dark Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img
+                src="{{ asset('images/hero-infrastructure.jpg') }}"
+                alt="Infrastruktur Berkelanjutan Kota Bandung"
+                class="w-full h-full object-cover object-center"
+            >
+            <!-- Cinematic Dark Gradient Overlay (Deep Navy Palette of INFRA-DAYA) -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0A1628]/95 via-[#0A1628]/85 to-[#0A1628]/55"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-transparent to-transparent"></div>
+        </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-                <!-- Left Column: High-Authority Civic & Technical Statement -->
-                <div class="lg:col-span-7 space-y-7">
-                    <!-- Institutional Badges (Exact Sentry Tag Style) -->
-                    <div class="inline-flex flex-wrap items-center gap-2.5 font-mono text-[11px]">
-                        <span class="px-2.5 py-1 rounded bg-white/[0.06] border border-white/15 uppercase tracking-widest text-slate-300 font-bold">
-                            SDG 9 KOTA BANDUNG
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 relative z-10 w-full">
+            <div class="max-w-3xl space-y-8">
+                <!-- Civic & SDG Institutional Tag Capsule -->
+                <div class="inline-flex flex-wrap items-center gap-2.5 font-mono text-[11px]">
+                    <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 uppercase tracking-widest text-slate-200 font-bold">
+                        SDG 9 KOTA BANDUNG
+                    </span>
+                    <span class="px-3 py-1 rounded-full bg-amber-400/20 backdrop-blur-md border border-amber-400/40 text-amber-300 font-semibold flex items-center gap-2">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
                         </span>
-                        <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/30 text-blue-400 font-semibold flex items-center gap-2">
-                            <span class="relative flex h-2 w-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                            </span>
-                            STATUS: SIAGA AKTIF URC DSDABM
-                        </span>
-                    </div>
-
-                    <!-- Enormous, Razor-sharp Headline -->
-                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.05]">
-                        Investigasi cepat, <br>
-                        <span class="text-slate-100">tuntas sebelum meluas</span>
-                    </h1>
-
-                    <!-- Technical Subtitle -->
-                    <p class="text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed">
-                        Sistem komando dan pelaporan infrastruktur publik terpadu <strong class="text-white font-bold">INFRA-DAYA &bull; DSDABM Pemerintah Kota Bandung</strong>. Navigasi dan selesaikan kerusakan jalan berlubang, saluran air tersumbat, jembatan, serta lampu jalan secara geospasial real-time.
-                    </p>
-
-                    <!-- Direct Action Controls (Button + Quick Ticket Tracker Input) -->
-                    <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 max-w-xl">
-                        <!-- Primary CTA Button (Blue with Arrow) -->
-                        <a
-                            href="{{ route('warga.laporan.create', [], false) }}"
-                            class="inline-flex items-center justify-center gap-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white px-6 py-3.5 text-sm font-bold shadow-lg shadow-blue-600/30 transition-all cursor-pointer whitespace-nowrap group"
-                        >
-                            <span>Lapor Kerusakan</span>
-                            <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                        </a>
-
-                        <!-- Direct Ticket Tracker Console Form -->
-                        <form action="{{ route('tracking.publik', [], false) }}" method="GET" class="flex-1 relative flex items-center">
-                            <input
-                                type="text"
-                                name="nomor_tiket"
-                                placeholder="Lacak Tiket: INFRA-2026..."
-                                class="w-full rounded-xl bg-white/[0.08] hover:bg-white/[0.12] border border-white/20 px-4 py-3 text-sm text-white placeholder-slate-400 font-mono focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors uppercase font-bold"
-                            >
-                            <button
-                                type="submit"
-                                class="absolute right-1.5 px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition-colors cursor-pointer"
-                            >
-                                Lacak Tiket
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- Civic Trust Data Line -->
-                    <div class="pt-5 border-t border-white/10 flex flex-wrap items-center gap-6 sm:gap-10 text-xs text-slate-300 font-mono">
-                        <div>
-                            <span class="text-white font-bold text-sm block">30 Kecamatan</span>
-                            <span class="text-slate-400 text-[11px]">Cakupan Wilayah</span>
-                        </div>
-                        <div class="border-l border-white/10 pl-6">
-                            <span class="text-blue-400 font-bold text-sm block">&lt; 24 Jam</span>
-                            <span class="text-slate-400 text-[11px]">Standar Verifikasi SLA</span>
-                        </div>
-                        <div class="border-l border-white/10 pl-6">
-                            <span class="text-emerald-400 font-bold text-sm block">100% Terbuka</span>
-                            <span class="text-slate-400 text-[11px]">Transparansi Publik</span>
-                        </div>
-                    </div>
+                        STATUS: SIAGA AKTIF URC DSDABM
+                    </span>
                 </div>
 
-                <!-- Right Column: 3D Isometric Telemetry Platform Graphic (Exact Roobinium Style) -->
-                <div class="lg:col-span-5 relative flex items-center justify-center">
-                    <div class="w-full max-w-[540px] aspect-[1.15] relative select-none">
-                        <!-- High-Fidelity SVG Isometric Wireframe Platform -->
-                        <svg viewBox="0 0 600 520" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-2xl">
-                            <!-- Definitions for Gradients -->
-                            <defs>
-                                <radialGradient id="platformGlow" cx="50%" cy="50%" r="50%">
-                                    <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.35"/>
-                                    <stop offset="70%" stop-color="#1D4ED8" stop-opacity="0.1"/>
-                                    <stop offset="100%" stop-color="#070B14" stop-opacity="0"/>
-                                </radialGradient>
-                                <linearGradient id="planeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#1E293B" stop-opacity="0.85"/>
-                                    <stop offset="100%" stop-color="#0F172A" stop-opacity="0.95"/>
-                                </linearGradient>
-                                <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#60A5FA"/>
-                                    <stop offset="100%" stop-color="#2563EB"/>
-                                </linearGradient>
-                                <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.8"/>
-                                    <stop offset="100%" stop-color="#0284C7" stop-opacity="0.2"/>
-                                </linearGradient>
-                            </defs>
+                <!-- High-Impact Editorial Headline (Sans + Italic Serif Combination) -->
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.08]">
+                    Masa Depan Kota dengan <br>
+                    Infrastruktur <span class="font-serif italic font-normal text-amber-400 underline decoration-amber-400/40 decoration-wavy decoration-1 underline-offset-8">Berkelanjutan</span>
+                </h1>
 
-                            <!-- Ambient Center Glow Behind Slab -->
-                            <ellipse cx="300" cy="340" rx="260" ry="140" fill="url(#platformGlow)"/>
+                <!-- Subtitle -->
+                <p class="text-base sm:text-lg text-slate-200 max-w-2xl leading-relaxed font-light">
+                    Membantu masyarakat dan Pemerintah Kota Bandung (<strong class="text-white font-semibold">INFRA-DAYA &bull; DSDABM</strong>) mewujudkan konektivitas kota tangguh, bebas genangan, dan ramah lingkungan melalui pelaporan cerdas berbasis geospasial real-time.
+                </p>
 
-                            <!-- BASE ISOMETRIC SLAB -->
-                            <!-- Slab Thickness Left -->
-                            <path d="M 80,310 L 300,430 L 300,455 L 80,335 Z" fill="#1E3A8A" opacity="0.65"/>
-                            <!-- Slab Thickness Right -->
-                            <path d="M 300,430 L 520,310 L 520,335 L 300,455 Z" fill="#172554" opacity="0.85"/>
-                            <!-- Slab Top Face -->
-                            <path d="M 300,190 L 520,310 L 300,430 L 80,310 Z" fill="url(#planeGrad)" stroke="url(#edgeGrad)" stroke-width="1.8"/>
+                <!-- Action Controls (Vibrant Amber Pill Button + Quick Ticket Search) -->
+                <div class="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 max-w-2xl">
+                    <!-- Primary CTA Pill Button -->
+                    <a
+                        href="{{ route('warga.laporan.create', [], false) }}"
+                        class="inline-flex items-center justify-center gap-2.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 px-8 py-4 text-sm font-bold shadow-xl shadow-amber-500/25 transition-all hover:scale-102 cursor-pointer whitespace-nowrap group"
+                    >
+                        <span>Lapor Kerusakan</span>
+                        <span class="text-base font-black transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">&nearr;</span>
+                    </a>
 
-                            <!-- ISOMETRIC INTERNAL GRID LINES (Municipal Infrastructure Grid) -->
-                            <g stroke="#3B82F6" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="3 3">
-                                <!-- Horizontal Iso Grid -->
-                                <line x1="135" y1="280" x2="355" y2="400"/>
-                                <line x1="190" y1="250" x2="410" y2="370"/>
-                                <line x1="245" y1="220" x2="465" y2="340"/>
-                                <!-- Cross Iso Grid -->
-                                <line x1="465" y1="280" x2="245" y2="400"/>
-                                <line x1="410" y1="250" x2="190" y2="370"/>
-                                <line x1="355" y1="220" x2="135" y2="340"/>
-                            </g>
+                    <!-- Direct Ticket Tracker Console Form (Pill Container) -->
+                    <form action="{{ route('tracking.publik', [], false) }}" method="GET" class="flex-1 relative flex items-center">
+                        <input
+                            type="text"
+                            name="nomor_tiket"
+                            placeholder="Lacak Tiket: INFRA-2026..."
+                            class="w-full rounded-full bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/25 px-5 py-3.5 text-sm text-white placeholder-slate-300 font-mono focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition-colors uppercase font-bold"
+                        >
+                        <button
+                            type="submit"
+                            class="absolute right-2 px-4 py-2 rounded-full bg-white/20 hover:bg-white/30 text-xs font-semibold text-white transition-colors cursor-pointer"
+                        >
+                            Lacak Tiket
+                        </button>
+                    </form>
+                </div>
 
-                            <!-- ELEVATED ISOMETRIC WIREFRAME BOX 1: ALERT TRENDS (Exact Sentry Visual) -->
-                            <!-- Vertical Projection Lines -->
-                            <line x1="250" y1="160" x2="250" y2="310" stroke="#60A5FA" stroke-opacity="0.4" stroke-width="1.2" stroke-dasharray="2 2"/>
-                            <line x1="470" y1="160" x2="470" y2="310" stroke="#60A5FA" stroke-opacity="0.4" stroke-width="1.2" stroke-dasharray="2 2"/>
-                            <line x1="360" y1="95" x2="360" y2="245" stroke="#60A5FA" stroke-opacity="0.3" stroke-width="1.2" stroke-dasharray="2 2"/>
-                            <line x1="360" y1="225" x2="360" y2="375" stroke="#60A5FA" stroke-opacity="0.4" stroke-width="1.2" stroke-dasharray="2 2"/>
-
-                            <!-- Floating Wireframe Top Box -->
-                            <path d="M 360,95 L 470,160 L 360,225 L 250,160 Z" fill="url(#cyanGrad)" stroke="#60A5FA" stroke-width="1.8"/>
-                            <path d="M 250,160 L 360,225 L 360,255 L 250,190 Z" fill="#0369A1" opacity="0.3" stroke="#38BDF8" stroke-width="1"/>
-                            <path d="M 360,225 L 470,160 L 470,190 L 360,255 Z" fill="#075985" opacity="0.4" stroke="#38BDF8" stroke-width="1"/>
-
-                            <!-- Top Trend Curve / Data Waves inside Floating Wireframe Box -->
-                            <path d="M 270,175 Q 320,130 360,160 T 450,135" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
-                            <circle cx="360" cy="160" r="4" fill="#60A5FA" stroke="#FFFFFF" stroke-width="1.5"/>
-                            <circle cx="450" cy="135" r="3.5" fill="#38BDF8"/>
-                            <circle cx="270" cy="175" r="3" fill="#93C5FD"/>
-
-                            <!-- Wireframe Label 1: ALERT TRENDS -->
-                            <text x="360" y="80" text-anchor="middle" font-family="Inter, monospace" font-size="10" font-weight="800" fill="#93C5FD" letter-spacing="2">
-                                ALERT TRENDS &bull; RESPONS CEPAT URC
-                            </text>
-                            <text x="360" y="145" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#E2E8F0" opacity="0.8">
-                                Mengukur kecepatan perbaikan 30 kecamatan
-                            </text>
-
-                            <!-- FLOATING ISOMETRIC TAG 2: SECURITY & SLA BENCHMARK (Bottom Left) -->
-                            <g transform="translate(110, 260)">
-                                <!-- Small Iso Diamond -->
-                                <path d="M 120,40 L 190,80 L 120,120 L 50,80 Z" fill="#0F172A" fill-opacity="0.8" stroke="#3B82F6" stroke-width="1.5"/>
-                                <text x="120" y="84" text-anchor="middle" font-family="Inter, monospace" font-size="9" font-weight="800" fill="#60A5FA" letter-spacing="1">
-                                    SLA VERIFIKASI &lt;24 JAM
-                                </text>
-                            </g>
-
-                            <!-- Coordinate Nodes with Radar Pulses on the Base Plane -->
-                            <!-- Node 1: Bandung Wetan -->
-                            <circle cx="280" cy="300" r="5" fill="#38BDF8"/>
-                            <circle cx="280" cy="300" r="14" stroke="#38BDF8" stroke-width="1" opacity="0.6"/>
-                            <!-- Node 2: Pasteur / Sukajadi -->
-                            <circle cx="220" cy="335" r="4" fill="#60A5FA"/>
-                            <!-- Node 3: Ujungberung -->
-                            <circle cx="380" cy="330" r="4.5" fill="#F59E0B"/>
-                            <circle cx="380" cy="330" r="12" stroke="#F59E0B" stroke-width="1" opacity="0.5"/>
-                            <!-- Node 4: Gedebage -->
-                            <circle cx="330" cy="380" r="4" fill="#10B981"/>
-
-                            <!-- Connecting Laser Data Lines -->
-                            <line x1="220" y1="335" x2="280" y2="300" stroke="#60A5FA" stroke-width="1.2" opacity="0.7"/>
-                            <line x1="280" y1="300" x2="380" y2="330" stroke="#38BDF8" stroke-width="1.2" opacity="0.7"/>
-                            <line x1="280" y1="300" x2="330" y2="380" stroke="#10B981" stroke-width="1.2" opacity="0.7"/>
-
-                            <!-- Telemetry Coordinate Annotation -->
-                            <text x="300" y="485" text-anchor="middle" font-family="Inter, monospace" font-size="10" font-weight="700" fill="#64748B" letter-spacing="1.5">
-                                GEO TELEMETRI: -6.9175, 107.6191 &bull; DSDABM KOTA BANDUNG
-                            </text>
-                        </svg>
+                <!-- Civic Trust Data Line -->
+                <div class="pt-8 border-t border-white/15 flex flex-wrap items-center gap-8 sm:gap-12 text-xs text-slate-200 font-mono">
+                    <div>
+                        <span class="text-white font-extrabold text-base block">30 Kecamatan</span>
+                        <span class="text-slate-300 text-[11px]">Cakupan Wilayah</span>
+                    </div>
+                    <div class="border-l border-white/20 pl-8">
+                        <span class="text-amber-300 font-extrabold text-base block">&lt; 24 Jam</span>
+                        <span class="text-slate-300 text-[11px]">Standar Verifikasi SLA</span>
+                    </div>
+                    <div class="border-l border-white/20 pl-8">
+                        <span class="text-emerald-300 font-extrabold text-base block">100% Terbuka</span>
+                        <span class="text-slate-300 text-[11px]">Transparansi Publik</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SECTION 2: 4-COLUMN ISOMETRIC INFRASTRUCTURE MODULES (Screenshot 2 Style) -->
-    <section class="bg-[#F8FAFC] py-20 lg:py-28 border-b border-slate-200">
+    <!-- SECTION 2: / ABOUT US - KOMITMEN & STATISTIK (Screenshot 2 Style) -->
+    <section id="tentang" class="bg-white py-20 lg:py-28 border-b border-slate-200 scroll-mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Section Header (Exact Sentry Typography Style) -->
-            <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-                <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
-                    Dirancang untuk aduan <br>
-                    <span class="text-blue-600">yang benar-benar krusial</span>
-                </h2>
-                <p class="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
-                    INFRA-DAYA menyaring dan memvalidasi laporan warga agar Unit Reaksi Cepat (URC) DSDABM fokus menyelesaikan titik kerusakan yang paling mendesak di Kota Bandung.
-                </p>
+            <!-- Section Tag -->
+            <div class="mb-6">
+                <span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest">
+                    / Tentang INFRA-DAYA
+                </span>
             </div>
 
-            <!-- 4-Column Architectural Wireframe Grid (LOG 01 - LOG 04) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- CARD 1: LOG 01 - Jalan Raya & Trotoar -->
-                <div class="bg-white rounded-2xl border border-slate-200/90 p-6 flex flex-col justify-between shadow-xs hover:shadow-md hover:border-blue-400 transition-all duration-300 group">
-                    <div>
-                        <!-- Header Label -->
-                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                            <span class="font-mono text-xs font-bold text-slate-400 tracking-wider">LOG 01</span>
-                            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
+            <!-- Big Editorial Statement (High contrast: Dark bold text with muted gray) -->
+            <div class="max-w-5xl mb-16 sm:mb-20">
+                <h2 class="text-2xl sm:text-4xl lg:text-5xl font-normal text-slate-400 leading-[1.3] tracking-tight">
+                    INFRA-DAYA adalah platform infrastruktur terpadu Pemerintah Kota Bandung <strong class="text-slate-900 font-bold">menghadirkan solusi percepatan perbaikan fasilitas publik</strong> untuk konektivitas mobilitas kota yang aman, tanggap bencana, dan berkelanjutan bagi generasi masa depan.
+                </h2>
+            </div>
+
+            <!-- 2-Column Layout: Portrait Photo Card + Stat Metric Cards -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Left Column: Portrait Visual Card with Commitment Tag -->
+                <div class="lg:col-span-5 space-y-3">
+                    <div class="rounded-3xl overflow-hidden shadow-lg border border-slate-100 aspect-[3/4] relative group">
+                        <img
+                            src="{{ asset('images/about-commitment.jpg') }}"
+                            alt="Komitmen Infrastruktur Tangguh Kota Bandung"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-white">
+                            <span class="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[11px] font-mono font-bold uppercase tracking-wider">
+                                TARGET PRIORITAS 2026
+                            </span>
+                            <p class="text-sm font-semibold mt-2 text-slate-100">
+                                Integrasi penataan drainase &amp; pedestrian berkelanjutan Kota Bandung.
+                            </p>
+                        </div>
+                    </div>
+                    <p class="text-xs font-mono text-slate-400 pl-1">
+                        Komitmen Tanggap SDG 9 Kota Bandung 2026.
+                    </p>
+                </div>
+
+                <!-- Right Column: 3 Stat Cards Grid (Numbered 01/, 02/, 03/) -->
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Card 01 -->
+                    <div class="bg-slate-50/70 rounded-3xl border border-slate-200/80 p-8 flex flex-col justify-between hover:bg-white hover:shadow-xl hover:border-slate-300 transition-all duration-300">
+                        <div class="flex justify-between items-start">
+                            <span class="text-slate-300 font-mono text-sm font-bold">01/</span>
+                        </div>
+                        <div class="mt-8">
+                            <span class="text-5xl sm:text-6xl font-extrabold text-slate-900 tracking-tight block">
+                                98.4%
+                            </span>
+                            <p class="text-xs text-slate-500 font-medium mt-3 leading-relaxed">
+                                Tingkat penyelesaian laporan tepat waktu sesuai standar Service Level Agreement (SLA).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 02 -->
+                    <div class="bg-slate-50/70 rounded-3xl border border-slate-200/80 p-8 flex flex-col justify-between hover:bg-white hover:shadow-xl hover:border-slate-300 transition-all duration-300">
+                        <div class="flex justify-between items-start">
+                            <span class="text-slate-300 font-mono text-sm font-bold">02/</span>
+                        </div>
+                        <div class="mt-8">
+                            <span class="text-5xl sm:text-6xl font-extrabold text-slate-900 tracking-tight block">
+                                &lt; 24 Jam
+                            </span>
+                            <p class="text-xs text-slate-500 font-medium mt-3 leading-relaxed">
+                                Standar batas waktu verifikasi administratif dan disposisi tim Unit Reaksi Cepat (URC).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 03 (Spans 2 columns on sm) -->
+                    <div class="sm:col-span-2 bg-slate-50/70 rounded-3xl border border-slate-200/80 p-8 flex flex-col sm:flex-row justify-between items-start sm:items-end hover:bg-white hover:shadow-xl hover:border-slate-300 transition-all duration-300">
+                        <div>
+                            <span class="text-slate-300 font-mono text-sm font-bold block mb-4">03/</span>
+                            <span class="text-5xl sm:text-6xl font-extrabold text-slate-900 tracking-tight block">
+                                30 Wilayah
+                            </span>
+                            <p class="text-xs text-slate-500 font-medium mt-3 leading-relaxed max-w-md">
+                                Jangkauan pemantauan terpadu mencakup seluruh 30 kecamatan dan 151 kelurahan di wilayah administratif Kota Bandung.
+                            </p>
+                        </div>
+                        <div class="mt-6 sm:mt-0">
+                            <a href="{{ route('peta.publik', [], false) }}" class="inline-flex items-center gap-2 text-xs font-bold text-blue-600 hover:text-blue-800 font-mono uppercase tracking-wider">
+                                <span>Cek Peta Sebaran</span>
+                                <span>&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: / WHAT WE DO - SERVICES (Screenshot 3 Top Style) -->
+    <section id="layanan" class="bg-[#0A1628] text-white py-20 lg:py-28 border-b border-white/10 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Tag & Title -->
+            <div class="mb-14">
+                <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest block mb-3">
+                    / Bidang Penanganan
+                </span>
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
+                    Layanan Infrastruktur
+                </h2>
+            </div>
+
+            <!-- 4 Interactive Category Rows (01, 02, 03, 04) -->
+            <div class="divide-y divide-white/10 border-t border-b border-white/10">
+                <!-- ROW 01: Jalan Raya & Trotoar -->
+                <div class="py-8 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center group hover:bg-white/[0.02] transition-colors rounded-2xl px-4 -mx-4">
+                    <div class="lg:col-span-1 font-mono text-xs sm:text-sm font-bold text-slate-400">
+                        ( 01 )
+                    </div>
+                    <div class="lg:col-span-3">
+                        <div class="rounded-2xl overflow-hidden aspect-[16/9] shadow-md border border-white/10">
+                            <img
+                                src="{{ asset('images/service-jalan.jpg') }}"
+                                alt="Jalan Raya & Trotoar Kota Bandung"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            >
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 space-y-2">
+                        <div class="flex items-center gap-3">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                                Jalan Raya &amp; Trotoar
+                            </h3>
+                            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30 font-mono">
                                 SLA: 3 Hari
                             </span>
                         </div>
-
-                        <!-- Isometric SVG Illustration (Pavement Layers) -->
-                        <div class="my-6 aspect-[1.3] flex items-center justify-center bg-slate-50/70 rounded-xl border border-slate-100 overflow-hidden group-hover:bg-blue-50/30 transition-colors">
-                            <svg viewBox="0 0 200 160" fill="none" class="w-40 h-32">
-                                <!-- Isometric Road Cross-Section Stack -->
-                                <!-- Subgrade Base Layer -->
-                                <path d="M 100,50 L 160,85 L 100,120 L 40,85 Z" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.2"/>
-                                <path d="M 40,85 L 100,120 L 100,135 L 40,100 Z" fill="#94A3B8"/>
-                                <path d="M 100,120 L 160,85 L 160,100 L 100,135 Z" fill="#64748B"/>
-
-                                <!-- Aggregate Intermediate Layer -->
-                                <path d="M 100,35 L 160,70 L 100,105 L 40,70 Z" fill="#E2E8F0" stroke="#60A5FA" stroke-width="1.2"/>
-                                <path d="M 40,70 L 100,105 L 100,118 L 40,83 Z" fill="#93C5FD" opacity="0.8"/>
-                                <path d="M 100,105 L 160,70 L 160,83 L 100,118 Z" fill="#60A5FA" opacity="0.8"/>
-
-                                <!-- Top Asphalt Surface Layer -->
-                                <path d="M 100,20 L 160,55 L 100,90 L 40,55 Z" fill="#1E293B" stroke="#3B82F6" stroke-width="1.5"/>
-                                <path d="M 40,55 L 100,90 L 100,102 L 40,67 Z" fill="#0F172A"/>
-                                <path d="M 100,90 L 160,55 L 160,67 L 100,102 Z" fill="#020617"/>
-
-                                <!-- Road Markings & Surface Sensor Vector -->
-                                <line x1="70" y1="38" x2="130" y2="72" stroke="#F59E0B" stroke-width="1.8" stroke-dasharray="4 3"/>
-                                <circle cx="100" cy="55" r="4" fill="#3B82F6"/>
-                                <circle cx="100" cy="55" r="10" stroke="#3B82F6" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"/>
-                            </svg>
-                        </div>
-
-                        <!-- Card Meta & Content -->
-                        <h3 class="text-base font-bold text-slate-900 tracking-tight">
-                            Jalan Raya &amp; Trotoar
-                        </h3>
-                        <p class="text-xs font-semibold text-blue-600 mt-0.5">
-                            Divisi Bina Marga Kota Bandung
+                        <p class="text-xs font-mono text-slate-400">
+                            Divisi Bina Marga Pemerintah Kota Bandung
                         </p>
-                        <p class="text-xs text-slate-500 mt-2.5 leading-relaxed">
-                            Penanganan lubang aspal amblas, retak struktural, marka luntur, serta kerusakan paving trotoar pejalan kaki.
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+                            Penanganan lubang aspal amblas, retak struktural, marka jalan luntur, serta perbaikan paving trotoar pejalan kaki yang nyaman dan ramah disabilitas.
                         </p>
                     </div>
-
-                    <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
-                        <span class="text-slate-400">Prioritas: Tinggi</span>
-                        <a href="{{ route('warga.laporan.create', ['kategori' => 'jalan'], false) }}" class="text-blue-600 hover:text-blue-800 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                            Lapor &rarr;
+                    <div class="lg:col-span-1 flex justify-end">
+                        <a
+                            href="{{ route('warga.laporan.create', ['kategori' => 'jalan'], false) }}"
+                            class="h-12 w-12 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 flex items-center justify-center font-bold text-lg shadow-md transition-all group-hover:scale-110"
+                            title="Laporkan Kerusakan Jalan"
+                        >
+                            &nearr;
                         </a>
                     </div>
                 </div>
 
-                <!-- CARD 2: LOG 02 - Drainase & Saluran Air -->
-                <div class="bg-white rounded-2xl border border-slate-200/90 p-6 flex flex-col justify-between shadow-xs hover:shadow-md hover:border-blue-400 transition-all duration-300 group">
-                    <div>
-                        <!-- Header Label -->
-                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                            <span class="font-mono text-xs font-bold text-slate-400 tracking-wider">LOG 02</span>
-                            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-cyan-50 text-cyan-700 border border-cyan-200">
+                <!-- ROW 02: Drainase & Saluran Air -->
+                <div class="py-8 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center group hover:bg-white/[0.02] transition-colors rounded-2xl px-4 -mx-4">
+                    <div class="lg:col-span-1 font-mono text-xs sm:text-sm font-bold text-slate-400">
+                        ( 02 )
+                    </div>
+                    <div class="lg:col-span-3">
+                        <div class="rounded-2xl overflow-hidden aspect-[16/9] shadow-md border border-white/10">
+                            <img
+                                src="{{ asset('images/service-drainase.jpg') }}"
+                                alt="Drainase & Saluran Air Kota Bandung"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            >
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 space-y-2">
+                        <div class="flex items-center gap-3">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                                Drainase &amp; Saluran Air
+                            </h3>
+                            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-cyan-400/20 text-cyan-300 border border-cyan-400/30 font-mono">
                                 SLA: 2 Hari
                             </span>
                         </div>
-
-                        <!-- Isometric SVG Illustration (Conduit / Hydrology) -->
-                        <div class="my-6 aspect-[1.3] flex items-center justify-center bg-slate-50/70 rounded-xl border border-slate-100 overflow-hidden group-hover:bg-cyan-50/30 transition-colors">
-                            <svg viewBox="0 0 200 160" fill="none" class="w-40 h-32">
-                                <!-- Upper Drainage Chamber -->
-                                <path d="M 80,25 L 130,55 L 80,85 L 30,55 Z" fill="#F0F9FF" stroke="#0284C7" stroke-width="1.3"/>
-                                <path d="M 30,55 L 80,85 L 80,100 L 30,70 Z" fill="#BAE6FD"/>
-                                <path d="M 80,85 L 130,55 L 130,70 L 80,100 Z" fill="#7DD3FC"/>
-
-                                <!-- Connecting Conduits / Water Pipes -->
-                                <path d="M 105,70 L 165,105 L 115,135 L 55,100 Z" fill="#0284C7" fill-opacity="0.15" stroke="#0369A1" stroke-width="1.4"/>
-                                <path d="M 55,100 L 115,135 L 115,145 L 55,110 Z" fill="#0369A1" opacity="0.7"/>
-                                <path d="M 115,135 L 165,105 L 165,115 L 115,145 Z" fill="#075985" opacity="0.8"/>
-
-                                <!-- Flow Stream Lines -->
-                                <line x1="80" y1="55" x2="115" y2="105" stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="3 3"/>
-                                <circle cx="80" cy="55" r="3.5" fill="#0284C7"/>
-                                <circle cx="115" cy="105" r="3.5" fill="#38BDF8"/>
-                            </svg>
-                        </div>
-
-                        <!-- Card Meta & Content -->
-                        <h3 class="text-base font-bold text-slate-900 tracking-tight">
-                            Drainase &amp; Saluran Air
-                        </h3>
-                        <p class="text-xs font-semibold text-cyan-600 mt-0.5">
-                            Divisi Sumber Daya Air (SDA)
+                        <p class="text-xs font-mono text-slate-400">
+                            Divisi Sumber Daya Air (SDA) Kota Bandung
                         </p>
-                        <p class="text-xs text-slate-500 mt-2.5 leading-relaxed">
-                            Normalisasi sumbatan gorong-gorong, sedimentasi lumpur, genangan banjir musiman, serta keretakan dinding kirmir.
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+                            Normalisasi sumbatan gorong-gorong, pengerukan sedimentasi lumpur, mitigasi genangan banjir musiman, serta perkuatan dinding kirmir sungai.
                         </p>
                     </div>
-
-                    <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
-                        <span class="text-slate-400">Prioritas: Siaga</span>
-                        <a href="{{ route('warga.laporan.create', ['kategori' => 'drainase'], false) }}" class="text-blue-600 hover:text-blue-800 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                            Lapor &rarr;
+                    <div class="lg:col-span-1 flex justify-end">
+                        <a
+                            href="{{ route('warga.laporan.create', ['kategori' => 'drainase'], false) }}"
+                            class="h-12 w-12 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 flex items-center justify-center font-bold text-lg shadow-md transition-all group-hover:scale-110"
+                            title="Laporkan Kerusakan Drainase"
+                        >
+                            &nearr;
                         </a>
                     </div>
                 </div>
 
-                <!-- CARD 3: LOG 03 - Penerangan Jalan Umum -->
-                <div class="bg-white rounded-2xl border border-slate-200/90 p-6 flex flex-col justify-between shadow-xs hover:shadow-md hover:border-blue-400 transition-all duration-300 group">
-                    <div>
-                        <!-- Header Label -->
-                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                            <span class="font-mono text-xs font-bold text-slate-400 tracking-wider">LOG 03</span>
-                            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
+                <!-- ROW 03: Penerangan Jalan Umum -->
+                <div class="py-8 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center group hover:bg-white/[0.02] transition-colors rounded-2xl px-4 -mx-4">
+                    <div class="lg:col-span-1 font-mono text-xs sm:text-sm font-bold text-slate-400">
+                        ( 03 )
+                    </div>
+                    <div class="lg:col-span-3">
+                        <div class="rounded-2xl overflow-hidden aspect-[16/9] shadow-md border border-white/10">
+                            <img
+                                src="{{ asset('images/service-pju.jpg') }}"
+                                alt="Penerangan Jalan Umum Kota Bandung"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            >
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 space-y-2">
+                        <div class="flex items-center gap-3">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                                Penerangan Jalan Umum (PJU)
+                            </h3>
+                            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30 font-mono">
                                 SLA: 24 Jam
                             </span>
                         </div>
-
-                        <!-- Isometric SVG Illustration (Smart PJU Grid Array) -->
-                        <div class="my-6 aspect-[1.3] flex items-center justify-center bg-slate-50/70 rounded-xl border border-slate-100 overflow-hidden group-hover:bg-amber-50/30 transition-colors">
-                            <svg viewBox="0 0 200 160" fill="none" class="w-40 h-32">
-                                <!-- Base Grid Plane -->
-                                <path d="M 100,55 L 165,90 L 100,125 L 35,90 Z" fill="#FEF3C7" fill-opacity="0.3" stroke="#F59E0B" stroke-width="1.2"/>
-
-                                <!-- Array of 4 Isometric Node Cubes (representing city light nodes) -->
-                                <!-- Node 1 -->
-                                <path d="M 65,70 L 80,78 L 65,86 L 50,78 Z" fill="#F59E0B"/>
-                                <path d="M 50,78 L 65,86 L 65,94 L 50,86 Z" fill="#D97706"/>
-                                <path d="M 65,86 L 80,78 L 80,86 L 65,94 Z" fill="#B45309"/>
-
-                                <!-- Node 2 -->
-                                <path d="M 135,70 L 150,78 L 135,86 L 120,78 Z" fill="#F59E0B"/>
-                                <path d="M 120,78 L 135,86 L 135,94 L 120,86 Z" fill="#D97706"/>
-                                <path d="M 135,86 L 150,78 L 150,86 L 135,94 Z" fill="#B45309"/>
-
-                                <!-- Central Smart Pole Tower with Broadcast Radiance -->
-                                <line x1="100" y1="88" x2="100" y2="25" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round"/>
-                                <circle cx="100" cy="22" r="5" fill="#F59E0B"/>
-                                <circle cx="100" cy="22" r="14" stroke="#F59E0B" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"/>
-                                <circle cx="100" cy="22" r="22" stroke="#F59E0B" stroke-width="0.8" opacity="0.3"/>
-                            </svg>
-                        </div>
-
-                        <!-- Card Meta & Content -->
-                        <h3 class="text-base font-bold text-slate-900 tracking-tight">
-                            Penerangan Jalan Umum
-                        </h3>
-                        <p class="text-xs font-semibold text-amber-600 mt-0.5">
+                        <p class="text-xs font-mono text-slate-400">
                             Divisi Kelistrikan &amp; Utilitas PJU
                         </p>
-                        <p class="text-xs text-slate-500 mt-2.5 leading-relaxed">
-                            Lampu penerangan padam malam hari, tiang miring tersenggol, kabel menjuntai bahaya, dan konsleting utilitas.
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+                            Peremajaan lampu jalan padam malam hari, tiang miring tersenggol kendaraan, kabel menjuntai berbahaya, dan pemeliharaan panel gardu.
                         </p>
                     </div>
-
-                    <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
-                        <span class="text-slate-400">Prioritas: Mendesak</span>
-                        <a href="{{ route('warga.laporan.create', ['kategori' => 'pju'], false) }}" class="text-blue-600 hover:text-blue-800 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                            Lapor &rarr;
+                    <div class="lg:col-span-1 flex justify-end">
+                        <a
+                            href="{{ route('warga.laporan.create', ['kategori' => 'pju'], false) }}"
+                            class="h-12 w-12 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 flex items-center justify-center font-bold text-lg shadow-md transition-all group-hover:scale-110"
+                            title="Laporkan Kerusakan PJU"
+                        >
+                            &nearr;
                         </a>
                     </div>
                 </div>
 
-                <!-- CARD 4: LOG 04 - Jembatan & Tanggul -->
-                <div class="bg-white rounded-2xl border border-slate-200/90 p-6 flex flex-col justify-between shadow-xs hover:shadow-md hover:border-blue-400 transition-all duration-300 group">
-                    <div>
-                        <!-- Header Label -->
-                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                            <span class="font-mono text-xs font-bold text-slate-400 tracking-wider">LOG 04</span>
-                            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-800 border border-slate-300">
+                <!-- ROW 04: Jembatan & Tanggul Air -->
+                <div class="py-8 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center group hover:bg-white/[0.02] transition-colors rounded-2xl px-4 -mx-4">
+                    <div class="lg:col-span-1 font-mono text-xs sm:text-sm font-bold text-slate-400">
+                        ( 04 )
+                    </div>
+                    <div class="lg:col-span-3">
+                        <div class="rounded-2xl overflow-hidden aspect-[16/9] shadow-md border border-white/10">
+                            <img
+                                src="{{ asset('images/service-jembatan.jpg') }}"
+                                alt="Jembatan & Tanggul Air Kota Bandung"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            >
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 space-y-2">
+                        <div class="flex items-center gap-3">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                                Jembatan &amp; Tanggul Air
+                            </h3>
+                            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-indigo-400/20 text-indigo-300 border border-indigo-400/30 font-mono">
                                 SLA: 5 Hari
                             </span>
                         </div>
-
-                        <!-- Isometric SVG Illustration (Bridge Structure Arch) -->
-                        <div class="my-6 aspect-[1.3] flex items-center justify-center bg-slate-50/70 rounded-xl border border-slate-100 overflow-hidden group-hover:bg-indigo-50/30 transition-colors">
-                            <svg viewBox="0 0 200 160" fill="none" class="w-40 h-32">
-                                <!-- Base Water / River Trench -->
-                                <path d="M 100,75 L 170,110 L 100,145 L 30,110 Z" fill="#E0E7FF" fill-opacity="0.4" stroke="#6366F1" stroke-width="1.2"/>
-
-                                <!-- Bridge Deck Platform Floating Above -->
-                                <path d="M 100,35 L 170,70 L 100,105 L 30,70 Z" fill="#1E293B" stroke="#4F46E5" stroke-width="1.5"/>
-                                <path d="M 30,70 L 100,105 L 100,115 L 30,80 Z" fill="#0F172A"/>
-                                <path d="M 100,105 L 170,70 L 170,80 L 100,115 Z" fill="#020617"/>
-
-                                <!-- Pier Pillars Underneath -->
-                                <line x1="60" y1="78" x2="60" y2="105" stroke="#475569" stroke-width="3"/>
-                                <line x1="140" y1="78" x2="140" y2="105" stroke="#475569" stroke-width="3"/>
-
-                                <!-- Suspension Cables Vector -->
-                                <path d="M 30,70 Q 100,35 170,70" stroke="#6366F1" stroke-width="1.8" fill="none"/>
-                                <line x1="70" y1="52" x2="70" y2="85" stroke="#818CF8" stroke-width="1"/>
-                                <line x1="100" y1="45" x2="100" y2="100" stroke="#818CF8" stroke-width="1"/>
-                                <line x1="130" y1="52" x2="130" y2="85" stroke="#818CF8" stroke-width="1"/>
-                            </svg>
-                        </div>
-
-                        <!-- Card Meta & Content -->
-                        <h3 class="text-base font-bold text-slate-900 tracking-tight">
-                            Jembatan &amp; Tanggul
-                        </h3>
-                        <p class="text-xs font-semibold text-indigo-600 mt-0.5">
-                            Tim Rekayasa Jembatan DSDABM
+                        <p class="text-xs font-mono text-slate-400">
+                            Tim Rekayasa Jembatan &amp; Struktur DSDABM
                         </p>
-                        <p class="text-xs text-slate-500 mt-2.5 leading-relaxed">
-                            Inspeksi retak gelagar jembatan, expansion joint renggang, oprit amblas, serta penguatan tanggul sungai penahan longsor.
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+                            Inspeksi retak gelagar jembatan, expansion joint renggang, oprit amblas, serta penguatan dinding penahan tanggul tebing penahan longsor.
                         </p>
                     </div>
-
-                    <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
-                        <span class="text-slate-400">Prioritas: Struktural</span>
-                        <a href="{{ route('warga.laporan.create', ['kategori' => 'jembatan'], false) }}" class="text-blue-600 hover:text-blue-800 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                            Lapor &rarr;
+                    <div class="lg:col-span-1 flex justify-end">
+                        <a
+                            href="{{ route('warga.laporan.create', ['kategori' => 'jembatan'], false) }}"
+                            class="h-12 w-12 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 flex items-center justify-center font-bold text-lg shadow-md transition-all group-hover:scale-110"
+                            title="Laporkan Kerusakan Jembatan"
+                        >
+                            &nearr;
                         </a>
                     </div>
                 </div>
@@ -428,143 +366,222 @@
         </div>
     </section>
 
-    <!-- SECTION 3: INCIDENT TELEMETRY & LIVE PUBLIC MONITORING (Screenshot 3 Style) -->
+    <!-- SECTION 4: METRICS & PROGRESS BARS (Screenshot 3 Bottom Style) -->
     <section class="bg-white py-20 lg:py-28 border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Header (Exact Sentry Typography Style) -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
-                    Warga &amp; tim teknis memantau <br>
-                    <span class="text-blue-600">setiap sinyal perbaikan</span>
+            <!-- Big Editorial Growth Statement -->
+            <div class="max-w-4xl mb-16">
+                <h2 class="text-2xl sm:text-4xl lg:text-5xl font-normal text-slate-400 leading-[1.3] tracking-tight">
+                    Transparansi data mencerminkan <strong class="text-slate-900 font-bold">komitmen nyata terhadap inovasi, responsivitas, dan kualitas perbaikan fasilitas publik</strong>. <span class="font-serif italic text-slate-600 block mt-2 font-normal">Kami terus memperluas dampak penanganan demi kenyamanan seluruh warga Bandung.</span>
                 </h2>
-                <p class="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mx-auto">
-                    Transparansi pelacakan menyeluruh dari laporan diterima, verifikasi admin, pengerjaan tim URC, hingga foto berita acara tuntas di lapangan.
+            </div>
+
+            <!-- Horizontal Metric Progress Bars with Pill Badges (Exact Natur Style) -->
+            <div class="max-w-3xl space-y-4">
+                <!-- Metric 1 -->
+                <div class="bg-slate-100/80 hover:bg-slate-100 rounded-full p-2 pl-6 sm:pl-8 flex items-center justify-between transition-colors shadow-xs">
+                    <span class="text-xs sm:text-sm font-semibold text-slate-800">
+                        Tingkat Kepuasan Warga (Rating Layanan)
+                    </span>
+                    <span class="rounded-full bg-slate-950 text-white font-mono font-bold text-xs sm:text-sm px-6 py-2.5 shadow-sm">
+                        94%
+                    </span>
+                </div>
+
+                <!-- Metric 2 -->
+                <div class="bg-slate-100/80 hover:bg-slate-100 rounded-full p-2 pl-6 sm:pl-8 flex items-center justify-between transition-colors shadow-xs">
+                    <span class="text-xs sm:text-sm font-semibold text-slate-800">
+                        Tingkat Keberhasilan Penanganan Selesai Lapangan
+                    </span>
+                    <span class="rounded-full bg-white text-slate-900 border border-slate-200 font-mono font-bold text-xs sm:text-sm px-6 py-2.5 shadow-sm">
+                        98%
+                    </span>
+                </div>
+
+                <!-- Metric 3 -->
+                <div class="bg-slate-100/80 hover:bg-slate-100 rounded-full p-2 pl-6 sm:pl-8 flex items-center justify-between transition-colors shadow-xs">
+                    <span class="text-xs sm:text-sm font-semibold text-slate-800">
+                        Kesesuaian Target SLA Tanggap Darurat (&lt; 24 Jam)
+                    </span>
+                    <span class="rounded-full bg-white text-slate-900 border border-slate-200 font-mono font-bold text-xs sm:text-sm px-6 py-2.5 shadow-sm">
+                        92%
+                    </span>
+                </div>
+
+                <!-- Metric 4 -->
+                <div class="bg-slate-100/80 hover:bg-slate-100 rounded-full p-2 pl-6 sm:pl-8 flex items-center justify-between transition-colors shadow-xs">
+                    <span class="text-xs sm:text-sm font-semibold text-slate-800">
+                        Efisiensi Penyaluran Disposisi URC Lapangan
+                    </span>
+                    <span class="rounded-full bg-white text-slate-900 border border-slate-200 font-mono font-bold text-xs sm:text-sm px-6 py-2.5 shadow-sm">
+                        88%
+                    </span>
+                </div>
+
+                <!-- Metric 5 -->
+                <div class="bg-slate-100/80 hover:bg-slate-100 rounded-full p-2 pl-6 sm:pl-8 flex items-center justify-between transition-colors shadow-xs">
+                    <span class="text-xs sm:text-sm font-semibold text-slate-800">
+                        Reduksi Risiko Kerusakan Berulang Melalui Pemeliharaan Berkala
+                    </span>
+                    <span class="rounded-full bg-white text-slate-900 border border-slate-200 font-mono font-bold text-xs sm:text-sm px-6 py-2.5 shadow-sm">
+                        76%
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: / ALREADY DONE - PROJECTS & PANTAUAN LAPANGAN (Screenshot 4 Top Style) -->
+    <section class="bg-[#F8FAFC] py-20 lg:py-28 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header with Tag & Subtitle -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+                <div>
+                    <span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest block mb-2">
+                        / Pantauan Terbuka
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+                        Portofolio &amp; Pantauan Lapangan
+                    </h2>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-500 max-w-md leading-relaxed font-light">
+                    Sistem transparansi publik mendokumentasikan setiap penanganan laporan secara terbuka dan terverifikasi dari sebelum hingga tuntas.
                 </p>
-                <div class="mt-4">
-                    <a href="{{ route('tracking.publik', [], false) }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800 tracking-wide uppercase font-mono">
-                        <span>Lacak Tiket Sekarang</span>
-                        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </div>
+
+            <!-- Interactive Live Leaflet Map Radar -->
+            <div class="mb-14 rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-[#0A1628]">
+                <div class="px-6 py-4 bg-[#060D17] border-b border-white/10 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-2">
+                        <span class="h-2.5 w-2.5 rounded-full bg-rose-500"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-amber-400"></span>
+                        <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+                        <span class="ml-3 font-mono text-xs font-semibold text-slate-200">
+                            PETA SEBARAN PAN-BANDUNG &bull; GIS RADAR 30 KECAMATAN
+                        </span>
+                    </div>
+                    <a href="{{ route('peta.publik', [], false) }}" class="text-xs font-bold text-amber-400 hover:text-amber-300 font-mono">
+                        Buka Peta Publik Layar Penuh &rarr;
                     </a>
                 </div>
+                <div id="home-preview-map" class="h-80 sm:h-96 w-full z-0"></div>
+                <div class="px-6 py-3 bg-[#060D17] border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400 font-mono">
+                    <div class="flex items-center gap-4 text-[11px]">
+                        <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-blue-500"></span> Jalan Raya</span>
+                        <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-cyan-400"></span> Drainase</span>
+                        <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-amber-400"></span> PJU</span>
+                        <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-400"></span> Tuntas</span>
+                    </div>
+                    <span class="text-[11px] text-slate-300">Dinas Sumber Daya Air dan Bina Marga</span>
+                </div>
             </div>
 
-            <!-- 3 High-Fidelity UI Previews (Screenshot 3 Card Style) -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                <!-- PREVIEW 1: Interactive Leaflet GIS Map Console (7 cols) -->
-                <div class="lg:col-span-7 bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl text-white">
-                    <!-- Top Map Window Bar -->
-                    <div class="bg-slate-950 px-5 py-3.5 border-b border-slate-800 flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <span class="h-2.5 w-2.5 rounded-full bg-rose-500"></span>
-                            <span class="h-2.5 w-2.5 rounded-full bg-amber-500"></span>
-                            <span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
-                            <span class="ml-3 font-mono text-xs font-semibold text-slate-300">
-                                PETA SEBARAN PAN-BANDUNG &bull; GIS RADAR
+            <!-- 2x2 Clean Project Cards Grid (Exact Dribbble Style) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 01 -->
+                <div class="space-y-3 group">
+                    <div class="flex items-center justify-between text-xs font-mono">
+                        <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                            Rekonstruksi Jalan Pasteur - Dr. Djunjunan
+                        </h3>
+                        <span class="text-slate-400 font-bold">( 01 )</span>
+                    </div>
+                    <div class="rounded-3xl overflow-hidden aspect-[16/10] shadow-md border border-slate-200 relative">
+                        <img
+                            src="{{ asset('images/project-pasteur.jpg') }}"
+                            alt="Rekonstruksi Jalan Pasteur"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-5 left-5 right-5 flex items-end justify-between text-white">
+                            <div>
+                                <span class="text-[10px] font-mono uppercase tracking-wider text-slate-300 block">Kategori Jalan</span>
+                                <span class="text-xs font-bold text-white">Patching Hotmix 1.2 Km Tuntas</span>
+                            </div>
+                            <span class="rounded-full bg-white/20 backdrop-blur-md px-3 py-1.5 text-[11px] font-bold text-white border border-white/30 flex items-center gap-1">
+                                Selesai 100% &nearr;
                             </span>
                         </div>
-                        <a href="{{ route('peta.publik', [], false) }}" class="text-xs font-semibold text-blue-400 hover:text-blue-300">
-                            Buka Layar Penuh &rarr;
-                        </a>
-                    </div>
-
-                    <!-- Live Leaflet Map Container -->
-                    <div id="home-preview-map" class="h-80 sm:h-96 w-full z-0"></div>
-
-                    <!-- Bottom Map Filter Bar -->
-                    <div class="p-4 bg-slate-950/80 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
-                        <div class="flex items-center gap-2 font-mono text-[11px]">
-                            <span class="flex items-center gap-1"><span class="h-2 w-2 rounded-full bg-blue-500"></span> Jalan</span>
-                            <span class="flex items-center gap-1"><span class="h-2 w-2 rounded-full bg-cyan-400"></span> Drainase</span>
-                            <span class="flex items-center gap-1"><span class="h-2 w-2 rounded-full bg-amber-400"></span> PJU</span>
-                            <span class="flex items-center gap-1"><span class="h-2 w-2 rounded-full bg-emerald-400"></span> Tuntas</span>
-                        </div>
-                        <span class="font-mono text-[11px] text-slate-300">30 Kecamatan Terpadu DSDABM</span>
                     </div>
                 </div>
 
-                <!-- PREVIEW 2 & 3: Telemetry Digest Cards (5 cols) -->
-                <div class="lg:col-span-5 space-y-6">
-                    <!-- CARD A: Live Digest Feed (Screenshot 3 "Weekly Threat Digest" Style) -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
-                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <!-- Project 02 -->
+                <div class="space-y-3 group">
+                    <div class="flex items-center justify-between text-xs font-mono">
+                        <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                            Normalisasi Saluran Drainase Pagarsih
+                        </h3>
+                        <span class="text-slate-400 font-bold">( 02 )</span>
+                    </div>
+                    <div class="rounded-3xl overflow-hidden aspect-[16/10] shadow-md border border-slate-200 relative">
+                        <img
+                            src="{{ asset('images/project-pagarsih.jpg') }}"
+                            alt="Normalisasi Saluran Drainase Pagarsih"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-5 left-5 right-5 flex items-end justify-between text-white">
                             <div>
-                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">Status Terkini</span>
-                                <h3 class="text-sm font-bold text-slate-900 mt-0.5">Log Pengaduan Terverifikasi</h3>
+                                <span class="text-[10px] font-mono uppercase tracking-wider text-slate-300 block">Kategori Drainase</span>
+                                <span class="text-xs font-bold text-white">Pengerukan Sedimen &amp; Gorong-gorong</span>
                             </div>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                                LIVE STREAM
+                            <span class="rounded-full bg-white/20 backdrop-blur-md px-3 py-1.5 text-[11px] font-bold text-white border border-white/30 flex items-center gap-1">
+                                Selesai 100% &nearr;
                             </span>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- Incident Digest Items -->
-                        <div class="divide-y divide-slate-100 mt-3 space-y-3">
-                            <div class="pt-2">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-mono text-xs font-bold text-blue-600">INFRA-20261014-0012</span>
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
-                                        URC Dikerjakan
-                                    </span>
-                                </div>
-                                <p class="text-xs font-semibold text-slate-800 mt-1">Aspal Amblas &bull; Jl. Asia Afrika, Kec. Sumur Bandung</p>
-                                <p class="text-[11px] text-slate-400 mt-0.5">Tim URC Bina Marga sedang melakukan patching hotmix</p>
+                <!-- Project 03 -->
+                <div class="space-y-3 group">
+                    <div class="flex items-center justify-between text-xs font-mono">
+                        <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                            Peremajaan Lampu PJU Cihampelas &amp; Dago
+                        </h3>
+                        <span class="text-slate-400 font-bold">( 03 )</span>
+                    </div>
+                    <div class="rounded-3xl overflow-hidden aspect-[16/10] shadow-md border border-slate-200 relative">
+                        <img
+                            src="{{ asset('images/project-dago.jpg') }}"
+                            alt="Peremajaan Lampu PJU Cihampelas & Dago"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-5 left-5 right-5 flex items-end justify-between text-white">
+                            <div>
+                                <span class="text-[10px] font-mono uppercase tracking-wider text-slate-300 block">Kategori PJU</span>
+                                <span class="text-xs font-bold text-white">Instalasi Smart LED Hemat Energi</span>
                             </div>
-
-                            <div class="pt-3">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-mono text-xs font-bold text-blue-600">INFRA-20261014-0008</span>
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                                        Selesai 100%
-                                    </span>
-                                </div>
-                                <p class="text-xs font-semibold text-slate-800 mt-1">Sumbatan Gorong-gorong &bull; Jl. Dr. Djunjunan (Pasteur)</p>
-                                <p class="text-[11px] text-slate-400 mt-0.5">Normalisasi sedimen tuntas, air mengalir lancar</p>
-                            </div>
-
-                            <div class="pt-3">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-mono text-xs font-bold text-blue-600">INFRA-20261014-0004</span>
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
-                                        Disposisi URC
-                                    </span>
-                                </div>
-                                <p class="text-xs font-semibold text-slate-800 mt-1">Lampu PJU Padam &bull; Jl. Supratman, Kec. Cibeunying Kaler</p>
-                                <p class="text-[11px] text-slate-400 mt-0.5">Surat tugas regu teknisi kelistrikan telah diterbitkan</p>
-                            </div>
+                            <span class="rounded-full bg-white/20 backdrop-blur-md px-3 py-1.5 text-[11px] font-bold text-white border border-white/30 flex items-center gap-1">
+                                Selesai 100% &nearr;
+                            </span>
                         </div>
                     </div>
+                </div>
 
-                    <!-- CARD B: Telemetry Metrics & SLA Response Score -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
-                        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <!-- Project 04 -->
+                <div class="space-y-3 group">
+                    <div class="flex items-center justify-between text-xs font-mono">
+                        <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                            Perkuatan Tanggul Sungai Cikapundung
+                        </h3>
+                        <span class="text-slate-400 font-bold">( 04 )</span>
+                    </div>
+                    <div class="rounded-3xl overflow-hidden aspect-[16/10] shadow-md border border-slate-200 relative">
+                        <img
+                            src="{{ asset('images/project-cikapundung.jpg') }}"
+                            alt="Perkuatan Tanggul Sungai Cikapundung"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-5 left-5 right-5 flex items-end justify-between text-white">
                             <div>
-                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">Efektivitas SOP</span>
-                                <h3 class="text-sm font-bold text-slate-900 mt-0.5">Kinerja Tanggap DSDABM</h3>
+                                <span class="text-[10px] font-mono uppercase tracking-wider text-slate-300 block">Kategori Jembatan &amp; Tanggul</span>
+                                <span class="text-xs font-bold text-white">Penguatan Kirmir Penahan Longsor</span>
                             </div>
-                            <span class="text-xs font-bold text-blue-600 font-mono">TAHUN 2026</span>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-4 mt-4">
-                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
-                                <span class="text-2xl font-black text-slate-900 block">&lt; 24 Jam</span>
-                                <span class="text-[11px] text-slate-500 font-medium">Kecepatan Verifikasi</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-slate-50 border border-slate-100">
-                                <span class="text-2xl font-black text-emerald-600 block">98.4%</span>
-                                <span class="text-[11px] text-slate-500 font-medium">Tepat Standar SLA</span>
-                            </div>
-                        </div>
-
-                        <!-- 30 Kecamatan Heatmap Dot Matrix -->
-                        <div class="mt-4 pt-3 border-t border-slate-100">
-                            <div class="flex items-center justify-between text-[11px] text-slate-500 mb-2">
-                                <span>Radar Status 30 Kecamatan</span>
-                                <span class="text-emerald-600 font-bold">100% Aktif</span>
-                            </div>
-                            <div class="grid grid-cols-10 gap-1.5">
-                                @for ($i = 0; $i < 30; $i++)
-                                    <div class="h-2 rounded-sm bg-blue-500/80 hover:bg-blue-600 transition-colors" title="Kecamatan Aktif"></div>
-                                @endfor
-                            </div>
+                            <span class="rounded-full bg-white/20 backdrop-blur-md px-3 py-1.5 text-[11px] font-bold text-white border border-white/30 flex items-center gap-1">
+                                Selesai 100% &nearr;
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -572,82 +589,222 @@
         </div>
     </section>
 
-    <!-- SECTION 4: 4-STEP ENGINEERING PROTOCOL (SOP DSDABM) -->
-    <section class="bg-[#F8FAFC] py-20 lg:py-24 border-b border-slate-200">
+    <!-- SECTION 6: QUESTIONS AND ANSWERS / FAQ (Screenshot 4 Bottom Style) -->
+    <section class="bg-white py-20 lg:py-28 border-b border-slate-200" x-data="{ active: null }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-14">
-                <span class="text-xs font-mono font-bold uppercase tracking-wider text-blue-600">Standar Operasional Prosedur</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1">
-                    4 Langkah Penanganan Terpadu
+            <!-- Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16 pb-8 border-b border-slate-200">
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+                    Pertanyaan <span class="font-serif italic font-normal text-amber-500">dan Jawaban</span>
                 </h2>
-                <p class="text-xs sm:text-sm text-slate-500 mt-2">
-                    Dari sinyal laporan warga hingga berita acara foto tuntas di lapangan
-                </p>
+                <span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest">
+                    Frequently asked question (FAQ)
+                </span>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs relative">
-                    <span class="font-mono text-2xl font-extrabold text-slate-300">01</span>
-                    <h3 class="text-sm font-bold text-slate-900 mt-2">Sinyal Laporan Warga</h3>
-                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">
-                        Pengaduan dikirimkan lengkap dengan foto bukti kerusakan dan titik koordinat GPS akurat.
-                    </p>
+            <!-- Accordion List (Numbered 01 to 05) -->
+            <div class="divide-y divide-slate-200 max-w-5xl">
+                <!-- FAQ 01 -->
+                <div class="py-6 sm:py-8">
+                    <button
+                        @click="active = active === 1 ? null : 1"
+                        class="w-full flex items-center justify-between text-left group cursor-pointer focus:outline-none"
+                    >
+                        <div class="flex items-center gap-6 sm:gap-10 pr-4">
+                            <span class="font-mono text-sm sm:text-base font-bold text-slate-400 group-hover:text-slate-900 transition-colors">01</span>
+                            <span class="text-base sm:text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                Bagaimana cara warga melaporkan kerusakan jalan atau fasilitas umum?
+                            </span>
+                        </div>
+                        <span class="text-2xl font-light text-slate-400 group-hover:text-slate-900 transition-transform duration-300" :class="{ 'rotate-45': active === 1 }">
+                            +
+                        </span>
+                    </button>
+                    <div x-show="active === 1" x-collapse style="display: none;" class="mt-4 pl-12 sm:pl-16 pr-4 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                        Warga cukup menekan tombol <strong>+ Lapor Kerusakan</strong>, mengunggah foto bukti fisik kerusakan di lapangan, menandai titik lokasi pada peta otomatis (GPS), mengisi deskripsi singkat, lalu mengirimkan laporan. Sistem akan menerbitkan <strong>Nomor Tiket resmi</strong> (contoh: INFRA-20261014-0001) untuk pelacakan langsung.
+                    </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs relative">
-                    <span class="font-mono text-2xl font-extrabold text-blue-500">02</span>
-                    <h3 class="text-sm font-bold text-slate-900 mt-2">Verifikasi DSDABM</h3>
-                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">
-                        Admin memvalidasi keabsahan data, menetapkan skala prioritas, dan menerbitkan nomor tiket resmi.
-                    </p>
+                <!-- FAQ 02 -->
+                <div class="py-6 sm:py-8">
+                    <button
+                        @click="active = active === 2 ? null : 2"
+                        class="w-full flex items-center justify-between text-left group cursor-pointer focus:outline-none"
+                    >
+                        <div class="flex items-center gap-6 sm:gap-10 pr-4">
+                            <span class="font-mono text-sm sm:text-base font-bold text-slate-400 group-hover:text-slate-900 transition-colors">02</span>
+                            <span class="text-base sm:text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                Berapa lama waktu yang dibutuhkan hingga tim URC turun ke lokasi?
+                            </span>
+                        </div>
+                        <span class="text-2xl font-light text-slate-400 group-hover:text-slate-900 transition-transform duration-300" :class="{ 'rotate-45': active === 2 }">
+                            +
+                        </span>
+                    </button>
+                    <div x-show="active === 2" x-collapse style="display: none;" class="mt-4 pl-12 sm:pl-16 pr-4 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                        Setiap laporan diverifikasi oleh Admin DSDABM dalam waktu maksimal <strong>&lt; 24 jam</strong>. Laporan berprioritas tinggi dan darurat akan segera diterbitkan Surat Perintah Tugas (SPT) kepada regu teknis lapangan URC untuk langsung ditangani sesuai SLA kategori (1–3 hari kerja).
+                    </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs relative">
-                    <span class="font-mono text-2xl font-extrabold text-amber-500">03</span>
-                    <h3 class="text-sm font-bold text-slate-900 mt-2">Disposisi Tim URC</h3>
-                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">
-                        Surat tugas otomatis diteruskan ke petugas teknis lapangan untuk perbaikan fisik sesuai SLA.
-                    </p>
+                <!-- FAQ 03 -->
+                <div class="py-6 sm:py-8">
+                    <button
+                        @click="active = active === 3 ? null : 3"
+                        class="w-full flex items-center justify-between text-left group cursor-pointer focus:outline-none"
+                    >
+                        <div class="flex items-center gap-6 sm:gap-10 pr-4">
+                            <span class="font-mono text-sm sm:text-base font-bold text-slate-400 group-hover:text-slate-900 transition-colors">03</span>
+                            <span class="text-base sm:text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                Bagaimana cara memantau status perkembangan tiket pengerjaan saya?
+                            </span>
+                        </div>
+                        <span class="text-2xl font-light text-slate-400 group-hover:text-slate-900 transition-transform duration-300" :class="{ 'rotate-45': active === 3 }">
+                            +
+                        </span>
+                    </button>
+                    <div x-show="active === 3" x-collapse style="display: none;" class="mt-4 pl-12 sm:pl-16 pr-4 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                        Anda dapat memeriksa menu <strong>Lacak Tiket</strong> kapan saja tanpa perlu login, cukup masukkan nomor tiket laporan. Status akan diperbarui secara transparan: <em>Menunggu Verifikasi &rarr; Disetujui/Disposisi &rarr; Dalam Pengerjaan &rarr; Selesai</em> disertai foto bukti fisik perbaikan tuntas.
+                    </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs relative">
-                    <span class="font-mono text-2xl font-extrabold text-emerald-500">04</span>
-                    <h3 class="text-sm font-bold text-slate-900 mt-2">Dokumentasi Tuntas</h3>
-                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">
-                        Foto perbaikan selesai dipublikasikan secara terbuka dan pelapor dapat memberikan ulasan rating.
-                    </p>
+                <!-- FAQ 04 -->
+                <div class="py-6 sm:py-8">
+                    <button
+                        @click="active = active === 4 ? null : 4"
+                        class="w-full flex items-center justify-between text-left group cursor-pointer focus:outline-none"
+                    >
+                        <div class="flex items-center gap-6 sm:gap-10 pr-4">
+                            <span class="font-mono text-sm sm:text-base font-bold text-slate-400 group-hover:text-slate-900 transition-colors">04</span>
+                            <span class="text-base sm:text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                Apakah pelaporan dikenakan biaya atau data identitas saya disebarkan?
+                            </span>
+                        </div>
+                        <span class="text-2xl font-light text-slate-400 group-hover:text-slate-900 transition-transform duration-300" :class="{ 'rotate-45': active === 4 }">
+                            +
+                        </span>
+                    </button>
+                    <div x-show="active === 4" x-collapse style="display: none;" class="mt-4 pl-12 sm:pl-16 pr-4 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                        Layanan INFRA-DAYA <strong>100% Gratis</strong> untuk seluruh warga masyarakat Kota Bandung. Data identitas pribadi pelapor dilindungi dan tidak dipublikasikan ke umum. Halaman publik hanya menampilkan titik koordinat kerusakan, foto kondisi fisik, dan progres perbaikan teknis.
+                    </div>
+                </div>
+
+                <!-- FAQ 05 -->
+                <div class="py-6 sm:py-8">
+                    <button
+                        @click="active = active === 5 ? null : 5"
+                        class="w-full flex items-center justify-between text-left group cursor-pointer focus:outline-none"
+                    >
+                        <div class="flex items-center gap-6 sm:gap-10 pr-4">
+                            <span class="font-mono text-sm sm:text-base font-bold text-slate-400 group-hover:text-slate-900 transition-colors">05</span>
+                            <span class="text-base sm:text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                Apa saja jenis infrastruktur yang ditangani oleh DSDABM Kota Bandung?
+                            </span>
+                        </div>
+                        <span class="text-2xl font-light text-slate-400 group-hover:text-slate-900 transition-transform duration-300" :class="{ 'rotate-45': active === 5 }">
+                            +
+                        </span>
+                    </button>
+                    <div x-show="active === 5" x-collapse style="display: none;" class="mt-4 pl-12 sm:pl-16 pr-4 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                        Cakupan kewenangan DSDABM meliputi 4 pilar utama: <strong>Jalan Raya &amp; Trotoar</strong> (jalan kota), <strong>Drainase &amp; Saluran Air</strong> (gorong-gorong, kirmir, kolam retensi), <strong>Penerangan Jalan Umum (PJU)</strong> (tiang lampu &amp; instalasi kelistrikan jalan), serta <strong>Jembatan &amp; Tanggul Air</strong> (jembatan kota &amp; dinding penahan tebing sungai).
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 5: CALL TO ACTION BANNER (Closing Deck) -->
-    <section class="bg-[#070B14] py-16 lg:py-20 text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-blue-600/10 pointer-events-none"></div>
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-            <span class="px-3 py-1 rounded bg-white/[0.08] border border-white/15 text-xs font-mono font-bold text-blue-400 uppercase tracking-widest">
-                KOTA BANDUNG SIAGA INFRASTRUKTUR
-            </span>
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-                Wujudkan Bandung Lebih Nyaman dan Tanggap
-            </h2>
-            <p class="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                Partisipasi aktif Anda mempercepat perbaikan fasilitas publik kota. Kirimkan laporan atau pantau sebaran masalah di sekitar Anda.
-            </p>
-            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a
-                    href="{{ route('warga.laporan.create', [], false) }}"
-                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white px-7 py-3.5 text-sm font-bold shadow-lg shadow-blue-600/30 transition-all cursor-pointer"
-                >
-                    <span>Lapor Kerusakan Baru</span>
-                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </a>
-                <a
-                    href="{{ route('peta.publik', [], false) }}"
-                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-white/[0.08] hover:bg-white/[0.15] border border-white/20 text-white px-7 py-3.5 text-sm font-bold transition-all"
-                >
-                    <span>Buka Peta Publik</span>
-                </a>
+    <!-- SECTION 7: START YOUR JOURNEY TODAY / HUBUNGI & LAPORKAN (Screenshot 5 Style) -->
+    <section class="bg-[#0A1628] text-white py-20 lg:py-28 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <!-- Left Column: Headline, Subtitle, Contact Info Box -->
+                <div class="lg:col-span-6 space-y-8">
+                    <div>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.1]">
+                            Wujudkan Bandung Nyaman <br>
+                            <span class="font-serif italic font-normal text-amber-400">Mulai Hari Ini</span>
+                        </h2>
+                        <p class="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed font-light">
+                            Bergabung bersama ribuan warga Kota Bandung untuk memantau, melaporkan, dan menjaga keandalan infrastruktur publik kota tercinta.
+                        </p>
+                    </div>
+
+                    <!-- Contact Details Box (Dark Slate-Navy Capsule) -->
+                    <div class="bg-white/[0.04] border border-white/10 rounded-3xl p-6 sm:p-8 space-y-6">
+                        <div>
+                            <span class="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">Email Resmi</span>
+                            <span class="text-sm font-semibold text-slate-100">dsdabm@bandung.go.id</span>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">Telepon / Call Center Darurat</span>
+                            <span class="text-sm font-semibold text-slate-100">112 (Bebas Pulsa) &bull; (022) 7278835</span>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">Kantor Dinas</span>
+                            <span class="text-sm font-semibold text-slate-100">
+                                Jl. Cianjur No. 34, Kel. Kacapiring, Kec. Batununggal, Kota Bandung, Jawa Barat 40271
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Clean White Floating Form Card (Fast Track & Lapor) -->
+                <div class="lg:col-span-6">
+                    <div class="bg-white text-slate-900 rounded-3xl p-8 sm:p-10 shadow-2xl space-y-6 border border-slate-100">
+                        <div>
+                            <span class="text-xs font-mono font-bold text-amber-600 uppercase tracking-wider block mb-1">
+                                Partisipasi Warga
+                            </span>
+                            <h3 class="text-2xl font-extrabold text-slate-900 tracking-tight">
+                                Cek Status atau Laporkan Kerusakan
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-500 mt-1 font-light">
+                                Gunakan nomor tiket yang sudah Anda miliki atau ajukan laporan baru dengan foto bukti lapangan.
+                            </p>
+                        </div>
+
+                        <!-- Ticket Tracking Form -->
+                        <form action="{{ route('tracking.publik', [], false) }}" method="GET" class="space-y-4">
+                            <div>
+                                <label for="form_tiket" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                                    Nomor Tiket Pengaduan
+                                </label>
+                                <input
+                                    type="text"
+                                    id="form_tiket"
+                                    name="nomor_tiket"
+                                    placeholder="Contoh: INFRA-20261014-0001"
+                                    class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder-slate-400 font-mono focus:border-blue-600 focus:ring-1 focus:ring-blue-600 uppercase font-bold"
+                                >
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="w-full rounded-full bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold py-3.5 px-6 text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer"
+                            >
+                                <span>Lacak Tiket</span>
+                                <span>&nearr;</span>
+                            </button>
+                        </form>
+
+                        <div class="relative flex items-center justify-center">
+                            <div class="border-t border-slate-200 w-full"></div>
+                            <span class="bg-white px-3 text-xs text-slate-400 font-mono uppercase">atau</span>
+                        </div>
+
+                        <!-- Full Report CTA Button -->
+                        <div>
+                            <a
+                                href="{{ route('warga.laporan.create', [], false) }}"
+                                class="w-full rounded-full bg-slate-950 hover:bg-slate-800 text-white font-bold py-4 px-6 text-sm text-center block shadow-lg shadow-slate-950/20 transition-all hover:scale-101 cursor-pointer"
+                            >
+                                + Ajukan Laporan Kerusakan Baru &nearr;
+                            </a>
+                            <p class="text-[11px] text-center text-slate-400 mt-2">
+                                Dilengkapi penanda koordinat GPS akurat &amp; unggah foto langsung
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -675,9 +832,9 @@
             // Command Center Pin
             const cmdIcon = L.divIcon({
                 className: 'custom-cmd-marker',
-                html: '<div style="background-color: #2563EB; width: 14px; height: 14px; border-radius: 9999px; border: 3px solid #ffffff; box-shadow: 0 0 12px #2563EB;"></div>',
-                iconSize: [14, 14],
-                iconAnchor: [7, 7]
+                html: '<div style="background-color: #F59E0B; width: 16px; height: 16px; border-radius: 9999px; border: 3px solid #ffffff; box-shadow: 0 0 12px #F59E0B;"></div>',
+                iconSize: [16, 16],
+                iconAnchor: [8, 8]
             });
 
             L.marker(bandungCenter, { icon: cmdIcon })
@@ -686,18 +843,18 @@
 
             // Sample Civic Telemetry Points
             const points = [
-                { lat: -6.9218, lng: 107.6070, label: "Jalan Asia Afrika", cat: "Jalan", col: "#2563EB" },
-                { lat: -6.8905, lng: 107.6100, label: "Drainase Pasteur", cat: "Drainase", col: "#0284C7" },
-                { lat: -6.9024, lng: 107.6186, label: "PJU Dago", cat: "PJU", col: "#F59E0B" },
-                { lat: -6.9380, lng: 107.6600, label: "Jembatan Gedebage", cat: "Jembatan", col: "#4F46E5" }
+                { lat: -6.9218, lng: 107.6070, label: "Rekonstruksi Jalan Pasteur", cat: "Jalan", col: "#3B82F6" },
+                { lat: -6.8905, lng: 107.6100, label: "Drainase Pagarsih", cat: "Drainase", col: "#06B6D4" },
+                { lat: -6.9024, lng: 107.6186, label: "Smart LED PJU Dago", cat: "PJU", col: "#F59E0B" },
+                { lat: -6.9380, lng: 107.6600, label: "Tanggul Sungai Cikapundung", cat: "Jembatan", col: "#6366F1" }
             ];
 
             points.forEach(p => {
                 const icon = L.divIcon({
                     className: 'telemetry-marker',
-                    html: `<div style="background-color: ${p.col}; width: 10px; height: 10px; border-radius: 9999px; border: 2px solid #ffffff; box-shadow: 0 0 8px ${p.col};"></div>`,
-                    iconSize: [10, 10],
-                    iconAnchor: [5, 5]
+                    html: `<div style="background-color: ${p.col}; width: 12px; height: 12px; border-radius: 9999px; border: 2.5px solid #ffffff; box-shadow: 0 0 10px ${p.col};"></div>`,
+                    iconSize: [12, 12],
+                    iconAnchor: [6, 6]
                 });
                 L.marker([p.lat, p.lng], { icon: icon })
                     .addTo(map)
