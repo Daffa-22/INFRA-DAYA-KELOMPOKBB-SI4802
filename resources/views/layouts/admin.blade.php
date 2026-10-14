@@ -7,6 +7,9 @@
 
     <title>{{ $title ?? 'Panel Instansi' }} - INFRA-DAYA Kota Bandung</title>
 
+    <!-- Favicon Resmi INFRA-DAYA -->
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-icon.png') }}">
+
     <!-- Google Fonts Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,7 +46,9 @@
             <!-- Logo & Brand Header -->
             <div class="flex h-20 items-center justify-between px-6 border-b border-white/10 bg-[#162a45]">
                 <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
-                    <x-application-logo class="h-10 w-10 text-white flex-shrink-0" />
+                    <div class="h-11 w-11 rounded-xl bg-white/10 p-1.5 flex items-center justify-center backdrop-blur-sm border border-white/10 flex-shrink-0 shadow-inner">
+                        <x-application-logo class="h-full w-full object-contain" />
+                    </div>
                     <div>
                         <div class="font-bold text-base tracking-tight text-white flex items-center gap-1.5">
                             INFRA-DAYA
