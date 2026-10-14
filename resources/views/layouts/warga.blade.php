@@ -23,24 +23,6 @@
     @stack('styles')
 </head>
 <body class="min-h-full flex flex-col font-sans antialiased text-slate-800" x-data="{ mobileNavOpen: false }">
-    <!-- Top Civic Notice Bar (Roobinium Style Top Bar) -->
-    <div class="bg-[#050811] text-slate-400 text-xs py-2 px-4 border-b border-white/5 font-mono">
-        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-[11px]">
-            <div class="flex items-center gap-4 sm:gap-6 text-slate-400">
-                <span class="flex items-center gap-1.5 text-slate-300 font-semibold">
-                    <span class="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    dsdabm.bandung.go.id
-                </span>
-                <span class="hidden sm:inline text-slate-400">dsdabm@bandung.go.id</span>
-                <span class="hidden md:inline text-slate-400">Call Center: 112 / (022) 7278835</span>
-            </div>
-            <div class="flex items-center gap-4 text-slate-400">
-                <span class="text-blue-400 font-semibold">SDG 9 KOTA BANDUNG</span>
-                <span class="hidden sm:inline">&bull; URC SIAGA 24/7</span>
-            </div>
-        </div>
-    </div>
-
     <!-- Main Navigation Bar (Sentry / Roobinium Style) -->
     <header class="sticky top-0 z-40 bg-[#070B14]/95 backdrop-blur-md border-b border-white/10 text-white shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
