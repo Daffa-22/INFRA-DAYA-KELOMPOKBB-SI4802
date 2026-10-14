@@ -218,61 +218,13 @@
                             </span>
                         </div>
 
-                        <!-- Isometric SVG Illustration: Jalan Raya & Trotoar -->
-                        <div class="my-6 aspect-[1.3] flex items-center justify-center bg-slate-50/70 rounded-xl border border-slate-100 overflow-hidden group-hover:bg-blue-50/30 transition-colors">
-                            <svg viewBox="0 0 200 170" fill="none" class="w-44 h-36">
-                                <defs>
-                                    <linearGradient id="roadAsphalt" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#1E293B"/>
-                                        <stop offset="100%" stop-color="#0F172A"/>
-                                    </linearGradient>
-                                    <linearGradient id="pavingBlock" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#F8FAFC"/>
-                                        <stop offset="100%" stop-color="#E2E8F0"/>
-                                    </linearGradient>
-                                </defs>
-                                
-                                <!-- Base Subgrade & Foundation Slab -->
-                                <path d="M 30,85 L 100,125 L 100,145 L 30,105 Z" fill="#94A3B8"/>
-                                <path d="M 100,125 L 170,85 L 170,105 L 100,145 Z" fill="#64748B"/>
-                                <path d="M 30,85 L 100,125 L 170,85 L 100,45 Z" fill="#CBD5E1"/>
-
-                                <!-- ASPHALT ROADWAY LANE (Right Side) -->
-                                <path d="M 75,60 L 100,45 L 170,85 L 145,100 Z" fill="url(#roadAsphalt)"/>
-                                <path d="M 145,100 L 170,85 L 170,95 L 145,110 Z" fill="#020617"/>
-
-                                <!-- Dashed Yellow Centerline Road Markings -->
-                                <line x1="90" y1="52" x2="108" y2="62" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round"/>
-                                <line x1="120" y1="69" x2="138" y2="79" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round"/>
-                                <line x1="150" y1="86" x2="160" y2="92" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round"/>
-
-                                <!-- Solid White Edge Road Line -->
-                                <line x1="80" y1="58" x2="148" y2="97" stroke="#FFFFFF" stroke-width="1.8" stroke-opacity="0.9"/>
-
-                                <!-- RAISED SIDEWALK / TROTOAR (Left Side, Elevated) -->
-                                <path d="M 75,54 L 145,94 L 145,100 L 75,60 Z" fill="#94A3B8" stroke="#64748B" stroke-width="0.8"/>
-                                <path d="M 30,79 L 75,54 L 145,94 L 100,119 Z" fill="url(#pavingBlock)" stroke="#94A3B8" stroke-width="1"/>
-                                <path d="M 30,79 L 100,119 L 100,125 L 30,85 Z" fill="#CBD5E1"/>
-
-                                <!-- Paving Grid Block Lines -->
-                                <g stroke="#94A3B8" stroke-width="0.8" opacity="0.6">
-                                    <line x1="45" y1="71" x2="115" y2="110"/>
-                                    <line x1="60" y1="63" x2="130" y2="102"/>
-                                    <line x1="55" y1="85" x2="70" y2="57"/>
-                                    <line x1="75" y1="96" x2="90" y2="68"/>
-                                    <line x1="95" y1="107" x2="110" y2="79"/>
-                                </g>
-
-                                <!-- Yellow Tactile Guiding Strip for Pedestrians -->
-                                <line x1="55" y1="65" x2="125" y2="104" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
-
-                                <!-- Road Quality Sensor Node & Ping -->
-                                <circle cx="120" cy="74" r="3.5" fill="#3B82F6"/>
-                                <circle cx="120" cy="74" r="9" stroke="#3B82F6" stroke-width="1" stroke-dasharray="2 2" opacity="0.7"/>
-                                <line x1="120" y1="74" x2="120" y2="40" stroke="#3B82F6" stroke-width="1.2" stroke-dasharray="2 2"/>
-                                <circle cx="120" cy="38" r="3" fill="#2563EB"/>
-                                <text x="120" y="32" text-anchor="middle" font-family="Inter, monospace" font-size="7" font-weight="800" fill="#2563EB">ASPAL HOTMIX</text>
-                            </svg>
+                        <!-- Real Photo: Jalan Raya & Trotoar -->
+                        <div class="my-5 aspect-[16/10] relative rounded-xl border border-slate-200/90 overflow-hidden bg-slate-100 shadow-xs">
+                            <img src="{{ asset('images/service-jalan.jpg') }}" 
+                                 alt="Infrastruktur Jalan Raya & Trotoar Kota Bandung" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                                 loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
                         </div>
 
                         <!-- Card Meta & Content -->
@@ -306,55 +258,13 @@
                             </span>
                         </div>
 
-                        <!-- Isometric SVG Illustration: Drainase & Saluran Air -->
-                        <div class="my-6 aspect-[1.3] flex items-center justify-center bg-slate-50/70 rounded-xl border border-slate-100 overflow-hidden group-hover:bg-cyan-50/30 transition-colors">
-                            <svg viewBox="0 0 200 170" fill="none" class="w-44 h-36">
-                                <defs>
-                                    <linearGradient id="waterFlow" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#0284C7"/>
-                                        <stop offset="50%" stop-color="#0EA5E9"/>
-                                        <stop offset="100%" stop-color="#38BDF8"/>
-                                    </linearGradient>
-                                    <linearGradient id="concreteWall" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#F8FAFC"/>
-                                        <stop offset="100%" stop-color="#CBD5E1"/>
-                                    </linearGradient>
-                                </defs>
-
-                                <!-- Left Concrete Canal Bank -->
-                                <path d="M 25,60 L 65,37 L 100,57 L 60,80 Z" fill="url(#concreteWall)" stroke="#94A3B8" stroke-width="1"/>
-                                <path d="M 60,80 L 100,57 L 100,90 L 60,113 Z" fill="#94A3B8" stroke="#64748B" stroke-width="0.8"/>
-
-                                <!-- Right Concrete Canal Bank -->
-                                <path d="M 100,103 L 140,80 L 175,100 L 135,123 Z" fill="url(#concreteWall)" stroke="#94A3B8" stroke-width="1"/>
-                                <path d="M 100,70 L 140,47 L 140,80 L 100,103 Z" fill="#CBD5E1" stroke="#94A3B8" stroke-width="0.8"/>
-
-                                <!-- Culvert Box Entrance Portal (Gorong-gorong) -->
-                                <path d="M 90,40 L 115,25 L 115,50 L 90,65 Z" fill="#0F172A" stroke="#0284C7" stroke-width="1.2"/>
-                                <path d="M 100,34 L 110,28 L 110,48 L 100,54 Z" fill="#0369A1" opacity="0.6"/>
-
-                                <!-- Flowing Water Surface in Canal -->
-                                <path d="M 60,105 L 100,82 L 140,105 L 100,128 Z" fill="url(#waterFlow)" stroke="#38BDF8" stroke-width="1.2"/>
-                                <path d="M 60,105 L 100,128 L 100,136 L 60,113 Z" fill="#0369A1"/>
-                                <path d="M 100,128 L 140,105 L 140,113 L 100,136 Z" fill="#075985"/>
-
-                                <!-- Stream Ripple Flow Vectors -->
-                                <path d="M 75,102 Q 85,92 95,100 T 115,98" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.9"/>
-                                <path d="M 85,112 Q 95,104 105,110 T 125,108" stroke="#E0F2FE" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.85"/>
-                                <path d="M 95,120 Q 105,114 115,118" stroke="#BAE6FD" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.7"/>
-
-                                <!-- Steel Trash Grate at Culvert -->
-                                <line x1="88" y1="66" x2="88" y2="84" stroke="#64748B" stroke-width="1.5"/>
-                                <line x1="93" y1="63" x2="93" y2="81" stroke="#64748B" stroke-width="1.5"/>
-                                <line x1="98" y1="60" x2="98" y2="78" stroke="#64748B" stroke-width="1.5"/>
-
-                                <!-- Smart Hydrology Water Level Sensor -->
-                                <circle cx="100" cy="105" r="3.5" fill="#06B6D4"/>
-                                <circle cx="100" cy="105" r="9" stroke="#06B6D4" stroke-width="1" stroke-dasharray="2 2" opacity="0.7"/>
-                                <line x1="100" y1="105" x2="100" y2="45" stroke="#06B6D4" stroke-width="1.2" stroke-dasharray="2 2"/>
-                                <circle cx="100" cy="43" r="3" fill="#0284C7"/>
-                                <text x="100" y="36" text-anchor="middle" font-family="Inter, monospace" font-size="7" font-weight="800" fill="#0284C7">DEBIT NORMAL</text>
-                            </svg>
+                        <!-- Real Photo: Drainase & Saluran Air -->
+                        <div class="my-5 aspect-[16/10] relative rounded-xl border border-slate-200/90 overflow-hidden bg-slate-100 shadow-xs">
+                            <img src="{{ asset('images/service-drainase.jpg') }}" 
+                                 alt="Infrastruktur Drainase & Saluran Air Kota Bandung" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                                 loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
                         </div>
 
                         <!-- Card Meta & Content -->
@@ -388,63 +298,13 @@
                             </span>
                         </div>
 
-                        <!-- Isometric SVG Illustration: Penerangan Jalan Umum (PJU) -->
-                        <div class="my-6 aspect-[1.3] flex items-center justify-center bg-slate-50/70 rounded-xl border border-slate-100 overflow-hidden group-hover:bg-amber-50/30 transition-colors">
-                            <svg viewBox="0 0 200 170" fill="none" class="w-44 h-36">
-                                <defs>
-                                    <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
-                                        <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.45"/>
-                                        <stop offset="60%" stop-color="#FBBF24" stop-opacity="0.15"/>
-                                        <stop offset="100%" stop-color="#FEF3C7" stop-opacity="0"/>
-                                    </radialGradient>
-                                    <linearGradient id="poleMetal" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" stop-color="#334155"/>
-                                        <stop offset="50%" stop-color="#64748B"/>
-                                        <stop offset="100%" stop-color="#1E293B"/>
-                                    </linearGradient>
-                                </defs>
-
-                                <!-- Base Pavement Slab -->
-                                <path d="M 40,95 L 100,60 L 160,95 L 100,130 Z" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
-                                <path d="M 40,95 L 100,130 L 100,140 L 40,105 Z" fill="#94A3B8"/>
-                                <path d="M 100,130 L 160,95 L 160,105 L 100,140 Z" fill="#64748B"/>
-
-                                <!-- Concentric Light Pool Cast on Pavement -->
-                                <ellipse cx="100" cy="98" rx="48" ry="24" fill="url(#lampGlow)"/>
-                                <ellipse cx="100" cy="98" rx="35" ry="17" stroke="#F59E0B" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
-                                <ellipse cx="100" cy="98" rx="20" ry="10" stroke="#F59E0B" stroke-width="1.2" fill="#FEF3C7" fill-opacity="0.5"/>
-                                <circle cx="100" cy="98" r="3" fill="#D97706"/>
-
-                                <!-- Semi-Transparent Conical Light Beams -->
-                                <polygon points="102,28 52,98 148,98" fill="#F59E0B" fill-opacity="0.08"/>
-                                <line x1="102" y1="28" x2="65" y2="98" stroke="#FBBF24" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.4"/>
-                                <line x1="102" y1="28" x2="135" y2="98" stroke="#FBBF24" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.4"/>
-
-                                <!-- Concrete Foundation Block for Mast -->
-                                <path d="M 62,93 L 78,84 L 88,90 L 72,99 Z" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
-                                <path d="M 62,93 L 72,99 L 72,103 L 62,97 Z" fill="#94A3B8"/>
-                                <path d="M 72,99 L 88,90 L 88,94 L 72,103 Z" fill="#64748B"/>
-
-                                <!-- Vertical Steel Mast Pole -->
-                                <line x1="75" y1="91" x2="75" y2="22" stroke="url(#poleMetal)" stroke-width="3.5" stroke-linecap="round"/>
-
-                                <!-- Overhanging Cantilever Mast Arm -->
-                                <path d="M 75,25 Q 75,15 90,16 L 105,18" fill="none" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
-
-                                <!-- Solar PV Mini Panel on Top -->
-                                <path d="M 66,16 L 82,10 L 88,14 L 72,20 Z" fill="#1E3A8A" stroke="#3B82F6" stroke-width="1"/>
-                                <line x1="72" y1="13" x2="82" y2="17" stroke="#60A5FA" stroke-width="0.7"/>
-
-                                <!-- Modern Horizontal LED Luminaire Fixture -->
-                                <path d="M 95,20 L 115,20 L 112,28 L 92,28 Z" fill="#1E293B" stroke="#475569" stroke-width="1"/>
-                                <rect x="94" y="26" width="16" height="3" rx="1.5" fill="#FBBF24"/>
-                                <circle cx="102" cy="27" r="5" fill="#F59E0B"/>
-                                <circle cx="102" cy="27" r="11" stroke="#F59E0B" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
-
-                                <!-- Smart City Status Node -->
-                                <circle cx="102" cy="11" r="2.5" fill="#F59E0B"/>
-                                <text x="102" y="7" text-anchor="middle" font-family="Inter, monospace" font-size="7" font-weight="800" fill="#D97706">SMART PJU 100W</text>
-                            </svg>
+                        <!-- Real Photo: Penerangan Jalan Umum (PJU) -->
+                        <div class="my-5 aspect-[16/10] relative rounded-xl border border-slate-200/90 overflow-hidden bg-slate-100 shadow-xs">
+                            <img src="{{ asset('images/service-pju.jpg') }}" 
+                                 alt="Infrastruktur Penerangan Jalan Umum (PJU) Kota Bandung" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                                 loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
                         </div>
 
                         <!-- Card Meta & Content -->
@@ -478,64 +338,13 @@
                             </span>
                         </div>
 
-                        <!-- Isometric SVG Illustration: Jembatan & Tanggul Air -->
-                        <div class="my-6 aspect-[1.3] flex items-center justify-center bg-slate-50/70 rounded-xl border border-slate-100 overflow-hidden group-hover:bg-indigo-50/30 transition-colors">
-                            <svg viewBox="0 0 200 170" fill="none" class="w-44 h-36">
-                                <defs>
-                                    <linearGradient id="riverWater" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#1D4ED8"/>
-                                        <stop offset="100%" stop-color="#3B82F6"/>
-                                    </linearGradient>
-                                    <linearGradient id="stoneWall" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#E2E8F0"/>
-                                        <stop offset="100%" stop-color="#94A3B8"/>
-                                    </linearGradient>
-                                </defs>
-
-                                <!-- Flowing Riverbed Underneath Bridge -->
-                                <path d="M 35,95 L 95,60 L 165,100 L 105,135 Z" fill="url(#riverWater)" fill-opacity="0.55"/>
-                                <path d="M 65,95 Q 85,80 105,92 T 135,105" stroke="#93C5FD" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.8"/>
-                                <path d="M 55,105 Q 75,90 95,102 T 125,115" stroke="#BFDBFE" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.7"/>
-
-                                <!-- Stepped Masonry Stone Retaining Wall / Tanggul Kirmir (Left Bank) -->
-                                <path d="M 25,80 L 55,62 L 75,74 L 45,92 Z" fill="url(#stoneWall)" stroke="#64748B" stroke-width="0.8"/>
-                                <path d="M 25,80 L 45,92 L 45,102 L 25,90 Z" fill="#64748B"/>
-                                <line x1="32" y1="84" x2="62" y2="66" stroke="#475569" stroke-width="0.8" stroke-dasharray="2 3"/>
-                                <line x1="38" y1="88" x2="68" y2="70" stroke="#475569" stroke-width="0.8" stroke-dasharray="2 3"/>
-
-                                <!-- Stepped Stone Retaining Wall / Tanggul Kirmir (Right Bank) -->
-                                <path d="M 125,120 L 155,102 L 175,114 L 145,132 Z" fill="url(#stoneWall)" stroke="#64748B" stroke-width="0.8"/>
-                                <path d="M 145,132 L 175,114 L 175,124 L 145,142 Z" fill="#64748B"/>
-
-                                <!-- Concrete Bridge Pier Pillars -->
-                                <path d="M 68,78 L 78,72 L 78,98 L 68,104 Z" fill="#94A3B8" stroke="#475569" stroke-width="0.8"/>
-                                <path d="M 122,108 L 132,102 L 132,128 L 122,134 Z" fill="#94A3B8" stroke="#475569" stroke-width="0.8"/>
-
-                                <!-- Structural Arch Rib (Lengkung Baja) -->
-                                <path d="M 50,68 Q 100,10 150,68" stroke="#4F46E5" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                                <path d="M 50,71 Q 100,15 150,71" stroke="#818CF8" stroke-width="1.2" fill="none" opacity="0.6"/>
-
-                                <!-- Vertical Cable Hangers -->
-                                <line x1="70" y1="46" x2="70" y2="68" stroke="#6366F1" stroke-width="1.2"/>
-                                <line x1="85" y1="30" x2="85" y2="62" stroke="#6366F1" stroke-width="1.2"/>
-                                <line x1="100" y1="22" x2="100" y2="58" stroke="#6366F1" stroke-width="1.2"/>
-                                <line x1="115" y1="30" x2="115" y2="62" stroke="#6366F1" stroke-width="1.2"/>
-                                <line x1="130" y1="46" x2="130" y2="68" stroke="#6366F1" stroke-width="1.2"/>
-
-                                <!-- Bridge Road Deck Platform -->
-                                <path d="M 45,65 L 145,65 L 155,71 L 55,71 Z" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-                                <path d="M 55,71 L 155,71 L 155,76 L 55,76 Z" fill="#0F172A"/>
-
-                                <!-- Bridge Guardrails (Pagar Jembatan) -->
-                                <line x1="45" y1="62" x2="145" y2="62" stroke="#60A5FA" stroke-width="1.5"/>
-                                <line x1="55" y1="74" x2="155" y2="74" stroke="#60A5FA" stroke-width="1.5"/>
-                                <line x1="50" y1="68" x2="150" y2="68" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="3 3"/>
-
-                                <!-- Structural Health Telemetry Diamond & Tag -->
-                                <polygon points="100,12 106,18 100,24 94,18" fill="#4F46E5" stroke="#FFFFFF" stroke-width="1"/>
-                                <circle cx="100" cy="18" r="7" stroke="#6366F1" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.8"/>
-                                <text x="100" y="8" text-anchor="middle" font-family="Inter, monospace" font-size="7" font-weight="800" fill="#4F46E5">STRUKTUR KOKOH</text>
-                            </svg>
+                        <!-- Real Photo: Jembatan & Tanggul Air -->
+                        <div class="my-5 aspect-[16/10] relative rounded-xl border border-slate-200/90 overflow-hidden bg-slate-100 shadow-xs">
+                            <img src="{{ asset('images/service-jembatan.jpg') }}" 
+                                 alt="Infrastruktur Jembatan & Tanggul Kota Bandung" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                                 loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
                         </div>
 
                         <!-- Card Meta & Content -->
