@@ -138,9 +138,25 @@ Terakhir diperbarui: 2026-10-13 (Fase 5)
 - [x] Pengujian Feature (`tests/Feature/RekapEksporTest.php`) — **10/10 PASS** (Total Feature test suite **107/107 PASS 100%**).
 - [x] Pengujian Dusk E2E Ekspor (`tests/Browser/RekapEksporTest.php`) — **3/3 PASS** (Total Dusk test suite **48/48 PASS 100%**).
 
-### Fase 12: Hardening & Finalisasi (STATUS: TODO)
-- [ ] Audit keamanan (CSRF, Rate Limiting, MIME sanitize, Policy audit).
-- [ ] Optimasi query (Eager loading, index composite).
-- [ ] Halaman error ramah pengguna (403, 404, 500).
-- [ ] Dokumentasi lengkap `README.md`.
-- [ ] Seluruh rangkaian Dusk test 100% lulus & merge ke `main`.
+### Fase 12: Hardening & Finalisasi (STATUS: DONE ✅)
+- [x] Audit keamanan lengkap: Proteksi CSRF, rate limiting pelaporan & registrasi, verifikasi server MIME pada unggahan berkas, pencegahan IDOR pada lembar kerja petugas & warga.
+- [x] Proteksi akun nonaktif seketika di middleware (`EnsureUserRole`) dengan pemutusan sesi otomatis (*session invalidate*).
+- [x] Optimasi query database: Implementasi indeks komposit `laporan_status_created_idx` (`status, created_at`) dan `laporan_kategori_status_idx` (`kategori_id, status`) untuk akselerasi query filter dan dashboard.
+- [x] Halaman error ramah pengguna berdesain kustom bertema DSDABM Kota Bandung:
+  - `resources/views/errors/403.blade.php` (Akses Terbatas / Wewenang Tidak Mencukupi)
+  - `resources/views/errors/404.blade.php` (Halaman Tidak Ditemukan dengan tombol pintas lacak tiket)
+  - `resources/views/errors/500.blade.php` (Gangguan Server dengan aksi muat ulang aman)
+- [x] Dokumentasi lengkap, rapi, dan komprehensif pada `README.md` mencakup latar belakang SDG 9, arsitektur teknis, matriks peran RBAC, siklus laporan, panduan instalasi, kredensial akun bawaan, dan panduan pengujian.
+- [x] Pengujian Feature (`tests/Feature/HardeningAndFinalisasiTest.php`) — **4/4 PASS** (Total Feature test suite **111/111 PASS 100%**, 435 assertions).
+- [x] Seluruh rangkaian pengujian Dusk E2E browser **48/48 PASS (100%)** (162 assertions).
+- [x] Pembersihan kode dan kepatuhan standar format PSR-12 via Laravel Pint lulus tanpa peringatan.
+- [x] Penggabungan (*merge*) seluruh pekerjaan fase akhir ke cabang `main`.
+
+---
+
+## 🏆 KESIMPULAN AKHIR PROYEK (100% SELESAI)
+Seluruh 12 Fase Roadmap INFRA-DAYA telah diselesaikan secara paripurna dengan standar rekayasa perangkat lunak tertinggi:
+- **Total Feature & Unit Tests**: **111/111 PASS** (435 assertions, 0 errors, 0 failures)
+- **Total End-to-End Dusk Tests**: **48/48 PASS** (162 assertions, 0 errors, 0 failures)
+- **PSR-12 Code Quality**: **Pint PASSED** (0 linter errors)
+- **Git Repository**: Cabang `main` bersih, stabil, dan teruji.
