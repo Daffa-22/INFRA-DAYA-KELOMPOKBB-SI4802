@@ -16,7 +16,7 @@ Terakhir diperbarui: 2026-10-13 (Fase 5)
 | **4** | **Pengajuan Laporan oleh Warga** | **DONE** | Form Leaflet.js Geotagging, Tiket Unik harian, Riwayat status log, IDOR Policy, 5/5 Dusk test PASS |
 | **5** | **Verifikasi & Penilaian Prioritas (Admin)** | **DONE** | Antrean filter multi-param, Setujui+Prioritas, Tolak+Alasan, Riwayat Status log, 13/13 Feature Test PASS |
 | **6** | **Disposisi Penugasan & Dokumen PDF** | **DONE** | Surat Perintah Tugas (SPT), DomPDF generator & stream/download, 13/13 Feature + 4/4 Dusk PASS |
-| 7 | Pelaksanaan Lapangan oleh Petugas | TODO | Navigasi Koordinat, Foto Bukti Sesudah, Penutupan Tugas |
+| **7** | **Pelaksanaan Lapangan oleh Petugas** | **DONE** | Navigasi GPS (Gmaps & Waze), Bukti Foto Sesudah, Tutup Tugas, 13/13 Feature + 4/4 Dusk PASS |
 | 8 | Tracking Timeline & Peta Publik | TODO | Pelacakan Nomor Tiket & Leaflet Sebaran Terbuka |
 | 9 | Umpan Balik & Rating Warga | TODO | Bintang 1-5 & Ulasan Pasca Perbaikan |
 | 10 | Dashboard Eksekutif & Monitoring SLA | TODO | Metrik SLA, Tren Laporan Chart.js, Heatmap |
@@ -94,12 +94,16 @@ Terakhir diperbarui: 2026-10-13 (Fase 5)
 - [x] Pengujian Feature (`tests/Feature/DisposisiAdminTest.php`) — **13/13 PASS**.
 - [x] Pengujian Dusk E2E Disposisi (`tests/Browser/DisposisiTest.php`) — **4/4 PASS** (Total suite Dusk **33/33 PASS 100%**).
 
-### Fase 7: Pengerjaan Petugas Lapangan (STATUS: TODO)
-- [ ] Dashboard mobile-first petugas: Daftar tugas aktif.
-- [ ] Tautan navigasi GPS ke koordinat lokasi kerusakan.
-- [ ] Form penyelesaian: Unggah foto bukti sesudah + catatan perbaikan.
-- [ ] Penutupan tugas -> status laporan `selesai` & audit riwayat status.
-- [ ] Pengujian Dusk E2E Petugas.
+### Fase 7: Pengerjaan Petugas Lapangan (STATUS: DONE ✅)
+- [x] Migration kolom penyelesaian (`foto_bukti_sesudah`, `catatan_perbaikan`, `selesai_at` & `tanggal_selesai`).
+- [x] Service class `PetugasService` dengan proteksi IDOR, validasi alur status pengerjaan, dan pencatatan riwayat audit.
+- [x] Dashboard mobile-first petugas (`/petugas/tugas`): Daftar tugas aktif, kartu metrik, pencarian, dan filter tab status.
+- [x] Lembar kerja detail (`/petugas/tugas/{id}`): Peta Leaflet interaktif, tombol navigasi GPS langsung (Google Maps & Waze).
+- [x] Aksi mulai pengerjaan (`POST /petugas/tugas/{id}/mulai`) -> status `sedang_dikerjakan` & audit log.
+- [x] Form penyelesaian (`POST /petugas/tugas/{id}/selesai`): Unggah foto sesudah aman (server MIME) + catatan teknis.
+- [x] Penutupan tugas -> status laporan & penugasan menjadi `selesai` serta audit log.
+- [x] Pengujian Feature (`tests/Feature/PetugasLapanganTest.php`) — **13/13 PASS**.
+- [x] Pengujian Dusk E2E Petugas (`tests/Browser/PetugasTest.php`) — **4/4 PASS** (Total Dusk suite **37/37 PASS 100%**).
 
 ### Fase 8: Tracking Timeline & Peta Publik (STATUS: TODO)
 - [ ] Halaman publik lacak nomor tiket tanpa login.

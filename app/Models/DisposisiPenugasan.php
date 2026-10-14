@@ -20,6 +20,9 @@ class DisposisiPenugasan extends Model
         'tanggal_disposisi',
         'tenggat_waktu',
         'catatan_instruksi',
+        'foto_bukti_sesudah',
+        'catatan_perbaikan',
+        'tanggal_selesai',
         'status_penugasan',
     ];
 
@@ -28,6 +31,7 @@ class DisposisiPenugasan extends Model
         return [
             'tanggal_disposisi' => 'date',
             'tenggat_waktu' => 'date',
+            'tanggal_selesai' => 'date',
         ];
     }
 
@@ -59,6 +63,16 @@ class DisposisiPenugasan extends Model
     public function isSelesai(): bool
     {
         return $this->status_penugasan === 'selesai';
+    }
+
+    public function canBeStarted(): bool
+    {
+        return $this->status_penugasan === 'ditugaskan';
+    }
+
+    public function canBeCompleted(): bool
+    {
+        return in_array($this->status_penugasan, ['ditugaskan', 'sedang_dikerjakan'], true);
     }
 
     public function isOverdue(): bool

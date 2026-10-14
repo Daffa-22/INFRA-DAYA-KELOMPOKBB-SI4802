@@ -24,9 +24,12 @@ class LaporanKerusakan extends Model
         'latitude',
         'longitude',
         'foto_bukti_sebelum',
+        'foto_bukti_sesudah',
         'status',
         'prioritas',
         'alasan_penolakan',
+        'catatan_perbaikan',
+        'selesai_at',
     ];
 
     protected function casts(): array
@@ -34,6 +37,7 @@ class LaporanKerusakan extends Model
         return [
             'latitude' => 'float',
             'longitude' => 'float',
+            'selesai_at' => 'datetime',
         ];
     }
 
