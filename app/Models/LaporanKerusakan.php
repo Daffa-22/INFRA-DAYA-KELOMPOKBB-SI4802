@@ -66,6 +66,11 @@ class LaporanKerusakan extends Model
         return $this->hasOne(DisposisiPenugasan::class, 'laporan_id');
     }
 
+    public function umpanBalik(): HasOne
+    {
+        return $this->hasOne(UmpanBalik::class, 'laporan_id');
+    }
+
     /**
      * Cek apakah laporan masih dapat diubah atau dibatalkan oleh warga.
      */

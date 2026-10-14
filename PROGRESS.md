@@ -112,11 +112,13 @@ Terakhir diperbarui: 2026-10-13 (Fase 5)
 - [x] Pengujian Feature (`tests/Feature/PublikTrackingAndPetaTest.php`) — **12/12 PASS** (Total Feature test suite **85/85 PASS 100%**).
 - [x] Pengujian Dusk E2E Tracking & Peta (`tests/Browser/TrackingPetaPublikTest.php`) — **3/3 PASS** (Total Dusk test suite **40/40 PASS 100%**).
 
-### Fase 9: Umpan Balik & Evaluasi Warga (STATUS: TODO)
-- [ ] Migration & Model `umpan_balik`.
-- [ ] Form rating (1-5 bintang) & ulasan warga untuk laporan berstatus selesai.
-- [ ] Proteksi 1 kali rating per laporan & Policy otorisasi warga pelapor.
-- [ ] Pengujian Dusk E2E Umpan Balik.
+### Fase 9: Umpan Balik & Evaluasi Warga (STATUS: DONE ✅)
+- [x] Migration & Model `umpan_balik` (rating 1-5 bintang, komentar, kecepatan penanganan, kualitas fisik, unique constraint 1 laporan 1 rating).
+- [x] Service class `UmpanBalikService` dengan otorisasi kepemilikan pelapor, validasi status `selesai`, dan pencatatan audit log `riwayat_status`.
+- [x] Form rating bintang interaktif & kartu ulasan pasca perbaikan pada halaman detail laporan warga (`/warga/laporan/{id}`).
+- [x] Integrasi ringkasan rating kepuasan warga pelapor pada halaman pelacakan tiket publik (`/lacak-tiket`).
+- [x] Pengujian Feature (`tests/Feature/UmpanBalikTest.php`) — **6/6 PASS** (Total Feature test suite **91/91 PASS 100%**).
+- [x] Pengujian Dusk E2E Umpan Balik (`tests/Browser/UmpanBalikTest.php`) — **2/2 PASS** (Total Dusk test suite **42/42 PASS 100%**).
 
 ### Fase 10: Dashboard Eksekutif & SLA (STATUS: TODO)
 - [ ] Perhitungan metrik SLA via Service Class.

@@ -26,6 +26,7 @@ class TrackingController extends Controller
                 'kategori',
                 'riwayatStatus.user',
                 'disposisi.petugas',
+                'umpanBalik',
             ])
                 ->where('nomor_tiket', $nomorTiket)
                 ->first();
