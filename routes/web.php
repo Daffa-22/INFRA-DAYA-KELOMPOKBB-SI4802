@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\KelurahanController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VerifikasiController;
 use App\Http\Controllers\Api\WilayahController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Petugas\TugasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Publik\PetaPublikController;
@@ -32,9 +33,9 @@ Route::get('/api/peta-publik/markers', [PetaPublikController::class, 'markers'])
 Route::get('/lacak-tiket/{nomor_tiket?}', [TrackingController::class, 'index'])->name('tracking.publik');
 
 // Dashboard Utama Terotentikasi
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 // API Endpoint Publik / Web
 Route::get('/api/wilayah/kecamatan/{id}/kelurahan', [WilayahController::class, 'kelurahanByKecamatan'])->name('api.wilayah.kelurahan');
@@ -89,9 +90,10 @@ Route::middleware('auth')->group(function () {
     });
 
     // Route Pimpinan Eksekutif
-    Route::middleware('role:pimpinan')->prefix('pimpinan')->name('pimpinan.')->group(function () {
-        Route::get('/sla', fn () => redirect()->route('dashboard'))->name('sla.index');
-        Route::get('/peta', fn () => redirect()->route('dashboard'))->name('peta.index');
+    Route::middleware('role:pimpinan,admin')->prefix('pimpinan')->name('pimpinan.')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/sla', [DashboardController::class, 'index'])->name('sla.index');
+        Route::get('/peta', [PetaPublikController::class, 'index'])->name('peta.index');
         Route::get('/rekap', fn () => redirect()->route('dashboard'))->name('rekap.index');
     });
 });
