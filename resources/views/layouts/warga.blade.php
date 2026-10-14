@@ -24,119 +24,119 @@
 </head>
 <body class="min-h-full flex flex-col font-sans antialiased text-slate-800" x-data="{ mobileNavOpen: false }">
     <!-- Top Civic Notice Bar -->
-    <div class="bg-brand-navy text-slate-300 text-xs py-2 px-4 border-b border-white/10">
+    <div class="bg-[#050811] text-slate-400 text-xs py-1.5 px-4 border-b border-white/5">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <span class="inline-block h-2 w-2 rounded-full bg-brand-amber"></span>
-                <span>Pemerintah Kota Bandung &bull; Dinas Sumber Daya Air dan Bina Marga (DSDABM)</span>
+                <span class="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-slate-300 font-medium">Pemerintah Kota Bandung &bull; Dinas Sumber Daya Air dan Bina Marga (DSDABM)</span>
             </div>
-            <div class="hidden sm:flex items-center gap-4 text-[11px] text-slate-300">
+            <div class="hidden sm:flex items-center gap-4 text-[11px] text-slate-400">
                 <span>Dukungan SDG 9: Infrastruktur Berkelanjutan</span>
                 <span>Call Center: 112 / (022) 7278835</span>
             </div>
         </div>
     </div>
 
-    <!-- Main Navigation Bar -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+    <!-- Main Navigation Bar (Sentry / Roobinium Style) -->
+    <header class="sticky top-0 z-40 bg-[#070B14]/95 backdrop-blur-md border-b border-white/10 text-white shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex h-20 items-center justify-between">
-                <!-- Brand Logo -->
+                <!-- Brand Logo (White Badge for crisp high-contrast presentation) -->
                 <a href="{{ url('/') }}" class="flex items-center gap-3 group">
-                    <x-application-logo variant="full" class="h-12 w-auto max-w-[220px] object-contain transition-transform group-hover:scale-[1.02]" />
+                    <div class="bg-white px-2.5 py-1.5 rounded-xl shadow-sm inline-flex items-center transition-transform group-hover:scale-102">
+                        <x-application-logo variant="full" class="h-8 sm:h-9 w-auto max-w-[175px] object-contain" />
+                    </div>
                     <span class="sr-only">INFRA-DAYA Kota Bandung</span>
                 </a>
 
-                <!-- Desktop Nav Items -->
-                <nav class="hidden md:flex items-center gap-1 font-semibold text-sm">
-                    <a href="{{ url('/') }}" class="px-3.5 py-2 rounded-xl transition-colors {{ request()->is('/') ? 'text-brand-navy bg-slate-100 font-bold' : 'text-slate-600 hover:text-brand-navy hover:bg-slate-50' }}">
+                <!-- Desktop Nav Items (Segmented Capsule Bar) -->
+                <nav class="hidden md:flex items-center p-1 rounded-xl bg-white/[0.04] border border-white/10 font-semibold text-xs tracking-wide">
+                    <a href="{{ url('/') }}" class="px-4 py-2 rounded-lg transition-all {{ request()->is('/') ? 'text-white bg-white/10 font-bold shadow-xs' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                         Beranda
                     </a>
-                    <a href="{{ route('peta.publik', [], false) }}" class="px-3.5 py-2 rounded-xl transition-colors {{ request()->routeIs('peta.publik*') ? 'text-brand-navy bg-slate-100 font-bold' : 'text-slate-600 hover:text-brand-navy hover:bg-slate-50' }}">
+                    <a href="{{ route('peta.publik', [], false) }}" class="px-4 py-2 rounded-lg transition-all {{ request()->routeIs('peta.publik*') ? 'text-white bg-white/10 font-bold shadow-xs' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                         Peta Publik
                     </a>
-                    <a href="{{ route('tracking.publik', [], false) }}" class="px-3.5 py-2 rounded-xl transition-colors {{ request()->routeIs('tracking.publik*') ? 'text-brand-navy bg-slate-100 font-bold' : 'text-slate-600 hover:text-brand-navy hover:bg-slate-50' }}">
+                    <a href="{{ route('tracking.publik', [], false) }}" class="px-4 py-2 rounded-lg transition-all {{ request()->routeIs('tracking.publik*') ? 'text-white bg-white/10 font-bold shadow-xs' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                         Lacak Tiket
                     </a>
 
                     @auth
                         @if (auth()->user()->isWarga())
-                            <a href="{{ route('warga.laporan.saya', [], false) }}" class="px-3.5 py-2 rounded-xl transition-colors {{ request()->routeIs('warga.laporan.*') ? 'text-brand-navy bg-slate-100 font-bold' : 'text-slate-600 hover:text-brand-navy hover:bg-slate-50' }}">
+                            <a href="{{ route('warga.laporan.saya', [], false) }}" class="px-4 py-2 rounded-lg transition-all {{ request()->routeIs('warga.laporan.*') ? 'text-white bg-white/10 font-bold shadow-xs' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                                 Laporan Saya
                             </a>
                         @else
-                            <a href="{{ route('dashboard') }}" class="px-3.5 py-2 rounded-xl text-brand-teal hover:bg-brand-teal/10 font-bold">
-                                Panel Petugas/Admin &rarr;
+                            <a href="{{ route('dashboard') }}" class="px-4 py-2 rounded-lg text-blue-400 hover:bg-blue-500/10 font-bold">
+                                Panel Petugas &rarr;
                             </a>
                         @endif
                     @endauth
                 </nav>
 
-                <!-- Right Action Buttons -->
-                <div class="hidden md:flex items-center gap-3">
-                    <!-- CTA Lapor Sekarang -->
-                    <a href="{{ route('warga.laporan.create', [], false) }}" class="inline-flex items-center gap-2 rounded-xl bg-brand-amber px-4 py-2.5 text-sm font-bold text-brand-navy shadow-sm transition-all hover:bg-amber-400 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-brand-amber focus:ring-offset-2">
-                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-                        <span>Lapor Kerusakan</span>
-                    </a>
-
+                <!-- Right Action Buttons (Sign in + High-contrast Pill Button) -->
+                <div class="hidden md:flex items-center gap-4">
                     @auth
-                        <!-- User Dropdown -->
+                        <!-- User Menu -->
                         <div class="relative" x-data="{ open: false }" @click.outside="open = false">
-                            <button @click="open = !open" class="flex items-center gap-2 rounded-xl p-1.5 hover:bg-slate-100 transition-colors">
-                                <div class="h-9 w-9 rounded-xl bg-brand-navy text-white flex items-center justify-center font-bold text-sm">
+                            <button @click="open = !open" class="flex items-center gap-2 rounded-xl p-1.5 hover:bg-white/10 transition-colors text-white">
+                                <div class="h-8 w-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow">
                                     {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                                 </div>
-                                <svg class="h-4 w-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                <span class="text-xs font-semibold text-slate-200">{{ auth()->user()->name }}</span>
+                                <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                             </button>
-                            <div x-show="open" x-transition style="display: none;" class="absolute right-0 mt-2 w-48 rounded-2xl bg-white p-2 shadow-lg ring-1 ring-black/5 z-50">
-                                <div class="px-3 py-2 border-b border-slate-100">
-                                    <p class="text-xs font-semibold text-slate-800 truncate">{{ auth()->user()->name }}</p>
-                                    <p class="text-[11px] text-slate-500 truncate">{{ auth()->user()->email }}</p>
+                            <div x-show="open" x-transition style="display: none;" class="absolute right-0 mt-2 w-52 rounded-2xl bg-[#0F172A] border border-white/10 p-2 shadow-2xl text-white z-50">
+                                <div class="px-3 py-2 border-b border-white/10">
+                                    <p class="text-xs font-semibold text-white truncate">{{ auth()->user()->name }}</p>
+                                    <p class="text-[11px] text-slate-400 truncate">{{ auth()->user()->email }}</p>
                                 </div>
-                                <a href="{{ route('profile.edit') }}" class="block rounded-lg px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-100">Profil Saya</a>
+                                <a href="{{ route('profile.edit') }}" class="block rounded-lg px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/10">Profil Saya</a>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button type="submit" class="w-full text-left rounded-lg px-3 py-2 text-xs font-medium text-rose-600 hover:bg-rose-50">Keluar</button>
+                                    <button type="submit" class="w-full text-left rounded-lg px-3 py-2 text-xs font-medium text-rose-400 hover:bg-rose-500/10">Keluar</button>
                                 </form>
                             </div>
                         </div>
                     @else
-                        <a href="{{ route('login') }}" class="rounded-xl px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-colors">
+                        <a href="{{ route('login') }}" class="text-xs font-bold text-slate-300 hover:text-white transition-colors">
                             Masuk
                         </a>
-                        <a href="{{ route('register') }}" class="rounded-xl bg-brand-navy px-4 py-2.5 text-sm font-semibold text-white hover:bg-navy-900 transition-all shadow-sm">
-                            Daftar Warga
-                        </a>
                     @endauth
+
+                    <!-- High-contrast Action Button (like "Get demo" in Sentry) -->
+                    <a href="{{ route('warga.laporan.create', [], false) }}" class="inline-flex items-center gap-2 rounded-xl bg-white text-slate-950 px-4 py-2.5 text-xs font-bold shadow-sm transition-all hover:bg-slate-100 hover:shadow-md focus:outline-none">
+                        <svg class="h-3.5 w-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                        <span>Lapor Kerusakan</span>
+                    </a>
                 </div>
 
                 <!-- Mobile Hamburger Button -->
-                <button @click="mobileNavOpen = !mobileNavOpen" class="md:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100">
+                <button @click="mobileNavOpen = !mobileNavOpen" class="md:hidden p-2 rounded-xl text-slate-300 hover:bg-white/10">
                     <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Drawer Menu -->
-        <div x-show="mobileNavOpen" x-transition class="md:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3" style="display: none;">
-            <a href="{{ url('/') }}" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100">Beranda</a>
-            <a href="{{ route('peta.publik', [], false) }}" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100">Peta Publik</a>
-            <a href="{{ route('tracking.publik', [], false) }}" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100">Lacak Tiket</a>
+        <div x-show="mobileNavOpen" x-transition class="md:hidden border-t border-white/10 bg-[#070B14] px-4 pt-3 pb-6 space-y-3" style="display: none;">
+            <a href="{{ url('/') }}" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-white/10">Beranda</a>
+            <a href="{{ route('peta.publik', [], false) }}" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-white/10">Peta Publik</a>
+            <a href="{{ route('tracking.publik', [], false) }}" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-white/10">Lacak Tiket</a>
             @auth
-                <a href="{{ route('warga.laporan.saya', [], false) }}" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100">Laporan Saya</a>
-                <a href="{{ route('profile.edit') }}" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100">Profil</a>
+                <a href="{{ route('warga.laporan.saya', [], false) }}" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-white/10">Laporan Saya</a>
+                <a href="{{ route('profile.edit') }}" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-white/10">Profil</a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-rose-600 hover:bg-rose-50">Keluar</button>
+                    <button type="submit" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-rose-400 hover:bg-rose-500/10">Keluar</button>
                 </form>
             @else
                 <div class="pt-2 flex flex-col gap-2">
-                    <a href="{{ route('login') }}" class="w-full text-center rounded-xl border border-slate-300 py-2.5 text-sm font-semibold text-slate-700">Masuk</a>
-                    <a href="{{ route('register') }}" class="w-full text-center rounded-xl bg-brand-navy py-2.5 text-sm font-semibold text-white">Daftar Warga</a>
+                    <a href="{{ route('login') }}" class="w-full text-center rounded-xl border border-white/20 py-2.5 text-sm font-semibold text-slate-200">Masuk</a>
+                    <a href="{{ route('register') }}" class="w-full text-center rounded-xl bg-blue-600 py-2.5 text-sm font-semibold text-white">Daftar Warga</a>
                 </div>
             @endauth
-            <a href="{{ route('warga.laporan.create', [], false) }}" class="block text-center rounded-xl bg-brand-amber py-3 text-sm font-bold text-brand-navy shadow">
+            <a href="{{ route('warga.laporan.create', [], false) }}" class="block text-center rounded-xl bg-white py-3 text-sm font-bold text-slate-950 shadow">
                 Lapor Kerusakan Sekarang
             </a>
         </div>
@@ -144,10 +144,15 @@
 
     <!-- Main Content -->
     <main class="flex-1">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <x-flash />
+        @if (request()->is('/'))
+            <x-flash class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4" />
             {{ $slot }}
-        </div>
+        @else
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <x-flash />
+                {{ $slot }}
+            </div>
+        @endif
     </main>
 
     <!-- Civic Footer -->
