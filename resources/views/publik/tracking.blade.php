@@ -1,17 +1,20 @@
 <x-warga-layout title="Lacak Progres Laporan Tiket Publik">
     <div class="space-y-8 max-w-5xl mx-auto">
         <!-- Hero Header & Formulir Pencarian Tiket -->
-        <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1F3A5F] via-[#162f52] to-[#0E7C86] text-white p-6 sm:p-10 shadow-xl">
+        <section class="relative overflow-hidden rounded-xl bg-[#0A2240] border border-[#16375E] text-white p-6 sm:p-10 shadow-sm">
+            <!-- Subtle architectural grid texture -->
+            <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;"></div>
+
             <div class="relative z-10 max-w-2xl">
-                <span class="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold backdrop-blur-md text-brand-amber ring-1 ring-white/20 mb-3">
-                    <span class="h-2 w-2 rounded-full bg-brand-amber animate-pulse"></span>
-                    Transparansi Pelayanan Publik DSDABM
-                </span>
-                <h1 class="text-2xl sm:text-4xl font-black tracking-tight text-white">
+                <div class="inline-flex items-center gap-1.5 rounded-lg bg-white/10 px-3 py-1 text-xs font-semibold border border-white/15 text-[#F59E0B] mb-3">
+                    <span class="h-2 w-2 rounded-full bg-[#F59E0B]"></span>
+                    Transparansi Pelayanan Publik DSDABM &bull; INFRA-DAYA
+                </div>
+                <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
                     Lacak Status & Progres Tiket
                 </h1>
-                <p class="mt-2 text-xs sm:text-sm text-slate-200 leading-relaxed">
-                    Masukkan nomor tiket resmi pengaduan Anda untuk memantau status verifikasi, lembar surat tugas petugas, dan dokumentasi foto hasil perbaikan.
+                <p class="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Masukkan nomor tiket resmi pengaduan Anda untuk memantau status verifikasi, lembar surat tugas petugas, dan dokumentasi foto hasil perbaikan di lapangan.
                 </p>
 
                 <!-- Search Input Form -->
@@ -27,13 +30,13 @@
                             value="{{ $nomorTiket }}"
                             placeholder="Contoh: INFRA-20261014-0001"
                             required
-                            class="w-full rounded-2xl border-0 bg-white/95 pl-11 pr-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:ring-2 focus:ring-brand-amber shadow-sm uppercase font-mono font-bold"
+                            class="w-full rounded-xl border border-slate-300 bg-white pl-11 pr-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:border-[#0A2240] focus:ring-1 focus:ring-[#0A2240] uppercase font-mono font-bold"
                         >
                     </div>
                     <button
                         type="submit"
                         dusk="btn-submit-lacak"
-                        class="inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-amber hover:bg-amber-400 text-slate-950 px-6 py-3 text-sm font-extrabold shadow-lg shadow-amber-500/20 transition-all cursor-pointer whitespace-nowrap"
+                        class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#F59E0B] hover:bg-[#d97706] text-slate-950 px-6 py-3 text-sm font-bold shadow-sm transition-all cursor-pointer whitespace-nowrap"
                     >
                         <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                         <span>Cari Laporan</span>

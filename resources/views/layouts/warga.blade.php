@@ -43,14 +43,8 @@
             <div class="flex h-20 items-center justify-between">
                 <!-- Brand Logo -->
                 <a href="{{ url('/') }}" class="flex items-center gap-3 group">
-                    <x-application-logo class="h-11 w-11 transition-transform group-hover:scale-105" />
-                    <div>
-                        <div class="text-xl font-black tracking-tight text-brand-navy flex items-center gap-2">
-                            INFRA-DAYA
-                            <span class="rounded bg-brand-teal/10 px-2 py-0.5 text-xs font-bold text-brand-teal">Bandung</span>
-                        </div>
-                        <p class="text-xs text-slate-500 font-medium">Infrastruktur & Daya Tanggap</p>
-                    </div>
+                    <x-application-logo variant="full" class="h-12 w-auto max-w-[220px] object-contain transition-transform group-hover:scale-[1.02]" />
+                    <span class="sr-only">INFRA-DAYA Kota Bandung</span>
                 </a>
 
                 <!-- Desktop Nav Items -->
@@ -161,11 +155,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-white/10">
                 <div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <x-application-logo class="h-10 w-10 text-white" />
-                        <div>
-                            <span class="text-lg font-black tracking-tight">INFRA-DAYA</span>
-                            <p class="text-xs text-slate-300">Pemerintah Kota Bandung</p>
+                    <div class="mb-4">
+                        <div class="inline-flex items-center bg-white px-3 py-1.5 rounded-lg shadow-sm border border-slate-200">
+                            <x-application-logo variant="full" class="h-8 w-auto max-w-[170px]" />
+                        </div>
+                        <div class="mt-2 text-xs text-slate-300 font-semibold tracking-wide">
+                            Pemerintah Kota Bandung &bull; DSDABM
                         </div>
                     </div>
                     <p class="text-xs text-slate-300 leading-relaxed">

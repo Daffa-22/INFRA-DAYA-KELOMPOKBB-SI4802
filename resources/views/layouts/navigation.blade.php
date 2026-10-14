@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto" />
+                        <x-application-logo variant="full" class="block h-9 w-auto max-w-[180px]" />
                     </a>
                 </div>
 

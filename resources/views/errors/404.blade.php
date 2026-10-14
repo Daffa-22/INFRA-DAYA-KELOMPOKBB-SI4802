@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>404 - Halaman Tidak Ditemukan | INFRA-DAYA Kota Bandung</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-icon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="h-full flex items-center justify-center p-4 font-sans text-slate-800">
-    <div class="max-w-md w-full bg-white rounded-3xl shadow-xl border border-slate-200/80 p-8 text-center">
+    <div class="max-w-md w-full bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center">
         <!-- Badge & Icon -->
         <div class="inline-flex items-center justify-center h-20 w-20 rounded-2xl bg-teal-50 text-[#0E7C86] mb-6 border border-teal-200">
             <svg class="h-10 w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">

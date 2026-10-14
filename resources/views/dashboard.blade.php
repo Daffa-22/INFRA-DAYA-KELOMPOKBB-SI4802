@@ -2,24 +2,26 @@
     <x-warga-layout title="Dashboard Warga">
         <div class="space-y-8">
             <!-- Welcome Banner -->
-            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-brand-navy via-[#1b3d66] to-[#0E7C86] p-8 text-white shadow-xl">
+            <div class="relative overflow-hidden rounded-xl bg-[#0A2240] border border-[#16375E] p-8 text-white shadow-sm">
+                <!-- Subtle architectural grid texture -->
+                <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;"></div>
                 <div class="relative z-10 max-w-2xl">
-                    <span class="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold backdrop-blur-md text-brand-amber">
-                        <span class="h-1.5 w-1.5 rounded-full bg-brand-amber"></span>
+                    <span class="inline-flex items-center gap-1.5 rounded-lg bg-white/10 px-3 py-1 text-xs font-semibold border border-white/15 text-[#F59E0B]">
+                        <span class="h-1.5 w-1.5 rounded-full bg-[#F59E0B]"></span>
                         Portal Partisipasi Masyarakat
                     </span>
                     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
                         Selamat Datang, {{ auth()->user()->name }}!
                     </h1>
-                    <p class="mt-2 text-sm text-slate-200 leading-relaxed">
-                        Bersama menjaga kenyamanan Kota Bandung. Laporkan setiap kerusakan jalan, saluran air tersumbat, atau lampu jalan padam langsung dari ponsel Anda.
+                    <p class="mt-2 text-sm text-slate-300 leading-relaxed">
+                        Bersama menjaga kenyamanan Kota Bandung. Laporkan setiap kerusakan jalan, saluran air tersumbat, atau penerangan jalan langsung kepada DSDABM Kota Bandung.
                     </p>
                     <div class="mt-6 flex flex-wrap items-center gap-3">
                         <x-button variant="amber" :href="route('warga.laporan.create', [], false)">
                             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
                             <span>Buat Laporan Baru</span>
                         </x-button>
-                        <x-button variant="outline" class="border-white/40 text-white hover:bg-white/10" :href="route('peta.publik', [], false)">
+                        <x-button variant="outline" class="border-white/30 text-white hover:bg-white/10" :href="route('peta.publik', [], false)">
                             Lihat Peta Masalah Kota
                         </x-button>
                     </div>
@@ -91,7 +93,7 @@
     <x-admin-layout title="Dashboard Eksekutif & Monitoring SLA" header="Dashboard Eksekutif">
         <div class="space-y-8">
             <!-- Header Eksekutif & Filter Periode -->
-            <div class="rounded-3xl bg-white p-6 shadow-sm border border-slate-200/80 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div class="rounded-xl bg-white p-6 shadow-sm border border-slate-200 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
                     <div class="flex items-center gap-2 mb-1">
                         <span class="rounded-md bg-brand-navy/10 px-2 py-0.5 text-xs font-bold text-brand-navy tracking-wider">
