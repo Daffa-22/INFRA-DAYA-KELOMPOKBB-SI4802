@@ -164,7 +164,7 @@ class LaporanService
 
     public function findLaporan(int $id): LaporanKerusakan
     {
-        return LaporanKerusakan::with(['warga', 'kategori', 'kelurahan.kecamatan', 'riwayatStatus.user'])->findOrFail($id);
+        return LaporanKerusakan::with(['warga', 'kategori', 'kelurahan.kecamatan', 'riwayatStatus.user', 'disposisi.petugas'])->findOrFail($id);
     }
 
     /**

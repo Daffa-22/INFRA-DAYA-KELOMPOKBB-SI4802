@@ -15,7 +15,7 @@ Terakhir diperbarui: 2026-10-13 (Fase 5)
 | **3** | **Master Kategori Infrastruktur** | **DONE** | CRUD Kategori + Bobot Prioritas (1-3), Seeder 4 Kategori default, 5/5 Dusk test PASS |
 | **4** | **Pengajuan Laporan oleh Warga** | **DONE** | Form Leaflet.js Geotagging, Tiket Unik harian, Riwayat status log, IDOR Policy, 5/5 Dusk test PASS |
 | **5** | **Verifikasi & Penilaian Prioritas (Admin)** | **DONE** | Antrean filter multi-param, Setujui+Prioritas, Tolak+Alasan, Riwayat Status log, 13/13 Feature Test PASS |
-| 6 | Disposisi Penugasan & Dokumen PDF | TODO | Surat Tugas Digital & PDF DomPDF |
+| **6** | **Disposisi Penugasan & Dokumen PDF** | **DONE** | Surat Perintah Tugas (SPT), DomPDF generator & stream/download, 13/13 Feature + 4/4 Dusk PASS |
 | 7 | Pelaksanaan Lapangan oleh Petugas | TODO | Navigasi Koordinat, Foto Bukti Sesudah, Penutupan Tugas |
 | 8 | Tracking Timeline & Peta Publik | TODO | Pelacakan Nomor Tiket & Leaflet Sebaran Terbuka |
 | 9 | Umpan Balik & Rating Warga | TODO | Bintang 1-5 & Ulasan Pasca Perbaikan |
@@ -86,11 +86,13 @@ Terakhir diperbarui: 2026-10-13 (Fase 5)
   - SLP-02 (Low): Formatter PSR Laravel Pint lulus tanpa peringatan.
   - Total test suite Feature/Unit: **47/47 PASS** (125 assertions).
 
-### Fase 6: Disposisi Penugasan & Surat Tugas PDF (STATUS: TODO)
-- [ ] Migration & Model `disposisi_penugasan`.
-- [ ] Form disposisi admin: Pilih petugas aktif, instruksi teknis, tenggat waktu.
-- [ ] Cetak Surat Perintah Tugas (SPT) format PDF via `barryvdh/laravel-dompdf`.
-- [ ] Pengujian Dusk E2E Disposisi & PDF.
+### Fase 6: Disposisi Penugasan & Surat Tugas PDF (STATUS: DONE ✅)
+- [x] Migration & Model `disposisi_penugasan` (nomor surat tugas otomatis `SPT-YYYYMMDD-XXXX`, status penugasan, instruksi kerja).
+- [x] Service class `DisposisiService` terisolasi untuk transaksi penugasan dan riwayat status audit.
+- [x] Form disposisi admin: Pilih petugas aktif, instruksi teknis, tenggat waktu, dengan pre-select laporan disetujui.
+- [x] Cetak Surat Perintah Tugas (SPT) format PDF via `barryvdh/laravel-dompdf` (stream & attachment download).
+- [x] Pengujian Feature (`tests/Feature/DisposisiAdminTest.php`) — **13/13 PASS**.
+- [x] Pengujian Dusk E2E Disposisi (`tests/Browser/DisposisiTest.php`) — **4/4 PASS** (Total suite Dusk **33/33 PASS 100%**).
 
 ### Fase 7: Pengerjaan Petugas Lapangan (STATUS: TODO)
 - [ ] Dashboard mobile-first petugas: Daftar tugas aktif.

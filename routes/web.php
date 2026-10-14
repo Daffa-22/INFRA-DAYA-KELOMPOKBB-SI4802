@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DisposisiController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\KecamatanController;
 use App\Http\Controllers\Admin\KelurahanController;
@@ -68,7 +69,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/verifikasi/{id}', [VerifikasiController::class, 'show'])->name('verifikasi.show');
         Route::post('/verifikasi/{id}/setujui', [VerifikasiController::class, 'setujui'])->name('verifikasi.setujui');
         Route::post('/verifikasi/{id}/tolak', [VerifikasiController::class, 'tolak'])->name('verifikasi.tolak');
-        Route::get('/disposisi', fn () => redirect()->route('dashboard'))->name('disposisi.index');
+        // Fase 6: Disposisi Penugasan & Surat Tugas PDF
+        Route::get('/disposisi', [DisposisiController::class, 'index'])->name('disposisi.index');
+        Route::get('/disposisi/create', [DisposisiController::class, 'create'])->name('disposisi.create');
+        Route::post('/disposisi', [DisposisiController::class, 'store'])->name('disposisi.store');
+        Route::get('/disposisi/{id}', [DisposisiController::class, 'show'])->name('disposisi.show');
+        Route::get('/disposisi/{id}/pdf', [DisposisiController::class, 'cetakPdf'])->name('disposisi.pdf');
         Route::get('/rekap', fn () => redirect()->route('dashboard'))->name('rekap.index');
     });
 

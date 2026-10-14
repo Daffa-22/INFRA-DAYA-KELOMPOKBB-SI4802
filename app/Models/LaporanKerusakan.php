@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class LaporanKerusakan extends Model
 {
@@ -56,11 +57,26 @@ class LaporanKerusakan extends Model
         return $this->hasMany(RiwayatStatus::class, 'laporan_id')->orderBy('created_at', 'desc');
     }
 
+    public function disposisi(): HasOne
+    {
+        return $this->hasOne(DisposisiPenugasan::class, 'laporan_id');
+    }
+
     /**
      * Cek apakah laporan masih dapat diubah atau dibatalkan oleh warga.
      */
     public function canBeModifiedByWarga(): bool
     {
         return $this->status === 'menunggu_verifikasi';
+    }
+
+    public function hasDisposisi(): bool
+    {
+        return $this->disposisi !== null;
+    }
+
+    public function scopeSiapDisposisi($query)
+    {
+        return $query->where('status', 'diproses')->doesntHave('disposisi');
     }
 }
