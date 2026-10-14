@@ -105,11 +105,12 @@ Terakhir diperbarui: 2026-10-13 (Fase 5)
 - [x] Pengujian Feature (`tests/Feature/PetugasLapanganTest.php`) — **13/13 PASS**.
 - [x] Pengujian Dusk E2E Petugas (`tests/Browser/PetugasTest.php`) — **4/4 PASS** (Total Dusk suite **37/37 PASS 100%**).
 
-### Fase 8: Tracking Timeline & Peta Publik (STATUS: TODO)
-- [ ] Halaman publik lacak nomor tiket tanpa login.
-- [ ] Visual timeline audit & perbandingan foto sebelum vs sesudah (Before/After).
-- [ ] Peta publik sebaran Leaflet interaktif dengan filter kategori & status.
-- [ ] Pengujian Dusk E2E Tracking & Peta.
+### Fase 8: Tracking Timeline & Peta Publik (STATUS: DONE ✅)
+- [x] Halaman publik lacak nomor tiket tanpa login (`/lacak-tiket/{nomor_tiket?}`).
+- [x] Visual timeline audit interaktif & perbandingan foto sebelum vs sesudah (Before / After card) lengkap dengan catatan perbaikan, peta statis titik laporan, dan info SPT petugas.
+- [x] Peta publik sebaran Leaflet interaktif (`/peta-publik`) dengan 4 kartu metrik, filter kategori, status, kecamatan, pencarian kata kunci, dan marker API endpoint (`/api/peta-publik/markers`).
+- [x] Pengujian Feature (`tests/Feature/PublikTrackingAndPetaTest.php`) — **12/12 PASS** (Total Feature test suite **85/85 PASS 100%**).
+- [x] Pengujian Dusk E2E Tracking & Peta (`tests/Browser/TrackingPetaPublikTest.php`) — **3/3 PASS** (Total Dusk test suite **40/40 PASS 100%**).
 
 ### Fase 9: Umpan Balik & Evaluasi Warga (STATUS: TODO)
 - [ ] Migration & Model `umpan_balik`.
