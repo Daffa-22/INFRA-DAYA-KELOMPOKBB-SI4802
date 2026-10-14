@@ -20,7 +20,7 @@
 
             <!-- Email Address -->
             <div>
-                <label for="email" class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1">
+                <label for="email" class="block text-xs font-semibold text-slate-700 tracking-wide mb-1">
                     Alamat Surel (Email)
                 </label>
                 <div class="relative">
@@ -45,7 +45,7 @@
             <!-- Password -->
             <div>
                 <div class="flex items-center justify-between mb-1">
-                    <label for="password" class="block text-xs font-bold text-slate-700 uppercase tracking-wide">
+                    <label for="password" class="block text-xs font-semibold text-slate-700 tracking-wide">
                         Kata Sandi (Password)
                     </label>
                     @if (Route::has('password.request'))

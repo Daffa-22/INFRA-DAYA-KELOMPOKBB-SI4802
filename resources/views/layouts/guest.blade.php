@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-[#EEF3F6]">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="min-h-full bg-[#EEF3F6]">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,22 +18,25 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="h-full font-sans text-slate-800 antialiased flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-md text-center">
-            <a href="/" class="inline-block transition-transform hover:scale-105 duration-200">
-                <x-application-logo variant="full" class="h-24 w-auto max-w-[280px] mx-auto drop-shadow-sm" />
-            </a>
-            <div class="mt-2 text-xs font-semibold text-slate-500 uppercase tracking-widest">
-                DSDABM Pemerintah Kota Bandung
+    <body class="min-h-screen bg-[#EEF3F6] font-sans text-slate-800 antialiased flex flex-col py-8 sm:py-10 px-4 sm:px-6 lg:px-8">
+        <div class="w-full max-w-md mx-auto my-auto space-y-6">
+            <!-- Brand Logo & Header -->
+            <div class="text-center pt-2">
+                <a href="{{ url('/') }}" class="inline-block transition-transform hover:scale-105 duration-200 focus:outline-none">
+                    <x-application-logo variant="full" class="h-20 sm:h-22 w-auto max-w-[260px] mx-auto drop-shadow-xs" />
+                </a>
+                <div class="mt-2 text-xs font-semibold text-slate-500 uppercase tracking-widest">
+                    DSDABM Pemerintah Kota Bandung
+                </div>
             </div>
-        </div>
 
-        <div class="mt-6 sm:mx-auto sm:w-full sm:max-w-md px-4">
-            <div class="bg-white py-8 px-6 sm:px-10 shadow-sm rounded-xl border border-slate-200">
+            <!-- Card Box -->
+            <div class="bg-white py-7 px-6 sm:px-9 shadow-sm rounded-xl border border-slate-200">
                 {{ $slot }}
             </div>
 
-            <div class="mt-6 text-center text-xs text-slate-400">
+            <!-- Civic Footer Note -->
+            <div class="text-center text-xs text-slate-400 pb-2">
                 &copy; {{ date('Y') }} INFRA-DAYA &bull; Sistem Pelaporan Kerusakan Infrastruktur Kota Bandung
             </div>
         </div>

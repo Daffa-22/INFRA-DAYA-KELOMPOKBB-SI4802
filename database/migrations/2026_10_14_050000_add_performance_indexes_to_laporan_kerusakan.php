@@ -22,9 +22,18 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('laporan_kerusakan', function (Blueprint $table) {
-            $table->dropIndex('laporan_status_created_idx');
-            $table->dropIndex('laporan_kategori_status_idx');
-        });
+        try {
+            Schema::table('laporan_kerusakan', function (Blueprint $table) {
+                $table->dropIndex('laporan_status_created_idx');
+            });
+        } catch (Throwable $e) {
+        }
+
+        try {
+            Schema::table('laporan_kerusakan', function (Blueprint $table) {
+                $table->dropIndex('laporan_kategori_status_idx');
+            });
+        } catch (Throwable $e) {
+        }
     }
 };
