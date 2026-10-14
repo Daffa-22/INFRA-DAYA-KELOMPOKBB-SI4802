@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DisposisiController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\KecamatanController;
 use App\Http\Controllers\Admin\KelurahanController;
+use App\Http\Controllers\Admin\RekapController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VerifikasiController;
 use App\Http\Controllers\Api\WilayahController;
@@ -78,7 +79,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/disposisi', [DisposisiController::class, 'store'])->name('disposisi.store');
         Route::get('/disposisi/{id}', [DisposisiController::class, 'show'])->name('disposisi.show');
         Route::get('/disposisi/{id}/pdf', [DisposisiController::class, 'cetakPdf'])->name('disposisi.pdf');
-        Route::get('/rekap', fn () => redirect()->route('dashboard'))->name('rekap.index');
+        // Fase 11: Rekapitulasi Data & Ekspor
+        Route::get('/rekap', [RekapController::class, 'index'])->name('rekap.index');
+        Route::get('/rekap/excel', [RekapController::class, 'exportExcel'])->name('rekap.excel');
+        Route::get('/rekap/pdf', [RekapController::class, 'exportPdf'])->name('rekap.pdf');
     });
 
     // Route Petugas Lapangan
@@ -94,7 +98,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/sla', [DashboardController::class, 'index'])->name('sla.index');
         Route::get('/peta', [PetaPublikController::class, 'index'])->name('peta.index');
-        Route::get('/rekap', fn () => redirect()->route('dashboard'))->name('rekap.index');
+        // Fase 11: Rekapitulasi Eksekutif
+        Route::get('/rekap', [RekapController::class, 'index'])->name('rekap.index');
+        Route::get('/rekap/excel', [RekapController::class, 'exportExcel'])->name('rekap.excel');
+        Route::get('/rekap/pdf', [RekapController::class, 'exportPdf'])->name('rekap.pdf');
     });
 });
 

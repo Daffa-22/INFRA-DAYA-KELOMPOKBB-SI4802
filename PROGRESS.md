@@ -128,11 +128,15 @@ Terakhir diperbarui: 2026-10-13 (Fase 5)
 - [x] Pengujian Feature (`tests/Feature/DashboardEksekutifTest.php`) — **7/7 PASS** (Total Feature test suite **98/98 PASS 100%**).
 - [x] Pengujian Dusk E2E Dashboard (`tests/Browser/DashboardEksekutifTest.php`) — **3/3 PASS** (Total Dusk test suite **45/45 PASS 100%**).
 
-### Fase 11: Rekapitulasi Data & Ekspor (STATUS: TODO)
-- [ ] Filter laporan multi-kriteria (tanggal, kecamatan, kategori, status).
-- [ ] Ekspor Excel (`maatwebsite/excel`).
-- [ ] Ekspor Laporan Resmi PDF (`barryvdh/laravel-dompdf`).
-- [ ] Pengujian Dusk E2E Ekspor.
+### Fase 11: Rekapitulasi Data & Ekspor (STATUS: DONE ✅)
+- [x] Instalasi & integrasi package spreadsheet resmi `maatwebsite/excel` (^3.1) dan PDF builder `barryvdh/laravel-dompdf`.
+- [x] Service class `RekapService` terisolasi untuk membangun query terfilter multi-kriteria (rentang tanggal, kecamatan, kategori, status, prioritas, dan pencarian teks bebas), perhitungan metrik agregasi, serta opsi filter.
+- [x] Export class `LaporanRekapExport` dengan format tabular profesional: styling kop biru instansi DSDABM (`#1F3A5F`), auto column sizing, bordered cells, dan mapping data lengkap.
+- [x] Controller `RekapController` melayani rute Admin (`/admin/rekap*`) dan Pimpinan Eksekutif (`/pimpinan/rekap*`) untuk pratinjau tabel web, unduh Excel (.xlsx), dan cetak/stream PDF (.pdf).
+- [x] Template PDF resmi berorientasi landscape A4 (`resources/views/admin/rekap/pdf.blade.php`) lengkap dengan KOP dinas DSDABM Kota Bandung, tabel ringkasan KPI, tabel data laporan, dan tanda tangan pengesahan pejabat kepala dinas.
+- [x] Antarmuka rekapitulasi web responsif (`resources/views/admin/rekap/index.blade.php`) dengan 5 kartu metrik KPI, form filter multi-kriteria, tombol aksi unduh Excel & PDF, dan pratinjau tabel berpaginasi.
+- [x] Pengujian Feature (`tests/Feature/RekapEksporTest.php`) — **10/10 PASS** (Total Feature test suite **107/107 PASS 100%**).
+- [x] Pengujian Dusk E2E Ekspor (`tests/Browser/RekapEksporTest.php`) — **3/3 PASS** (Total Dusk test suite **48/48 PASS 100%**).
 
 ### Fase 12: Hardening & Finalisasi (STATUS: TODO)
 - [ ] Audit keamanan (CSRF, Rate Limiting, MIME sanitize, Policy audit).
