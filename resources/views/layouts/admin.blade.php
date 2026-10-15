@@ -40,8 +40,8 @@
 
         <!-- Sidebar (Harmonized Command Deck Theme: #070B14 + Electric Blue + Amber) -->
         <aside
-            :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
-            class="fixed inset-y-0 left-0 z-50 w-72 bg-[#070B14] text-white transition-transform duration-300 ease-in-out lg:static lg:inset-auto flex flex-col shadow-2xl border-r border-white/10"
+            :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
+            class="fixed inset-y-0 left-0 z-50 w-72 bg-[#070B14] text-white transition-transform duration-300 ease-in-out -translate-x-full lg:translate-x-0 lg:static lg:inset-auto flex flex-col shadow-2xl border-r border-white/10"
         >
             <!-- Logo & Brand Header in Sidebar -->
             <div class="flex h-20 items-center justify-between px-6 border-b border-white/10 bg-[#070B14]">
