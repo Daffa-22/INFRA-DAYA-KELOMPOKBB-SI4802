@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\UserUpdateRequest;
 use App\Services\UserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class UserController extends Controller
@@ -77,6 +78,8 @@ class UserController extends Controller
 
         $user = $this->userService->toggleUserStatus($id);
         $statusText = $user->is_active ? 'diaktifkan' : 'dinonaktifkan';
+
+        Log::info("Status aktivasi akun user ID {$user->id} ({$user->name}) berhasil {$statusText} oleh Admin ID ".auth()->id());
 
         return redirect()
             ->route('admin.users.index')
