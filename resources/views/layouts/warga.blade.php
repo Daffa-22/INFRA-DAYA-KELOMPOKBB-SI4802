@@ -147,9 +147,9 @@
         <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-10 border-b border-white/10">
+            <div class="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-8 lg:gap-10 pb-10 border-b border-white/10">
                 <!-- Col 1: Brand & Instansi -->
-                <div class="md:col-span-2 lg:col-span-6 space-y-4">
+                <div class="md:col-span-12 lg:col-span-6 space-y-4">
                     <div class="inline-flex items-center bg-white px-3 py-1.5 rounded-xl shadow-xs border border-white/10">
                         <x-application-logo variant="full" class="h-8 w-auto max-w-[170px]" />
                     </div>
@@ -176,7 +176,7 @@
                 </div>
 
                 <!-- Col 2: Layanan Publik -->
-                <div class="lg:col-span-3">
+                <div class="md:col-span-6 lg:col-span-3">
                     <h4 class="text-xs font-bold text-slate-200 uppercase tracking-widest font-mono mb-4 flex items-center gap-2">
                         <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
                         Layanan Publik
@@ -210,7 +210,7 @@
                 </div>
 
                 <!-- Col 3: Kontak Instansi -->
-                <div class="md:col-span-4">
+                <div class="md:col-span-6 lg:col-span-3">
                     <h4 class="text-xs font-bold text-slate-200 uppercase tracking-widest font-mono mb-4 flex items-center gap-2">
                         <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
                         Kontak Instansi
