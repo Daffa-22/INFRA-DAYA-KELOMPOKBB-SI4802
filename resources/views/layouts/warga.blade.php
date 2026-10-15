@@ -147,29 +147,36 @@
         <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-white/10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-10 border-b border-white/10">
                 <!-- Col 1: Brand & Instansi -->
-                <div class="md:col-span-5 space-y-4">
+                <div class="md:col-span-2 lg:col-span-6 space-y-4">
                     <div class="inline-flex items-center bg-white px-3 py-1.5 rounded-xl shadow-xs border border-white/10">
                         <x-application-logo variant="full" class="h-8 w-auto max-w-[170px]" />
                     </div>
                     <div class="text-xs font-semibold text-slate-300 tracking-wide">
                         Pemerintah Kota Bandung &bull; DSDABM
                     </div>
-                    <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-lg">
                         Sistem pelaporan dan respons cepat perbaikan infrastruktur publik (jalan, drainase, penerangan, dan jembatan) untuk mewujudkan Bandung yang nyaman dan tanggap (SDG 9).
                     </p>
-                    <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-[11px] font-mono text-slate-300">
-                        <span class="relative flex h-2 w-2">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                        </span>
-                        <span>Sistem Siaga 24/7 &bull; URC DSDABM</span>
+                    <!-- Badges Side by Side -->
+                    <div class="flex flex-wrap sm:flex-nowrap items-center gap-2 pt-1">
+                        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-[11px] font-mono text-slate-300 whitespace-nowrap">
+                            <span class="relative flex h-2 w-2 shrink-0">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            <span>Sistem Siaga 24/7 &bull; URC DSDABM</span>
+                        </div>
+                        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-[11px] font-mono text-slate-300 whitespace-nowrap">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
+                            <span>Mendukung SDG 9: Industri, Inovasi, &amp; Infrastruktur</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Col 2: Layanan Publik -->
-                <div class="md:col-span-3">
+                <div class="lg:col-span-3">
                     <h4 class="text-xs font-bold text-slate-200 uppercase tracking-widest font-mono mb-4 flex items-center gap-2">
                         <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
                         Layanan Publik
@@ -231,10 +238,7 @@
             <!-- Bottom Subfooter -->
             <div class="mt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
                 <p>&copy; {{ date('Y') }} INFRA-DAYA Kota Bandung. Seluruh hak cipta dilindungi.</p>
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-slate-400">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                    <span>Mendukung SDG 9: Industri, Inovasi, &amp; Infrastruktur</span>
-                </div>
+                <p class="text-[11px] font-mono text-slate-500">DSDABM Kota Bandung &bull; Terbuka untuk Publik</p>
             </div>
         </div>
     </footer>
