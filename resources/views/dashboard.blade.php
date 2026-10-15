@@ -90,7 +90,7 @@
         </div>
     </x-warga-layout>
 @else
-    <x-admin-layout title="Dashboard Eksekutif & Monitoring SLA">
+    <x-admin-layout title="Dashboard Eksekutif & Monitoring SLA" header="Dashboard Eksekutif">
         <div class="space-y-8">
             <!-- Header Eksekutif & Filter Periode -->
             <div class="rounded-xl bg-white p-6 shadow-sm border border-slate-200 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
