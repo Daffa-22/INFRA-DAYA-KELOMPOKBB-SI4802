@@ -53,8 +53,8 @@
                                 Laporan Saya
                             </a>
                         @else
-                            <a href="{{ route('dashboard') }}" class="px-4 py-2 rounded-lg text-blue-400 hover:bg-blue-500/10 font-bold">
-                                Panel Petugas &rarr;
+                            <a href="{{ route('dashboard') }}" class="px-4 py-2 rounded-lg transition-all {{ request()->routeIs('dashboard', 'pimpinan.dashboard') ? 'text-white bg-white/10 font-bold shadow-xs' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                                Dashboard Utama
                             </a>
                         @endif
                     @endauth
@@ -65,22 +65,36 @@
                     @auth
                         <!-- User Menu -->
                         <div class="relative" x-data="{ open: false }" @click.outside="open = false">
-                            <button @click="open = !open" class="flex items-center gap-2 rounded-xl p-1.5 hover:bg-white/10 transition-colors text-white">
+                            <button @click="open = !open" class="flex items-center gap-2.5 rounded-xl p-1.5 hover:bg-white/10 transition-colors text-white">
                                 <div class="h-8 w-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow">
                                     {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                                 </div>
-                                <span class="text-xs font-semibold text-slate-200">{{ auth()->user()->name }}</span>
+                                <div class="text-left hidden sm:block">
+                                    <div class="text-xs font-semibold text-slate-200 leading-tight max-w-[130px] truncate">{{ auth()->user()->name }}</div>
+                                    <div class="flex items-center gap-1.5 mt-0.5">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider text-amber-400">
+                                            {{ auth()->user()->role }}
+                                        </span>
+                                    </div>
+                                </div>
                                 <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                             </button>
-                            <div x-show="open" x-transition style="display: none;" class="absolute right-0 mt-2 w-52 rounded-2xl bg-[#0F172A] border border-white/10 p-2 shadow-2xl text-white z-50">
+                            <div x-show="open" x-transition style="display: none;" class="absolute right-0 mt-2 w-56 rounded-2xl bg-[#0F172A] border border-white/10 p-2 shadow-2xl text-white z-50">
                                 <div class="px-3 py-2 border-b border-white/10">
                                     <p class="text-xs font-semibold text-white truncate">{{ auth()->user()->name }}</p>
                                     <p class="text-[11px] text-slate-400 truncate">{{ auth()->user()->email }}</p>
+                                    <span class="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                                        Role: {{ strtoupper(auth()->user()->role) }}
+                                    </span>
                                 </div>
+                                @if (!auth()->user()->isWarga())
+                                    <a href="{{ route('dashboard') }}" class="block rounded-lg px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/10">Dashboard Utama</a>
+                                @endif
                                 <a href="{{ route('profile.edit') }}" class="block rounded-lg px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/10">Profil Saya</a>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button type="submit" class="w-full text-left rounded-lg px-3 py-2 text-xs font-medium text-rose-400 hover:bg-rose-500/10">Keluar</button>
+                                    <button type="submit" class="w-full text-left rounded-lg px-3 py-2 text-xs font-medium text-rose-400 hover:bg-rose-500/10">Keluar Sistem</button>
                                 </form>
                             </div>
                         </div>

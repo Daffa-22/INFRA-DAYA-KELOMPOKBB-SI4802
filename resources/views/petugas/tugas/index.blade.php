@@ -4,14 +4,14 @@
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200">
             <div>
                 <div class="flex items-center gap-2 mb-1">
-                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#0E7C86]/10 text-[#0E7C86]">
-                        <span class="h-2 w-2 rounded-full bg-[#0E7C86] animate-pulse"></span>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 border border-blue-200 text-blue-700">
+                        <span class="h-2 w-2 rounded-full bg-blue-600 animate-pulse"></span>
                         Petugas Lapangan DSDABM
                     </span>
                     <span class="text-xs text-slate-400">&bull;</span>
                     <span class="text-xs text-slate-500">{{ now()->translatedFormat('l, d F Y') }}</span>
                 </div>
-                <h1 class="text-2xl sm:text-3xl font-extrabold text-[#1F3A5F] tracking-tight">
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                     Daftar Tugas Lapangan
                 </h1>
                 <p class="text-xs sm:text-sm text-slate-500 mt-1">

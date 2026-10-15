@@ -90,19 +90,19 @@
         </div>
     </x-warga-layout>
 @else
-    <x-admin-layout title="Dashboard Eksekutif & Monitoring SLA" header="Dashboard Eksekutif">
+    <x-admin-layout title="Dashboard Eksekutif & Monitoring SLA">
         <div class="space-y-8">
             <!-- Header Eksekutif & Filter Periode -->
             <div class="rounded-xl bg-white p-6 shadow-sm border border-slate-200 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
                     <div class="flex items-center gap-2 mb-1">
-                        <span class="rounded-md bg-brand-navy/10 px-2 py-0.5 text-xs font-bold text-brand-navy tracking-wider">
+                        <span class="rounded-md bg-blue-50 border border-blue-200 px-2 py-0.5 text-xs font-bold text-blue-700 tracking-wider">
                             Role: {{ strtoupper(auth()->user()->role) }}
                         </span>
                         <span class="text-xs text-slate-400">&bull;</span>
-                        <span class="text-xs font-semibold text-[#0E7C86]">Monitoring Pelayanan Publik DSDABM</span>
+                        <span class="text-xs font-semibold text-blue-600">Monitoring Pelayanan Publik DSDABM</span>
                     </div>
-                    <h1 class="text-2xl sm:text-3xl font-black text-[#1F3A5F]">
+                    <h1 class="text-2xl sm:text-3xl font-black text-slate-900">
                         Dashboard Eksekutif &amp; Kinerja SLA
                     </h1>
                     <p class="text-xs text-slate-500 mt-0.5">
@@ -118,7 +118,7 @@
                         id="filter_days"
                         dusk="filter-periode-days"
                         onchange="this.form.submit()"
-                        class="text-xs rounded-xl border-slate-300 focus:ring-2 focus:ring-[#0E7C86] py-2 px-3 bg-slate-50 font-semibold text-slate-700"
+                        class="text-xs rounded-xl border-slate-300 focus:ring-2 focus:ring-blue-600 py-2 px-3 bg-slate-50 font-semibold text-slate-700"
                     >
                         <option value="" {{ empty($days) ? 'selected' : '' }}>Semua Data Historis</option>
                         <option value="30" {{ $days === 30 ? 'selected' : '' }}>30 Hari Terakhir</option>
@@ -133,7 +133,7 @@
                 <!-- 1. Total Laporan Masuk -->
                 <div class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm space-y-2">
                     <span class="text-xs font-bold tracking-wider text-slate-500">Total Laporan</span>
-                    <p class="text-3xl font-black text-[#1F3A5F]">{{ $metrics['total_laporan'] }}</p>
+                    <p class="text-3xl font-black text-slate-900">{{ $metrics['total_laporan'] }}</p>
                     <div class="text-[11px] text-slate-400 flex items-center justify-between">
                         <span>Menunggu: <strong>{{ $metrics['menunggu'] }}</strong></span>
                         <span>Aktif: <strong>{{ $metrics['diproses'] }}</strong></span>
@@ -151,8 +151,8 @@
 
                 <!-- 3. Kepatuhan SLA Tenggat Waktu -->
                 <div class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm space-y-2">
-                    <span class="text-xs font-bold tracking-wider text-[#0E7C86]">Kepatuhan SLA</span>
-                    <p class="text-3xl font-black text-[#0E7C86]">{{ $metrics['kepatuhan_sla'] }}%</p>
+                    <span class="text-xs font-bold tracking-wider text-blue-600">Kepatuhan SLA</span>
+                    <p class="text-3xl font-black text-blue-600">{{ $metrics['kepatuhan_sla'] }}%</p>
                     <div class="text-[11px] text-slate-400">
                         {{ $metrics['disposisi_tepat_waktu'] }} tugas tepat tenggat
                     </div>
