@@ -236,9 +236,8 @@
             </div>
 
             <!-- Bottom Subfooter -->
-            <div class="mt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+            <div class="mt-8 text-center text-xs text-slate-500">
                 <p>&copy; {{ date('Y') }} INFRA-DAYA Kota Bandung. Seluruh hak cipta dilindungi.</p>
-                <p class="text-[11px] font-mono text-slate-500">DSDABM Kota Bandung &bull; Terbuka untuk Publik</p>
             </div>
         </div>
     </footer>
