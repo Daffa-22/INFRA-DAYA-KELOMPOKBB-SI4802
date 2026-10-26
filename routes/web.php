@@ -105,4 +105,9 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+// Dynamic file server for uploads (ensures uploaded images work seamlessly in serverless/Vercel)
+Route::get('/storage/{path}', [App\Http\Controllers\StorageFileController::class, 'show'])
+    ->where('path', '.*')
+    ->name('storage.file');
+
 require __DIR__.'/auth.php';

@@ -131,9 +131,7 @@ class PetugasService
         }
 
         // Simpan foto bukti sesudah dengan ekstensi aman server MIME (SEC-02)
-        $extension = $fotoSesudah->guessExtension() ?? 'jpg';
-        $filename = Str::random(40).'.'.$extension;
-        $path = $fotoSesudah->storeAs('laporan/sesudah', $filename, 'public');
+        $path = FileUploadService::storePublicFile($fotoSesudah, 'laporan/sesudah');
 
         return DB::transaction(function () use ($disposisi, $petugasId, $path, $catatanPerbaikan) {
             $now = now();
