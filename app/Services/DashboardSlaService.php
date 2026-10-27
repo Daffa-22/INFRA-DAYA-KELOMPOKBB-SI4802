@@ -40,6 +40,21 @@ class DashboardSlaService
             ->whereIn('status', ['diproses', 'ditolak'])
             ->groupBy('laporan_id');
 
+        $driver = DB::getDriverName();
+        if ($driver === 'pgsql') {
+            $diffHourSql = 'EXTRACT(EPOCH FROM (rv.verified_at - l.created_at)) / 3600';
+            $diffHariSql = 'EXTRACT(EPOCH FROM (selesai_at - created_at)) / 86400';
+            $dateCheckSql = 'CAST(selesai_at AS DATE) <= tenggat_waktu';
+        } elseif ($driver === 'sqlite') {
+            $diffHourSql = '(strftime(\'%s\', rv.verified_at) - strftime(\'%s\', l.created_at)) / 3600';
+            $diffHariSql = '(strftime(\'%s\', selesai_at) - strftime(\'%s\', created_at)) / 86400';
+            $dateCheckSql = 'date(selesai_at) <= tenggat_waktu';
+        } else {
+            $diffHourSql = 'TIMESTAMPDIFF(HOUR, l.created_at, rv.verified_at)';
+            $diffHariSql = 'TIMESTAMPDIFF(HOUR, created_at, selesai_at) / 24';
+            $dateCheckSql = 'DATE(selesai_at) <= tenggat_waktu';
+        }
+
         $avgVerifikasiJam = DB::table('laporan_kerusakan as l')
             ->joinSub($waktuVerifikasiSub, 'rv', function ($join) {
                 $join->on('l.id', '=', 'rv.laporan_id');
@@ -47,7 +62,7 @@ class DashboardSlaService
             ->when($days !== null && $days > 0, function ($q) use ($days) {
                 $q->where('l.created_at', '>=', now()->subDays($days));
             })
-            ->selectRaw('AVG(TIMESTAMPDIFF(HOUR, l.created_at, rv.verified_at)) as avg_jam')
+            ->selectRaw("AVG({$diffHourSql}) as avg_jam")
             ->value('avg_jam');
 
         $avgVerifikasiJam = $avgVerifikasiJam !== null ? round((float) $avgVerifikasiJam, 1) : 0;
@@ -57,7 +72,7 @@ class DashboardSlaService
         $avgPenyelesaianHari = (clone $laporanQuery)
             ->where('status', 'selesai')
             ->whereNotNull('selesai_at')
-            ->selectRaw('AVG(TIMESTAMPDIFF(HOUR, created_at, selesai_at) / 24) as avg_hari')
+            ->selectRaw("AVG({$diffHariSql}) as avg_hari")
             ->value('avg_hari');
 
         $avgPenyelesaianHari = $avgPenyelesaianHari !== null ? round((float) $avgPenyelesaianHari, 1) : 0;
@@ -72,9 +87,9 @@ class DashboardSlaService
 
         $totalDisposisiSelesai = (clone $disposisiSelesaiQuery)->count();
         $disposisiTepatWaktu = (clone $disposisiSelesaiQuery)
-            ->whereHas('laporan', function ($q) {
+            ->whereHas('laporan', function ($q) use ($dateCheckSql) {
                 $q->whereNotNull('selesai_at')
-                    ->whereRaw('DATE(selesai_at) <= tenggat_waktu');
+                    ->whereRaw($dateCheckSql);
             })
             ->count();
 
